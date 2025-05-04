@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Search Bar</title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css">
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    .search-icon {
+      font-size: 18px;
+      border: 1px solid #ccc;
+      border-radius: 50%;
+      padding: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.3s;
+    }
+
+    .search-icon:hover {
+      background-color: #eee;
+      transform: scale(1.1);
+    }
+
+    .theme-btn {
+      font-size: 18px;
+      margin-left: 10px;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .theme-btn:hover {
+      transform: rotate(20deg);
+    }
+
+    .changeTheme {
+      background: #1D1E22;
+      color: #eee;
+    }
+
+    .search-container {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      padding: 10px;
+      background-color: #f8f9fa;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .search-bar {
+      display: none;
+      flex-direction: column;
+      align-items: flex-end;
+      width: 100%;
+      padding: 10px;
+      background: white;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+      position: absolute;
+      top: 50px;
+      right: 10px;
+      border-radius: 5px;
+      transition: opacity 0.3s, transform 0.3s;
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+
+    .search-bar.active {
+      display: flex;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .search-bar input {
+      width: 250px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+      transition: box-shadow 0.3s;
+    }
+
+    .search-bar input:focus {
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .search-bar button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      border: none;
+      background: #007bff;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.3s;
+    }
+
+    .search-bar button:hover {
+      background-color: #0056b3;
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="search-container">
+    <i id="search-icon" class="fas fa-search search-icon"></i>
+    <div id="theme-btn" class="far fa-moon theme-btn"></div>
+  </div>
+
+  <div class="search-bar" id="search-bar">
+    <input type="text" id="search-input" placeholder="Enter your search query">
+    <button id="search-btn">Search</button>
+  </div>
+
+  <script>
+    const themeBtn = document.getElementById("theme-btn");
+    themeBtn.onclick = () => {
+      themeBtn.classList.toggle("fa-sun");
+      if (themeBtn.classList.contains("fa-sun")) {
+        document.body.classList.add("changeTheme");
+      } else {
+        document.body.classList.remove("changeTheme");
+      }
+    }
+
+    const searchIcon = document.getElementById("search-icon");
+    const searchBar = document.getElementById("search-bar");
+    const searchInput = document.getElementById("search-input");
+    const searchBtn = document.getElementById("search-btn");
+
+    searchIcon.onclick = () => {
+      if (searchBar.classList.contains("active")) {
+        searchBar.classList.remove("active");
+      } else {
+        searchBar.classList.add("active");
+        searchInput.focus();
+      }
+    }
+
+    searchBtn.onclick = () => {
+      const searchQuery = searchInput.value.trim();
+      if (searchQuery) {
+        const encodedQuery = encodeURIComponent(searchQuery);
+        window.location.href = `https://www.allrecipes.com/search?q=${encodedQuery}`;
+      }
+    }
+
+    searchInput.addEventListener("keypress", (e) => {
+      if (e.key === "Enter") {
+        searchBtn.click();
+      }
+    });
+  </script>
+</body>
+</html>

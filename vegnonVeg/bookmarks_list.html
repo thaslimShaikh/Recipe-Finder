@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookmarks List</title>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    background-color: #f4f4f4;
+    color: #333; /* Dark text color for better readability */
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.bookmark-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.bookmark-item {
+    background-color: #fff;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: box-shadow 0.3s ease;
+}
+
+.bookmark-item:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.remove-btn {
+    background-color: #dc3545;
+    color: white;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.remove-btn:hover {
+    background-color: #c82333;
+}
+
+.remove-btn:focus {
+    outline: none; /* Remove default focus outline */
+}
+
+.remove-btn:active {
+    transform: translateY(1px);
+}
+
+@media (max-width: 600px) {
+    .bookmark-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .bookmark-item span {
+        margin-bottom: 5px;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <h1>Bookmarks List</h1>
+    <ul class="bookmark-list" id="bookmark-list"></ul>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const bookmarkList = document.getElementById('bookmark-list');
+            let bookmarks = JSON.parse(localStorage.getItem('bookmarks')) || [];
+
+            function renderBookmarks() {
+                bookmarkList.innerHTML = '';
+                bookmarks.forEach((title, index) => {
+                    const listItem = document.createElement('li');
+                    listItem.classList.add('bookmark-item');
+                    listItem.innerHTML = `
+                        <span>${title}</span>
+                        <button class="remove-btn" data-index="${index}">Remove</button>
+                    `;
+                    bookmarkList.appendChild(listItem);
+                });
+            }
+
+            bookmarkList.addEventListener('click', function(event) {
+                if (event.target.classList.contains('remove-btn')) {
+                    const index = event.target.getAttribute('data-index');
+                    bookmarks.splice(index, 1);
+                    localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
+                    renderBookmarks();
+                }
+            });
+
+            renderBookmarks();
+
+            // Listen for messages to update bookmarks
+            window.addEventListener('message', function(event) {
+                if (event.data === 'updateBookmarks') {
+                    bookmarks = JSON.parse(localStorage.getItem('bookmarks')) || [];
+                    renderBookmarks();
+                }
+            });
+        });
+    </script>
+</body>
+</html>

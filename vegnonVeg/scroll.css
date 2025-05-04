@@ -1,0 +1,105 @@
+.recipe-container {
+  width: auto; /* Allow buttons to expand horizontally */
+  overflow-x: scroll; /* Enable horizontal scrolling */
+  white-space: nowrap; /* Prevent wrapping of buttons */
+  padding:20;
+}
+
+    .btn {
+      display: inline-block;
+      margin: 0 5px;
+      padding: 0;
+      border: none;
+      background: none;
+      cursor: pointer;
+      transition: filter 0.2s;
+    }
+
+     .btn div {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 150px;
+      height: 150px;
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      margin: 5px;
+      position: relative;
+      overflow: visible;
+      filter: brightness(1);
+      transition: filter 0.2s;
+      border-radius: 10px;
+    }
+ .btn div:hover {
+      filter: brightness(0.8);
+    }
+
+  .btn:hover, .btn:focus {
+      transform: scale(1.1);
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+      animation: glow 0.5s infinite;
+    }
+    
+   @keyframes glow {
+      0% {
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+      }
+      50% {
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+      }
+      100% {
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+      }
+    }
+  .btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+      animation: wiggle 1s infinite;
+    }
+
+@keyframes wiggle {
+      0% {
+        transform: rotate(0deg);
+      }
+      25% {
+        transform: rotate(5deg);
+      }
+      50% {
+        transform: rotate(0deg);
+      }
+      75% {
+        transform: rotate(-5deg);
+      }
+      100% {
+        transform: rotate(0deg);
+      }
+    }
+
+.btn h2 {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+     
+      color: white;
+      padding: 5px;
+      margin: 0;
+      text-align: center;
+      border-radius: 10px 10px 0 0;
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      font-weight: bold;
+      text-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
+.recipe-container {
+  width: auto;
+  overflow-x: scroll;
+  white-space: nowrap;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+}
+
+.recipe-container::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
+}

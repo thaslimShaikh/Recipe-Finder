@@ -1,0 +1,151 @@
+body {
+    font-family: sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f0f0f0;
+}
+
+.container {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    position: relative;
+    overflow: auto; /* Add this to enable scrolling */
+}
+
+.pizza-crust {
+    width: 100%;
+    height: 100%;
+    background-image: url('pizzacrust1.png');
+    background-size: cover;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.pizza-sauce {
+    width: 90%;
+    height: 90%;
+
+    border-radius: 50%;
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    z-index: 2;
+    transform-origin: 50% 100%;
+    animation: sauce-animation 2s ease-in-out;
+}
+
+.pizza-cheese {
+    width: 87%;
+    height: 87%;
+    background-image: url('sauce.png');
+    background-size: cover;
+    border-radius: 50%;
+    position: absolute;
+    top: 7%;
+    left: 9%;
+    z-index: 4;
+    transform-origin: 50% 100%;
+    animation: cheese-animation 2s ease-in-out;
+}
+
+.pizza-toppings {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 4;
+}
+
+.topping {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    position: absolute;
+    z-index: 5;
+    opacity: 1; /* Change opacity to 1 to make toppings visible */
+    transition: opacity 0.5s ease-in-out;
+}
+
+.onion {
+    background-image: url('onion.png');
+    background-size: cover; /* Adjust as needed */
+    top: 10%;
+    left: 15%;
+ width: 90px; /* Increase as needed */
+    height: 90px;
+}
+
+
+.tomato {
+    background-image: url('tomato.png');
+    background-size: cover;
+    top: 65%;
+    left: 30%;
+ width: 70px; /* Increase as needed */
+    height: 60px;
+}
+
+.pepper {
+    background-image: url('pepper.png');
+    background-size: cover;
+    top: 35%;
+    left: 15%;
+ width: 80px; /* Increase as needed */
+    height: 80px;
+}
+
+.pineapple {
+    background-image: url('pineapple.png');
+    background-size: cover;
+    top: 20%;
+    left: 60%;
+ width: 70px; /* Increase as needed */
+    height: 70px;
+}
+
+.olive {
+    background-image: url('olive.png');
+    background-size: cover;
+    top: 40%;
+    left: 45%;
+ width: 90px; /* Increase as needed */
+    height: 100px;
+}
+
+@keyframes sauce-animation {
+    0% {
+        transform: scale(0) translateY(100%);
+    }
+    100% {
+        transform: scale(1) translateY(0);
+    }
+}
+
+@keyframes cheese-animation {
+    0% {
+        transform: scale(0) translateY(100%);
+    }
+    100% {
+        transform: scale(1) translateY(0);
+    }
+}
+
+@keyframes topping-animation {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.container::-webkit-scrollbar {
+    display: none;
+}

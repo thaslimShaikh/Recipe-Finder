@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ratings and Reviews</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+  }
+
+  .container {
+    max-width: 600px;
+    margin: 50px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  h1 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .overall-rating {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+
+  .rating-value {
+    font-size: 48px;
+    font-weight: bold;
+    margin-right: 10px;
+  }
+
+  .stars {
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+  }
+
+  .stars span {
+    font-size: 24px;
+    color: green;
+  }
+
+  .rating-count {
+    font-size: 18px;
+    color: #666;
+  }
+
+  .ratings-distribution {
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  .rating-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  .rating-row span {
+    width: 30px;
+    text-align: right;
+    margin-right: 10px;
+    font-size: 18px;
+  }
+
+  .progress-bar {
+    flex: 1;
+    height: 10px;
+    background-color: #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+  }
+
+  .progress-bar-fill {
+    height: 100%;
+    background-color: green;
+    transition: width 0.3s ease;
+  }
+
+  .form-group {
+    margin-bottom: 15px;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  textarea,
+  select {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+
+  textarea {
+    resize: vertical;
+  }
+
+  button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+
+  button:hover {
+    background-color: #45a049;
+  }
+
+  .review-item {
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 4px;
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <h1>User Review Form</h1>
+    <form id="reviewForm">
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      <div class="form-group">
+        <label for="review">Your Review:</label>
+        <textarea id="review" name="review" rows="6" required></textarea>
+      </div>
+      <button type="submit">Submit Review</button>
+    </form>
+    <div id="reviewList"></div>
+    <h1>Ratings and Reviews</h1>
+    <div class="overall-rating">
+      <span class="rating-value" id="overallRating">5.0</span>
+      <div class="stars" id="starRating">
+        <span>&#9733;</span>
+        <span>&#9733;</span>
+        <span>&#9733;</span>
+        <span>&#9733;</span>
+        <span>&#9733;</span>
+      </div>
+      <span class="rating-count" id="ratingCount">0</span>
+    </div>
+    <div class="ratings-distribution">
+      <div class="rating-row">
+        <span>5</span>
+        <div class="progress-bar">
+          <div class="progress-bar-fill" id="progress5" style="width: 0%;"></div>
+        </div>
+      </div>
+      <div class="rating-row">
+        <span>4</span>
+        <div class="progress-bar">
+          <div class="progress-bar-fill" id="progress4" style="width: 0%;"></div>
+        </div>
+      </div>
+      <div class="rating-row">
+        <span>3</span>
+        <div class="progress-bar">
+          <div class="progress-bar-fill" id="progress3" style="width: 0%;"></div>
+        </div>
+      </div>
+      <div class="rating-row">
+        <span>2</span>
+        <div class="progress-bar">
+          <div class="progress-bar-fill" id="progress2" style="width: 0%;"></div>
+        </div>
+      </div>
+      <div class="rating-row">
+        <span>1</span>
+        <div class="progress-bar">
+          <div class="progress-bar-fill" id="progress1" style="width: 0%;"></div>
+        </div>
+      </div>
+    </div>
+    <form id="ratingForm">
+      <div class="form-group">
+        <label for="ratingInput">Your Rating:</label>
+        <select id="ratingInput" required>
+          <option value="">Select Rating</option>
+          <option value="1">1 - Poor</option>
+          <option value="2">2 - Fair</option>
+          <option value="3">3 - Average</option>
+          <option value="4">4 - Good</option>
+          <option value="5">5 - Excellent</option>
+        </select>
+      </div>
+      <button type="submit">Submit Rating</button>
+    </form>
+  </div>
+  <script>
+    let ratingsData = {
+      5: 0,
+      4: 0,
+      3: 0,
+      2: 0,
+      1: 0
+    };
+
+    let totalRatings = 0;
+
+    // Array to store multiple reviews
+    var reviews = [];
+
+    document.getElementById('reviewForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      // Get review details
+      var name = document.getElementById('name').value;
+      var email = document.getElementById('email').value;
+      var review = document.getElementById('review').value;
+
+      // Create a review object
+      var newReview = {
+        name: name,
+        email: email,
+        review: review
+      };
+
+      // Add the new review to the array
+      reviews.push(newReview);
+
+      // Clear the form fields after submission
+      document.getElementById('reviewForm').reset();
+
+      // Display all reviews
+      displayReviews();
+    });
+
+    document.getElementById('ratingForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      // Get rating value
+      const rating = parseInt(document.getElementById('ratingInput').value);
+      if (rating && rating >= 1 && rating <= 5) {
+        ratingsData[rating]++;
+        totalRatings++;
+        updateRatings();
+      }
+    });
+
+function updateRatings() {
+  let overallRating = 0;
+  Object.keys(ratingsData).forEach(rating => {
+    overallRating += rating * ratingsData[rating];
+    const percentage = (ratingsData[rating] / totalRatings) * 100;
+    document.getElementById(`progress${rating}`).style.width = percentage + '%';
+  });
+  if (totalRatings > 0) {
+    overallRating = (overallRating / totalRatings).toFixed(1);
+  } else {
+    overallRating = 0;
+  }
+  document.getElementById('overallRating').innerText = overallRating;
+  document.getElementById('ratingCount').innerText = totalRatings;
+
+  const starContainer = document.getElementById('starRating');
+  starContainer.innerHTML = '';
+  for (let i = 0; i < Math.floor(overallRating); i++) {
+    starContainer.innerHTML += '<span>&#9733;</span>';
+  }
+  if (overallRating % 1 >= 0.5) {
+    starContainer.innerHTML += '<span>&#9733;</span>';
+  }
+}
+    function displayReviews() {
+      var reviewList = document.getElementById('reviewList');
+      reviewList.innerHTML = '';
+
+      // Loop through the reviews array and display each review
+      reviews.forEach(function(review, index) {
+        var reviewItem = document.createElement('div');
+        reviewItem.classList.add('review-item');
+        reviewItem.innerHTML = '<h3>Review ' + (index + 1) + '</h3>' +
+                               '<p><strong>Name:</strong> ' + review.name + '</p>' +
+                               '<p><strong>Email:</strong> ' + review.email + '</p>' +
+                               '<p><strong>Review:</strong> ' + review.review + '</p>';
+        reviewList.appendChild(reviewItem);
+      });
+    }
+  </script>
+</body>
+</html>

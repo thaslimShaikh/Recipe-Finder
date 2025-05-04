@@ -1,0 +1,92 @@
+body {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  background-color: #f4f4f4;
+}
+
+.rating {
+  display: flex;
+  flex-direction: row-reverse; /* Reverse order for star display */
+  justify-content: flex-start; /* Align stars to the left */
+  margin-bottom: 15px;
+}
+
+.rating input {
+  display: none;
+}
+
+.rating label {
+  cursor: pointer;
+  color: #ddd;
+  font-size: 30px;
+  transition: color 0.3s ease;
+}
+
+.rating:not(:checked) > label {
+  color: #ddd; /* Default star color */
+}
+
+.rating > input:checked ~ label {
+  color: orange; /* Color for selected stars */
+}
+
+#reviewSection {
+  width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+}
+
+#reviewForm {
+  margin-top: 20px;
+}
+
+#reviewForm label {
+  display: block;
+  margin-bottom: 8px;
+}
+
+#reviewForm input[type="text"],
+#reviewForm textarea {
+  width: calc(100% - 22px); /* Adjusted width to account for padding */
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+#reviewForm textarea {
+  height: 100px;
+  resize: vertical;
+}
+
+#reviewForm button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+#reviewForm button:hover {
+  background-color: #0056b3;
+}
+
+#reviewList {
+  margin-top: 20px;
+}
+
+.review {
+  margin-bottom: 20px;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.review:last-child {
+  border-bottom: none;
+}

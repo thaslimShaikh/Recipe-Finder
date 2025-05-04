@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mouthwatering Food</title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css">
+  <link rel="stylesheet" href="scroll.css">
+  <link rel="stylesheet" href="veg_nonveg.css">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #f0f0f0; /* Light gray background */
+      font-family: Arial, sans-serif; /* Font family */
+      overflow-x: hidden; /* Prevent horizontal scrolling */
+    }
+
+    .recipe-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 20px;
+      background-color: #fff; /* Background color for the container */
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for the container */
+    }
+
+    .btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 150px;
+      height: 150px;
+      margin: 10px;
+      border: none;
+      border-radius: 10px;
+      overflow: hidden;
+      cursor: pointer;
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .btn h2 {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      color: white;
+      font-size: 16px;
+      text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);
+      margin: 0;
+    }
+
+    .btn div {
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .modal {
+      display: none; /* Hidden by default */
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+      padding-top: 60px;
+    }
+
+    .modal-content {
+      background-color: #fefefe;
+      margin: 5% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+      max-width: 600px; /* Maximum width of the modal */
+      border-radius: 10px; /* Rounded corners */
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3); /* Subtle shadow for the modal */
+      position: relative;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      color: #aaa;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .close-btn:hover,
+    .close-btn:focus {
+      color: black;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Buttons for dishes -->
+  <div class="recipe-container">
+    <button class="btn" onclick="openModal('PalakPaneer.html')">
+      <div style="background-image: url('palakPaneer.jpg');">
+        <h2>Palak Paneer</h2>
+      </div>
+    </button>
+    <button class="btn" onclick="openModal('cholebature.html')">
+      <div style="background-image: url('cholebature.jpg');">
+        <h2>Chole Bature</h2>
+      </div>
+    </button>
+    <!-- Add more buttons for other recipes as needed -->
+  </div>
+
+  <!-- Modal structure -->
+  <div id="dishModal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeModal()">&times;</span>
+      <div id="modal-body-content"></div>
+    </div>
+  </div>
+
+  <script>
+    const modal = document.getElementById("dishModal");
+    const modalContent = document.querySelector(".modal-content");
+
+    function openModal(contentUrl) {
+      fetch(contentUrl)
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById("modal-body-content").innerHTML = data;
+          modal.style.display = "block";
+          document.body.classList.add("modal-open");
+        })
+        .catch(error => {
+          console.error('Error fetching content:', error);
+          alert('Failed to fetch recipe details. Please try again later.');
+        });
+    }
+
+    function closeModal() {
+      modal.style.display = "none";
+      document.body.classList.remove("modal-open");
+      document.getElementById("modal-body-content").innerHTML = ""; // Clear modal content
+    }
+
+    window.onclick = function(event) {
+      if (event.target === modal) {
+        closeModal();
+      }
+    }
+  </script>
+
+</body>
+</html>

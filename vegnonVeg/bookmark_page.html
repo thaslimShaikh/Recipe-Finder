@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookmark Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .bookmark-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+        }
+        .bookmark-btn img {
+            width: 40px;
+            height: 40px;
+            transition: transform 0.3s ease;
+        }
+        .bookmark-btn:hover img {
+            transform: scale(1.1);
+        }
+        .bookmark-btn:active img {
+            transform: scale(1);
+        }
+    </style>
+</head>
+<body>
+    <h1 id="page-title">This is a Bookmarkable Page</h1>
+    <button class="bookmark-btn" id="bookmark-btn"><img src="BM.png" alt="Bookmark"></button>
+
+    <script>
+        document.getElementById('bookmark-btn').addEventListener('click', function() {
+            const title = document.getElementById('page-title').innerText;
+            let bookmarks = JSON.parse(localStorage.getItem('bookmarks')) || [];
+            bookmarks.push(title);
+            localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
+            alert('Page bookmarked!');
+
+            // Send a message to update bookmarks on the other page
+            if (window.opener) {
+                window.opener.postMessage('updateBookmarks', '*');
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Icon Example</title>
+<head>
+ 
+</head>
+<style>
+.icon-container {
+  position: fixed; /* fix the icon container to the left side */
+  top: 0;
+  left: 0;
+  width: 50px; /* adjust the width to fit your icons */
+  height: 100vh; /* make the container full height */
+  background-color: #65737e; /* add a background color */
+  padding: 10px; /* some padding */
+  display: flex; /* make the icons display horizontally */
+  flex-direction: column; /* stack the icons vertically */
+  align-items: center; /* center the icons horizontally */
+  gap: 20px; /* add a gap between icons */
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* make the image fit the container */
+  border-radius: 50%; /* add a rounded corner to the image */
+}
+
+.icon-container i {
+  font-size: 24px; /* adjust the icon size */
+  margin: 0; /* remove margin between icons */
+  color: #333; /* adjust the icon color */
+  cursor: pointer; /* add a pointer cursor on hover */
+  animation: initial-icon-appear 1s ease-in-out forwards; /* add initial animation */
+}
+
+
+.icon-container i:hover {
+  transform: scale(1.2); /* scale up the icon on hover */
+  color: #007bff; /* change the icon color on hover */
+  animation: icon-hover 0.5s ease-in-out forwards; /* add hover animation */
+}
+
+.icon-container i:active {
+  transform: scale(0.9); /* scale down the icon on active */
+  color: #333; /* reset the icon color on active */
+}
+
+/* Animations */
+@keyframes initial-icon-appear {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes icon-hover {
+  from { transform: scale(1); }
+  to { transform: scale(1.1); }
+}
+
+
+
+</style>
+</head>
+<body>
+    <div class="icon-container"> 
+        <a href="home.html"><i class="fas fa-home"><img src="Meats.png" class="image"></i></a>
+        <a href="oils.html"><i class="fas fa-home"><img src="Oils.png" class="image"></i></a>
+        <a href="seafood.html"><i class="fas fa-home"><img src="Seafood.png" class="image"></i></a>
+        <a href="vegetables.html"><i class="fas fa-home"><img src="Vegetables.png" class="image"></i></a>
+        <a href="dairy.html"><i class="fas fa-home"><img src="Dairy.png" class="image"></i></a>
+        <a href="user.html"><i class="fas fa-user"></i></a>
+        <a href="settings.html"><i class="fas fa-cog"></i></a>
+    </div>
+    <script>
+        const icons = document.querySelectorAll('.icon-container i');
+
+        icons.forEach(icon => {
+            icon.addEventListener('mouseover', () => {
+                icon.style.color = '#007bff'; /* change the icon color on hover */
+            });
+
+            icon.addEventListener('mouseout', () => {
+                icon.style.color = '#333'; /* reset the icon color on mouseout */
+            });
+        });
+    </script> 
+</body>
+</html>

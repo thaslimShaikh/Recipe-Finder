@@ -1,0 +1,17 @@
+#review-form {
+  margin-bottom: 20px;
+}
+
+#reviews {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-top: 20px;
+}
+
+.review {
+  margin-bottom: 10px;
+}
+
+.review-rating {
+  font-weight: bold;
+}

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>www.aroma.com</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+    }
+
+    .hero {
+      background: url('messy-pizza.jpg') no-repeat center center fixed;
+      background-size: cover;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: black;
+      text-align: center;
+    }
+
+    .hero-content {
+      background: rgba(255, 255, 255, 0.6); /* White color with 60% opacity */
+      padding: 20px 40px;
+      border-radius: 8px;
+    }
+
+    h1.welcome {
+      font-family: "Times New Roman", Times, serif;
+      font-size: 2.5em;
+      margin: 0;
+      animation: fadeInSlideDown 2s ease forwards;
+    }
+
+    .aroma-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 10px 0;
+      animation: fadeInSlideUp 2s ease forwards;
+      animation-delay: 1s;
+    }
+
+    h2.aroma {
+      font-size: 3em;
+      margin: 0 10px;
+    }
+
+    .aroma-img {
+      width: 50px; /* Adjust the size of the image */
+      height: 50px;
+    }
+
+    p {
+      font-size: 50px;
+      margin: 20px 0;
+      line-height: 1.5;
+      font-family: "Times New Roman", Times, serif;
+    }
+
+    a {
+      background-color: transparent;
+      border:transparent;
+      color: black;
+      padding: 10px 20px;
+      font-size: 1em;
+      cursor: pointer;
+      transition: background-color 0.3s, color 0.3s;
+      text-decoration: none;
+    }
+
+    a:hover {
+      background-color: white;
+      color: black;
+    }
+
+    @keyframes fadeInSlideDown {
+      0% {
+        opacity: 0;
+        transform: translateY(-50px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInSlideUp {
+      0% {
+        opacity: 0;
+        transform: translateY(50px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="hero">
+    <div class="hero-content">
+      <h1 class="welcome">Welcome To</h1>
+      <div class="aroma-container">
+        <h2 class="aroma">RECIPE RADAR</h2>
+      </div>
+      <p>Your Personalized Cook Book!!</p>
+      <a href="login5.html">EXPLORE</a>
+    </div>
+  </div>
+</body>
+</html>

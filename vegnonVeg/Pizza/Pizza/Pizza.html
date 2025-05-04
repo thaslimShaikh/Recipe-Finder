@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sandip Dust 2020</title>
+    <link rel="stylesheet" type="text/css" href="style/style.css">
+</head>
+<body>
+    <section class="first-section">
+        <h1>Make a Pizza by Scrolling with Animation</h1>
+        <div class="images-wrapper">
+            <img class="section_1_bg" src="https://www.dropbox.com/s/ricsb7ra8cyr9or/section_1_bg.webp?raw=1" />
+            <div class="ingredient-images">
+                <img class="section_1_01" src="https://www.dropbox.com/s/atuvpzvo59wxeef/section_1_01.webp?raw=1" />
+                <img class="section_1_02" src="https://www.dropbox.com/s/7mvrx106israolz/section_1_02.webp?raw=1" />
+                <img class="section_1_03" src="https://www.dropbox.com/s/oewc2bioujvzlp7/section_1_03.webp?raw=1" />
+                <img class="section_1_04" src="https://www.dropbox.com/s/bxezwiwtnkx1cw0/section_1_04.webp?raw=1" />
+                <img class="section_1_05" src="https://www.dropbox.com/s/bftnm0v5j33uv9c/section_1_05.webp?raw=1" />
+                <img class="section_1_06" src="https://www.dropbox.com/s/hz9jbiak3laqrqp/section_1_06.webp?raw=1" />
+                <img class="section_1_07" src="https://www.dropbox.com/s/jdlxt8xxdrquh9a/section_1_07.webp?raw=1" />
+                <img class="section_1_08" src="https://www.dropbox.com/s/s41b0ualql6b74d/section_1_08.webp?raw=1" />
+                <img class="section_1_09" src="https://www.dropbox.com/s/Luxhm5e7e57t7ac/section_1_09.webp?raw=1" />
+            </div>
+        </div>
+    </section>
+    <section class="second-section">
+        <h1>Draw Attention to the Ingredients You Want the Most</h1>
+        <p>A great pizza is impossible to ignore.</p>
+        <div class="images-wrapper bottom">
+            <div class="image-container">
+                <img class="section_2_06" src="https://www.dropbox.com/s/kb9fxs2l7y7obvp/section_2_06.webp?raw=1" />
+            </div>
+        </div>
+    </section>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.0.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.6/ScrollMagic.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.6/plugins/animation.gsap.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            let controller = new ScrollMagic.Controller();
+            let t1 = gsap.timeline();
+            t1.from(".section_1_01", 4, {
+                y: -100,
+                x: -150,
+                ease: "power3.inOut"
+            });
+            t1.from(".section_1_02", 4, {
+                y: -150,
+                x: -250,
+                ease: "power3.inOut"
+            }, '-=4');
+            t1.from(".section_1_03", 4, {
+                y: -80,
+                x: -100,
+                ease: "power3.inOut"
+            }, '-=4');
+            t1.from(".section_1_04", 4, {
+                y: -100,
+                x: -150,
+                ease: "power3.inOut"
+            }, '-=4');
+            t1.from(".section_1_05", 4, {
+                y: -80,
+                x: -200,
+                ease: "power3.inOut"
+            }, '-=4');
+
+            let scene1 = new ScrollMagic.Scene({
+                triggerElement: ".first-section",
+                duration: "100%",
+                triggerHook: 0,
+                offset: "100"
+            })
+         .setTween(t1)
+         .setPin(".first-section")
+         .addTo(controller);
+
+            let t2 = gsap.timeline();
+            t2.to('.top.image-container', 4, {
+                height: 0
+            });
+
+            let scene2 = new ScrollMagic.Scene({
+                triggerElement: ".second-section",
+                duration: "100%",
+                triggerHook: 0,
+                offset: "100"
+            })
+         .setTween(t2)
+         .setPin(".second-section")
+         .addTo(controller);
+
+            let t3 = gsap.timeline();
+            t3.to('.section_3_01', 4, {
+                y: -250,
+                ease: "power3.inOut"
+            });
+            t3.to('.section_3_02', 4, {
+                y: -200,
+                ease: "power3.inOut"
+            }, '-=4');
+        });
+    </script>
+</body>
+</html>

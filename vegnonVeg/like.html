@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wishlist Feature</title>
+    <style>
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+.product {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.wishlist-btn {
+    background-color: #ff6f61;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.wishlist-btn:hover {
+    background-color: #ff3f30;
+}
+
+#wishlist {
+    list-style-type: none;
+    padding: 0;
+}
+
+#wishlist li {
+    background-color: #f9f9f9;
+    margin: 5px 0;
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+</style>
+</head>
+<body>
+    <div class="product">
+        <h2>Product 1</h2>
+        <button class="wishlist-btn" onclick="addToWishlist('Product 1')">Add to Wishlist</button>
+    </div>
+    <div class="product">
+        <h2>Product 2</h2>
+        <button class="wishlist-btn" onclick="addToWishlist('Product 2')">Add to Wishlist</button>
+    </div>
+
+    <h2>Your Wishlist</h2>
+    <ul id="wishlist">
+        <!-- Wishlist items will appear here -->
+    </ul>
+
+    <script>
+function addToWishlist(productName) {
+    const wishlist = document.getElementById('wishlist');
+    
+    // Create a new list item
+    const listItem = document.createElement('li');
+    listItem.textContent = productName;
+
+    // Create a remove button
+    const removeBtn = document.createElement('button');
+    removeBtn.textContent = 'Remove';
+    removeBtn.style.marginLeft = '10px';
+    removeBtn.onclick = function() {
+        wishlist.removeChild(listItem);
+    };
+
+    // Append the remove button to the list item
+    listItem.appendChild(removeBtn);
+
+    // Add the new list item to the wishlist
+    wishlist.appendChild(listItem);
+}
+
+
+</script>
+</body>
+</html>

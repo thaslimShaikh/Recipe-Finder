@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chole Bhature Recipe</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" type="text/css" href="BM.css">
+<link rel="stylesheet" type="text/css" href="ratin.css">
+<style>
+    .container {
+            position: relative;
+            display: inline-block;
+        }
+        .add-to-cart {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 50px; /* Set desired width */
+            height: 50px; /* Set desired height */
+            border-radius: 5px;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            background-image: url('C:/Users/sushm/OneDrive/Desktop/New folder/vegnonVeg/bm.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px; /* Adjust font size to fit smaller button */
+            text-align: center;
+            line-height: 1.2; /* Adjust line height if necessary */
+        }
+        .add-to-cart:hover {
+            opacity: 0.8;
+        }
+        .image {
+            display: block;
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+</style>
+</head>
+<body>
+<main>
+    <h1 id="page-title">Chole Bhature Recipe</h1>
+   
+    <img src="cholebature.jpg" alt="Chole Bhature" width="400">
+ <a href="#" class="add-to-cart" data-title="Chicken Burger" onclick="addToCart(event)"></a>
+    <h2>Ingredients:</h2>
+    <ul>
+        <li>1 cup dried chickpeas (chole), soaked overnight</li>
+        <li>2 onions, finely chopped</li>
+        <li>2 tomatoes, finely chopped</li>
+        <li>1 inch ginger, grated</li>
+        <li>4 cloves garlic, minced</li>
+        <li>2 green chilies, chopped</li>
+        <li>1 teaspoon cumin seeds</li>
+        <li>1 teaspoon coriander powder</li>
+        <li>1/2 teaspoon turmeric powder</li>
+        <li>1/2 teaspoon red chili powder</li>
+        <li>1/2 teaspoon garam masala</li>
+        <li>1 teaspoon dried mango powder (amchur)</li>
+        <li>1 tablespoon oil or ghee</li>
+        <li>Salt to taste</li>
+    </ul>
+
+    <h2>Instructions:</h2>
+    <ol>
+        <li><strong>Prepare the Chole:</strong>
+            <ul>
+                <li>Pressure cook the soaked chickpeas with salt until soft and tender.</li>
+                <li>In a separate pan, heat oil or ghee. Add cumin seeds and let them splutter.</li>
+                <li>Add chopped onions and sauté until golden brown.</li>
+                <li>Add ginger, garlic, and green chilies. Sauté until the raw smell disappears.</li>
+                <li>Add chopped tomatoes and cook until they turn mushy.</li>
+                <li>Add coriander powder, turmeric powder, red chili powder, garam masala, and dried mango powder. Mix well.</li>
+                <li>Add cooked chickpeas along with the water from the pressure cooker. Mix and simmer for 10-15 minutes until the gravy thickens.</li>
+            </ul>
+        </li>
+        
+        <li><strong>Prepare the Bhature:</strong>
+            <ul>
+                <li>Prepare the dough by mixing flour, yogurt, oil, salt, and a pinch of baking powder. Knead into a soft dough.</li>
+                <li>Cover and let the dough rest for at least 2 hours.</li>
+                <li>Divide the dough into small balls and roll them out into circles.</li>
+                <li>Deep fry the rolled dough in hot oil until they puff up and turn golden brown.</li>
+            </ul>
+        </li>
+    </ol>
+
+    <h2>Serving Tips:</h2>
+    <p>Serve the Chole Bhature hot, garnished with chopped onions, green chilies, and a squeeze of lemon. Enjoy with a side of pickles or yogurt raita.</p>
+   <br><br>
+<h1 style="  font-family: 'Comic Sans MS', cursive;" >Ratings and Reviews</h1>
+  <div id="reviewSection">
+<form id="reviewForm">
+
+ <label for="name">Name:</label>
+  <input type="text" id="nameInput" name="name" required>
+<br><br>
+  <div class="rating">
+    <input type="radio" id="star5" name="rating" value="5">
+    <label for="star5" title="5 stars">★</label>
+    <input type="radio" id="star4" name="rating" value="4">
+    <label for="star4" title="4 stars">★</label>
+    <input type="radio" id="star3" name="rating" value="3">
+    <label for="star3" title="3 stars">★</label>
+    <input type="radio" id="star2" name="rating" value="2">
+    <label for="star2" title="2 stars">★</label>
+    <input type="radio" id="star1" name="rating" value="1">
+    <label for="star1" title="1 star">★</label>
+  </div>
+ 
+    <input type="hidden" name="rating" value="0" id="ratingInput">
+   
+    <label for="review">Review:</label>
+    <textarea id="reviewInput" name="review" required></textarea>
+    <button type="submit">Submit</button>
+  </form>
+  <div id="reviews">
+    <!-- Reviews will be displayed here -->
+  </div>
+  <div id="averageRating">Average rating: 0/5</div>
+</div>
+<button class="bookmark-btn" id="bookmark-btn"><img src="BM.png" alt="Bookmark"></button>
+
+<script src="ratin.js" ></script>
+    <script>
+        document.getElementById('bookmark-btn').addEventListener('click', function() {
+            const title = document.getElementById('page-title').innerText;
+            let bookmarks = JSON.parse(localStorage.getItem('bookmarks')) || [];
+            bookmarks.push(title);
+            localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
+            alert('Page bookmarked!');
+
+            // Send a message to update bookmarks on the other page
+            if (window.opener) {
+                window.opener.postMessage('updateBookmarks', '*');
+            }
+        });
+
+
+    </script>
+
+
+    </main>
+
+</body>
+</html>

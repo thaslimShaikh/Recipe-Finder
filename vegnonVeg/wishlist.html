@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wishlist</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        #wishlist {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        #wishlist li {
+            background-color: #f9f9f9;
+            margin: 5px 0;
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Your Wishlist</h2>
+    <ul id="wishlist">
+        <!-- Wishlist items will appear here -->
+    </ul>
+
+    <script>
+        // Retrieve the wishlist items from the server (e.g., using AJAX)
+        // For now, we'll just simulate the data
+        const wishlistItems = [
+            { name: 'Product 1' },
+            { name: 'Product 2' }
+        ];
+
+        // Render the wishlist items
+        const wishlist = document.getElementById('wishlist');
+        wishlistItems.forEach((item) => {
+            const listItem = document.createElement('li');
+            listItem.textContent = item.name;
+
+            // Create a remove button
+            const removeBtn = document.createElement('button');
+            removeBtn.textContent = 'Remove';
+            removeBtn.style.marginLeft = '10px';
+            removeBtn.onclick = function() {
+                wishlist.removeChild(listItem);
+            };
+
+            // Append the remove button to the list item
+            listItem.appendChild(removeBtn);
+
+            // Add the new list item to the wishlist
+            wishlist.appendChild(listItem);
+        });
+    </script>
+</body>
+</html>

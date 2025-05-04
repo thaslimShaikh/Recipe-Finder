@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chicken Biryani Recipe</title>
+    <link rel="stylesheet" type="text/css" href="styleforall.css">
+<link rel="stylesheet" type="text/css" href="BM.css">
+<link rel="stylesheet" type="text/css" href="ratin.css">
+</head>
+<body class="b">
+    <div class="container">
+        <h1  id="page-title">Chicken Biryani </h1>
+        <img src="C:\Users\sushm\OneDrive\Desktop\New folder\index\vegnonVeg\chicken-biryani.jpg" alt="Chicken Biryani" width="400">
+        <div class="text-box">
+            <h2>Ingredients:</h2>
+            <ul>
+                <li>2 cups basmati rice</li>
+                <li>500g chicken, cut into pieces</li>
+                <li>2 onions, thinly sliced</li>
+                <li>4 tomatoes, chopped</li>
+                <li>1/2 cup plain yogurt</li>
+                <li>4 cloves garlic, minced</li>
+                <li>1-inch ginger, grated</li>
+                <li>2 green chilies, chopped</li>
+                <li>1/4 cup chopped coriander leaves</li>
+                <li>1/4 cup chopped mint leaves</li>
+                <li>2 teaspoons biryani masala powder</li>
+                <li>1 teaspoon cumin seeds</li>
+                <li>1 teaspoon turmeric powder</li>
+                <li>1/2 teaspoon red chili powder</li>
+                <li>4 tablespoons ghee or vegetable oil</li>
+                <li>Salt to taste</li>
+                <li>Saffron strands soaked in 1/4 cup warm milk</li>
+            </ul>
+
+            <h2>Instructions:</h2>
+            <ol>
+                <li><strong>Prepare the Rice:</strong>
+                    <ul>
+                        <li>Wash the basmati rice under cold running water until the water runs clear.</li>
+                        <li>Soak the rice in water for 30 minutes, then drain and set aside.</li>
+                    </ul>
+                </li>
+                
+                <li><strong>Marinate the Chicken:</strong>
+                    <ul>
+                        <li>In a bowl, mix the yogurt, ginger, garlic, green chilies, coriander leaves, mint leaves, biryani masala powder, turmeric powder, red chili powder, and salt.</li>
+                        <li>Add the chicken pieces to the marinade and mix well. Cover and refrigerate for at least 1 hour.</li>
+                    </ul>
+                </li>
+                
+                <li><strong>Prepare the Biryani:</strong>
+                    <ul>
+                        <li>In a large skillet or pot, heat the ghee or oil over medium heat.</li>
+                        <li>Add the cumin seeds and sliced onions. Cook until the onions turn golden brown.</li>
+                        <li>Add the chopped tomatoes and cook until they turn mushy.</li>
+                        <li>Add the marinated chicken and cook until it is half-cooked.</li>
+                        <li>Layer half of the soaked rice over the chicken, then sprinkle with saffron milk.</li>
+                        <li>Layer the remaining rice over the saffron milk.</li>
+                        <li>Cover the skillet or pot with a tight-fitting lid and cook on low heat for 20-25 minutes, or until the rice and chicken are fully cooked.</li>
+                        <li>Once cooked, gently fluff the rice with a fork and serve hot.</li>
+                    </ul>
+                </li>
+            </ol>
+
+            <h2>Serving Tips:</h2>
+            <p>Chicken Biryani pairs well with raita (yogurt sauce), sliced cucumbers, and a wedge of lemon. Garnish with fried onions and fresh cilantro leaves before serving for added flavor and aroma.</p>
+        </div>
+    
+
+<br><br>
+<h1 style="  font-family: 'Comic Sans MS', cursive;" >Ratings and Reviews</h1>
+  <div id="reviewSection">
+<form id="reviewForm">
+
+ <label for="name">Name:</label>
+  <input type="text" id="nameInput" name="name" required>
+<br><br>
+  <div class="rating">
+    <input type="radio" id="star5" name="rating" value="5">
+    <label for="star5" title="5 stars">★</label>
+    <input type="radio" id="star4" name="rating" value="4">
+    <label for="star4" title="4 stars">★</label>
+    <input type="radio" id="star3" name="rating" value="3">
+    <label for="star3" title="3 stars">★</label>
+    <input type="radio" id="star2" name="rating" value="2">
+    <label for="star2" title="2 stars">★</label>
+    <input type="radio" id="star1" name="rating" value="1">
+    <label for="star1" title="1 star">★</label>
+  </div>
+ 
+    <input type="hidden" name="rating" value="0" id="ratingInput">
+   
+    <label for="review">Review:</label>
+    <textarea id="reviewInput" name="review" required></textarea>
+    <button type="submit">Submit</button>
+  </form>
+  <div id="reviews">
+    <!-- Reviews will be displayed here -->
+  </div>
+  <div id="averageRating">Average rating: 0/5</div>
+</div>
+<button class="bookmark-btn" id="bookmark-btn"><img src="BM.png" alt="Bookmark"></button>
+
+<script src="ratin.js" ></script>
+    <script>
+        document.getElementById('bookmark-btn').addEventListener('click', function() {
+            const title = document.getElementById('page-title').innerText;
+            let bookmarks = JSON.parse(localStorage.getItem('bookmarks')) || [];
+            bookmarks.push(title);
+            localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
+            alert('Page bookmarked!');
+
+            // Send a message to update bookmarks on the other page
+            if (window.opener) {
+                window.opener.postMessage('updateBookmarks', '*');
+            }
+        });
+
+
+    </script>
+</div>
+</body>
+</html>

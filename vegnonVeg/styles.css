@@ -1,0 +1,32 @@
+body {
+    font-family: sans-serif;
+}
+
+.rating {
+    display: flex;
+    flex-direction: row-reverse; /* Reverse order for star display */
+    justify-content:left;
+
+    
+}   
+
+.rating input {
+    display: none;
+}
+
+.rating label {
+    cursor: pointer;
+    color: #ddd;
+    font-size: 30px;
+
+
+}
+
+
+.rating:not(:checked) > label {
+    transition: 0.3s ease all;
+}
+
+.rating > input:checked ~ label {
+    color: orange;
+}

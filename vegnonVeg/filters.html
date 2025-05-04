@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Recipe Finder</title>
+  <link rel="stylesheet" href="filters.css">
+  </head>
+
+<body style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('bg.jpg');">
+
+  <header>
+    <h1 style="font-family:Georgia,serif;">Filters for Dietary Preferences and Cooking Time</h1>
+  </header>
+
+  <main class="container">
+    <section class="filter-column">
+      <h2>Filter Recipes</h2>
+      <form id="filterForm">
+        <div class="filter-group">
+          <label for="diet">Dietary Preference:</label>
+          <select id="diet" name="diet">
+            <option value="all">All</option>
+            <option value="vegetarian">Vegetarian</option>
+            <option value="non-vegetarian">Non-Vegetarian</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label for="cookingTime">Cooking Time (minutes):</label>
+          <input type="number" id="cookingTime" name="cookingTime" min="0">
+        </div>
+        <button>Filter</button>
+      </form>
+    </section>
+    <section class="recipe-column">
+      <h2>Recipes</h2>
+      <div id="recipeList">
+        <!-- Recipe list will be displayed here -->
+      </div>
+    </section>
+  </main>
+
+  <script src="script4.js"></script>
+</body>
+
+</html>

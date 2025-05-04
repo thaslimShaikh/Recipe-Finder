@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chicken Tikka Masala Recipe</title>
+ <link rel="stylesheet"  href="style.css" >
+<link rel="stylesheet" type="text/css" href="BM.css">
+<link rel="stylesheet" type="text/css" href="ratin.css">
+
+</head>
+<body>
+<main>
+    <h1 id="page-title">Chicken Tikka Masala Recipe</h1>
+    <img src="chickentikka.jpeg" alt="Chicken Tikka Masala" width="300">
+    <h2>Ingredients:</h2>
+    <ul>
+        <li>500g boneless chicken, cut into cubes</li>
+        <li>1 cup plain yogurt</li>
+        <li>2 tablespoons lemon juice</li>
+        <li>2 teaspoons ginger paste</li>
+        <li>2 teaspoons garlic paste</li>
+        <li>2 teaspoons chili powder</li>
+        <li>1 teaspoon ground turmeric</li>
+        <li>1 teaspoon ground cumin</li>
+        <li>1 teaspoon ground coriander</li>
+        <li>1/2 teaspoon garam masala</li>
+        <li>1/2 cup cream</li>
+        <li>2 tablespoons butter</li>
+        <li>2 tablespoons oil</li>
+        <li>1 onion, finely chopped</li>
+        <li>2 tomatoes, pureed</li>
+        <li>Salt to taste</li>
+        <li>Fresh coriander leaves for garnish</li>
+    </ul>
+
+    <h2>Instructions:</h2>
+    <ol>
+        <li><strong>Marinate the Chicken:</strong>
+            <ul>
+                <li>In a bowl, mix yogurt, lemon juice, ginger paste, garlic paste, chili powder, turmeric, cumin, coriander, and salt.</li>
+                <li>Add chicken cubes to the marinade and coat them well. Cover and refrigerate for 1-2 hours.</li>
+            </ul>
+        </li>
+        
+        <li><strong>Prepare the Sauce:</strong>
+            <ul>
+                <li>Heat oil and butter in a pan. Add chopped onions and sauté until golden brown.</li>
+                <li>Add pureed tomatoes and cook until the oil separates.</li>
+                <li>Add marinated chicken along with the marinade. Cook until the chicken is tender and cooked through.</li>
+                <li>Add cream and garam masala. Simmer for 5 minutes.</li>
+            </ul>
+        </li>
+    </ol>
+
+    <h2>Serving Tips:</h2>
+    <p>Serve Chicken Tikka Masala hot, garnished with fresh coriander leaves. Enjoy with naan, rice, or roti.</p>
+ 
+<br><br>
+<h1 style="  font-family: 'Comic Sans MS', cursive;" >Ratings and Reviews</h1>
+  <div id="reviewSection">
+<form id="reviewForm">
+
+ <label for="name">Name:</label>
+  <input type="text" id="nameInput" name="name" required>
+<br><br>
+  <div class="rating">
+    <input type="radio" id="star5" name="rating" value="5">
+    <label for="star5" title="5 stars">★</label>
+    <input type="radio" id="star4" name="rating" value="4">
+    <label for="star4" title="4 stars">★</label>
+    <input type="radio" id="star3" name="rating" value="3">
+    <label for="star3" title="3 stars">★</label>
+    <input type="radio" id="star2" name="rating" value="2">
+    <label for="star2" title="2 stars">★</label>
+    <input type="radio" id="star1" name="rating" value="1">
+    <label for="star1" title="1 star">★</label>
+  </div>
+ 
+    <input type="hidden" name="rating" value="0" id="ratingInput">
+   
+    <label for="review">Review:</label>
+    <textarea id="reviewInput" name="review" required></textarea>
+    <button type="submit">Submit</button>
+  </form>
+  <div id="reviews">
+    <!-- Reviews will be displayed here -->
+  </div>
+  <div id="averageRating">Average rating: 0/5</div>
+</div>
+<button class="bookmark-btn" id="bookmark-btn"><img src="BM.png" alt="Bookmark"></button>
+
+<script src="ratin.js" ></script>
+    <script>
+        document.getElementById('bookmark-btn').addEventListener('click', function() {
+            const title = document.getElementById('page-title').innerText;
+            let bookmarks = JSON.parse(localStorage.getItem('bookmarks')) || [];
+            bookmarks.push(title);
+            localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
+            alert('Page bookmarked!');
+
+            // Send a message to update bookmarks on the other page
+            if (window.opener) {
+                window.opener.postMessage('updateBookmarks', '*');
+            }
+        });
+
+
+    </script>
+
+</main>
+
+</body>
+</html>

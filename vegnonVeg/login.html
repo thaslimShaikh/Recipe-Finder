@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login and Signup</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0; /* Light grey background */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      color: #333; /* Text color */
+    }
+   .container {
+      width: 400px;
+      text-align: center;
+      position: relative;
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
+    }
+   .container.visible {
+      opacity: 1;
+    }
+    h2, h3 {
+      margin-bottom: 20px;
+      color: #333;
+      opacity: 0;
+      animation: fadeIn 1s forwards;
+    }
+   .btn-google {
+      width: 80%; /* Decreased width */
+      height: 35px; /* Increased height */
+      background-color: #4285F4; /* Google blue */
+      color: #fff;
+      padding: 6px;
+      border: none;
+      border-radius: 5px;
+      font-size: 12px;
+      cursor: pointer;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      animation: slideInLeft 1s forwards;
+      animation-delay: 0.5s;
+    }
+   .btn-google img {
+      margin-right: 10px;
+    }
+   .divider {
+      display: flex;
+      align-items: center;
+      text-align: center;
+      margin: 20px 0;
+      opacity: 0;
+      animation: fadeIn 1s forwards;
+      animation-delay: 1s;
+    }
+   .divider::before,
+   .divider::after {
+      content: '';
+      flex: 1;
+      border-bottom: 1px solid #ddd;
+    }
+   .divider:not(:empty)::before {
+      margin-right:.25em;
+    }
+   .divider:not(:empty)::after {
+      margin-left:.25em;
+    }
+   .form-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 15px;
+    }
+   .form-control-half {
+      width: 48%;
+    }
+   .form-control {
+      width: 100%;
+      height: 30px;
+      margin-bottom: 15px;
+      padding: 6px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 12px;
+      opacity: 0;
+      animation: slideInLeft 1s forwards;
+      animation-delay: 1s;
+    }
+   .form-control::placeholder {
+      color: #999;
+    }
+   .btn {
+      width: 80%; /* Decreased width */
+      height: 35px; /* Increased height */
+      background-color:turquoise; /* Accent color */
+      padding: 6px;
+      border: none;
+      border-radius: 5px;
+      font-size: 12px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      opacity: 0;
+      animation: slideInLeft 1s forwards;
+      animation-delay: 1.5s;
+    }
+   .btn:hover {
+      
+    }
+   .switch-link {
+       text-decoration: none;
+      cursor: pointer;
+     transition: color 0.3s;
+    }
+   .switch-link:hover {
+      
+    }
+   .optional {
+      font-size: 12px;
+      color:
+      margin-left: 5px;
+    }
+   .hidden {
+      display: none;
+    }
+    /* Add this to make the Continue button full width */
+   .btn.continue {
+      width: 100%;
+    }
+
+    @keyframes slideInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-100%);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container visible">
+    <div id="login-section">
+      <h2>Sign in</h2>
+      <h3>to continue to Recipe Radar.io</h3>
+      <div class="divider"></div>
+      <form id="login-form">
+        <div class="form-group">
+          <input type="email" id="login-email" class="form-control" placeholder="Email address" required>
+        </div>
+        <div class="form-group">
+          <input type="password" id="login-password" class="form-control" placeholder="Password" required>
+        </div>
+        <button type="submit" class="btn continue">Continue</button>
+      </form>
+      <p>No account? <a href="#" class="switch-link" onclick="showSignup()">Sign up</a></p>
+    </div>
+    <div id="signup-section" class="hidden">
+      <h2>Create your account</h2>
+      <h3>to continue to Recipe Radar.io</h3>
+      <div class="divider"></div>
+      <form id="signup-form">
+        <div class="form-row">
+          <div class="form-group form-control-half">
+            <input type="text" id="first-name" class="form-control" placeholder="First name">
+          </div>
+          <div class="form-group form-control-half">
+            <input type="text" id="last-name" class="form-control" placeholder="Last name">
+          </div>
+        </div>
+        <div class="form-group">
+          <input type="email" id="signup-email" class="form-control" placeholder="Email address" required>
+        </div>
+        <div class="form-group">
+          <input type="password" id="signup-password" class="form-control" placeholder="Password" required>
+        </div>
+        <button type="submit" class="btn continue">Continue</button>
+      </form>
+      <p>Have an account? <a href="#" class="switch-link" onclick="showLogin()">Sign in</a></p>
+    </div>
+  </div>
+  <script>
+    function showSignup() {
+      document.getElementById('login-section').classList.add('hidden');
+      document.getElementById('signup-section').classList.remove('hidden');
+    }
+
+    function showLogin() {
+      document.getElementById('signup-section').classList.add('hidden');
+      document.getElementById('login-section').classList.remove('hidden');
+    }
+  </script>
+</body>
+</html>

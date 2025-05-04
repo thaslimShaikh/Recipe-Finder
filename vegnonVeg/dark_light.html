@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Search Bar</title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css">
+
+  <style>
+    /* Add some basic styling to the search bar */
+   .search-icon {
+      font-size: 18px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 10px;
+      cursor: pointer;
+    }
+
+   .theme-btn {
+      font-size: 18px;
+      margin-left: 10px;
+      cursor: pointer;
+    }
+
+   .changeTheme {
+      background: #1D1E22;
+      color: #eee;
+    }
+
+   .search-container {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="search-container">
+    <i id="search-icon" class="fas fa-search search-icon"></i>
+    <div id="theme-btn" class="far fa-moon theme-btn"></div>
+  </div>
+
+  <script>
+    const themeBtn = document.getElementById("theme-btn");
+    themeBtn.onclick = () => {
+      themeBtn.classList.toggle("fa-sun");
+      if (themeBtn.classList.contains("fa-sun")) {
+        document.body.classList.add("changeTheme");
+      } else {
+        document.body.classList.remove("changeTheme");
+      }
+    }
+
+    const searchIcon = document.getElementById("search-icon");
+    searchIcon.onclick = () => {
+      const searchQuery = prompt("Enter your search query:");
+      if (searchQuery) {
+        const encodedQuery = encodeURIComponent(searchQuery);
+        window.location.href = https://www.allrecipes.com/search?q=${encodedQuery};
+      }
+    }
+  </script>
+</body>
+</html>

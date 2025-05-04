@@ -1,0 +1,242 @@
+<html>
+<head>
+
+<link rel="stylesheet" href="veg_nonveg.css">
+
+<style>
+
+.recipe-container {
+  width: auto; /* Allow buttons to expand horizontally */
+  overflow-x: scroll; /* Enable horizontal scrolling */
+  white-space: nowrap; /* Prevent wrapping of buttons */
+  padding:20;
+}
+
+    .btn {
+      display: inline-block;
+      margin: 0 5px;
+      padding: 0;
+      border: none;
+      background: none;
+      cursor: pointer;
+      transition: filter 0.2s;
+    }
+
+     .btn div {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 150px;
+      height: 150px;
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      margin: 5px;
+      position: relative;
+      overflow: visible;
+      filter: brightness(1);
+      transition: filter 0.2s;
+      border-radius: 10px;
+    }
+ .btn div:hover {
+      filter: brightness(0.8);
+    }
+
+  .btn:hover, .btn:focus {
+      transform: scale(1.1);
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+      animation: glow 0.5s infinite;
+    }
+    
+   @keyframes glow {
+      0% {
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+      }
+      50% {
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+      }
+      100% {
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+      }
+    }
+  .btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+      animation: wiggle 1s infinite;
+    }
+
+@keyframes wiggle {
+      0% {
+        transform: rotate(0deg);
+      }
+      25% {
+        transform: rotate(5deg);
+      }
+      50% {
+        transform: rotate(0deg);
+      }
+      75% {
+        transform: rotate(-5deg);
+      }
+      100% {
+        transform: rotate(0deg);
+      }
+    }
+
+.btn h2 {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+     
+      color: white;
+      padding: 5px;
+      margin: 0;
+      text-align: center;
+      border-radius: 10px 10px 0 0;
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      font-weight: bold;
+      text-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
+.recipe-container {
+  width: auto;
+  overflow-x: scroll;
+  white-space: nowrap;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+}
+
+.recipe-container::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
+}
+  </style>
+
+
+
+</head>
+
+<body>
+<div class="recipe-container">
+<button class="btn" onclick="location.href='PalakPaneer.html'"><div style="background-image: url('palakPaneer.jpg'); background-size: cover;">
+  <h2>Palak Paneer</h2>
+</div>
+</button>
+
+<button class="btn" onclick="location.href='cholebature.html'">
+<div  style="background-image: url('cholebature.jpg'); background-size: cover;">
+  <h2>chole bature</h2>
+  </div></button>
+
+<button class="btn"  onclick="location.href='omelette.html'">
+<div  style="background-image: url('omelette.jpg'); background-size: cover;">
+  <h2>omelette</h2>
+  </div>
+</button>
+
+<button class="btn"  onclick="location.href='dalmakhani.html'">
+<div  style="background-image: url('dalmakhani.jpg'); background-size: cover;">
+  <h2>Dal makhni</h2>
+  </div>
+</button>
+
+<button class="btn"  onclick="location.href='Butterchicken.html'">
+<div style="background-image: url('butterchicken.jpg'); background-size: cover;">
+  <h2>Butter Chicken</h2>
+  </div>
+</button>
+
+<button class="btn"  onclick="location.href='pavbhaji.html'">
+<div  style="background-image: url('pavbhaji.jpg'); background-size: cover;">
+  <h2>Pav bhaji</h2>
+  </div>
+</button>
+
+<button class="btn"  onclick="location.href='CheesyFrankieRecipe.html'">
+<div  style="background-image: url('cheesefrankie.jpg'); background-size: cover;">
+  <h2>Cheesy Frankie</h2>
+  </div>
+</button>
+
+
+<button class="btn"  onclick="location.href='Chickenbiryani.html'">
+<div  style="background-image: url('chicken-biryani.jpg'); background-size: cover;">
+  <h2>Chicken Biryani</h2>
+  </div>
+</button>
+
+<button class="btn"  onclick="location.href='LoadedNachos.html'">
+<div style="background-image: url('loadednachos.jpg'); background-size: cover;">
+  <h2>Loaded nachos</h2>
+  </div>
+</button>
+
+<button class="btn"  onclick="location.href='jalebi.html'">
+<div  style="background-image: url('jalebi.jpg'); background-size: cover;">
+  <h2>jalebi</h2>
+  </div>
+</button>
+
+<button class="btn"  onclick="location.href='chickenroll.html'">
+<div  style="background-image: url('chickenroll.jpg'); background-size: cover;">
+  <h2>Chicken roll</h2>
+  </div>
+</button>
+
+<button class="btn"  onclick="location.href='AlooTikkiChaat.html'">
+<div  style="background-image: url('alootikki.jpg'); background-size: cover;">
+  <h2>Aloo Tikki Chat</h2>
+  </div>
+</button>
+
+<button class="btn"  onclick="location.href='panipuri.html'">
+<div style="background-image: url('panipuri.jpg'); background-size: cover;">
+  <h2>pani puri</h2>
+  </div>
+</button>
+
+<button class="btn"  onclick="location.href='chickenburger.html'">
+<div style="background-image: url('chickenburger.jpg'); background-size: cover;">
+  <h2>Chicken burger</h2>
+  </div>
+</button>
+
+<button class="btn"  onclick="location.href='InstantNoodleSoup.html'">
+<div style="background-image: url('INS.jpg'); background-size: cover;">
+  <h2>Instant noodle soup</h2>
+  </div>
+</button>
+
+<button class="btn"  onclick="location.href='SpicyRamenScramble.html'">
+<div style="background-image: url('SRS.jpg'); background-size: cover;">
+  <h2>spicy ramen scramble</h2>
+  </div>
+</button>
+
+<button class="btn"  onclick="location.href='pizza.html'">
+<div style="background-image: url('pizza.jpg'); background-size: cover;">
+  <h2>pizza</h2>
+  </div>
+</button>
+
+<button class="btn"  onclick="location.href='chickentikkamasala.html'">
+<div style="background-image: url('chickentikka.jpg'); background-size: cover;">
+  <h2>Chicken Tikka Masala</h2>
+
+  </div>
+</button>
+
+<button class="btn"  onclick="location.href='samosa.html'">
+<div style="background-image: url('samosa.jpg'); background-size: cover;">
+  <h2>Samosa</h2>
+  </div>
+</button>
+
+<button class="btn"  onclick="location.href='rasgulla.html'">
+<div style="background-image: url('ras.jpg'); background-size: cover;">
+  <h2>Rasgulla</h2>
+  </div>
+</button>
+<div>
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <link rel="stylesheet"  href="style.css">
+<link rel="stylesheet" type="text/css" href="BM.css">
+<link rel="stylesheet" type="text/css" href="ratin.css">
+    <title>Palak Paneer Recipe</title>
+    <style>
+        .add-to-bookmark {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 30px;
+            height: 30px;
+            border-radius: 5px;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            cursor: pointer;
+            z-index: 10;
+        }
+        .add-to-bookmark:hover {
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+<main>
+    <h1  id="page-title">Palak Paneer Recipe</h1>
+    <h2>Ingredients:</h2>
+    <ul>
+        <li>10 oz (280g) paneer, cut into cubes</li>
+        <li>16 oz (450g) fresh spinach leaves</li>
+        <li>1 medium onion, roughly chopped</li>
+        <li>1 inch (2.5 cm) ginger, roughly chopped</li>
+        <li>8 cloves garlic, roughly chopped</li>
+        <li>2 green chilies, roughly chopped</li>
+        <li>1/4 cup (30g) cashew nuts</li>
+        <li>1 small tomato, finely chopped</li>
+        <li>1 tsp salt</li>
+        <li>1/2 tsp black salt (kala namak)</li>
+        <li>1 tsp garam masala</li>
+        <li>1 tsp dried fenugreek leaves (kasoori methi), crushed</li>
+        <li>1 tbsp oil</li>
+        <li>1/4 cup (60ml) heavy whipping cream</li>
+    </ul>
+    <h2>Instructions:</h2>
+    <ol>
+        <li>Blanch the spinach leaves in boiling water for 4 minutes, then transfer to ice-cold water to stop the cooking process. Drain and blend into a smooth puree.</li>
+        <li>In a saucepan, combine the onion, ginger, garlic, green chilies, cashews, and 1/2 cup (120ml) water. Bring to a boil and simmer for 15 minutes or until the onion is soft and translucent. Blend into a smooth puree.</li>
+        <li>Heat oil in a pan over medium heat. Add the tomato and cook until soft and mushy. Add the onion puree and simmer for 2-3 minutes. Add the spinach puree, salt, black salt, garam masala, and crushed kasoori methi. Simmer for 2 minutes.</li>
+        <li>Add the paneer and heavy cream. Simmer for 1-2 minutes, then remove from heat. Serve hot with naan or rice.</li>
+    </ol>
+   <br><br>
+<h1 style="  font-family: 'Comic Sans MS', cursive;" >Ratings and Reviews</h1>
+  <div id="reviewSection">
+<form id="reviewForm">
+
+ <label for="name">Name:</label>
+  <input type="text" id="nameInput" name="name" required>
+<br><br>
+  <div class="rating">
+    <input type="radio" id="star5" name="rating" value="5">
+    <label for="star5" title="5 stars">★</label>
+    <input type="radio" id="star4" name="rating" value="4">
+    <label for="star4" title="4 stars">★</label>
+    <input type="radio" id="star3" name="rating" value="3">
+    <label for="star3" title="3 stars">★</label>
+    <input type="radio" id="star2" name="rating" value="2">
+    <label for="star2" title="2 stars">★</label>
+    <input type="radio" id="star1" name="rating" value="1">
+    <label for="star1" title="1 star">★</label>
+  </div>
+ 
+    <input type="hidden" name="rating" value="0" id="ratingInput">
+   
+    <label for="review">Review:</label>
+    <textarea id="reviewInput" name="review" required></textarea>
+    <button type="submit">Submit</button>
+  </form>
+  <div id="reviews">
+    <!-- Reviews will be displayed here -->
+  </div>
+  <div id="averageRating">Average rating: 0/5</div>
+</div>
+<button class="bookmark-btn" id="bookmark-btn"><img src="BM.png" alt="Bookmark"></button>
+
+<script src="ratin.js" ></script>
+    <script>
+        document.getElementById('bookmark-btn').addEventListener('click', function() {
+            const title = document.getElementById('page-title').innerText;
+            let bookmarks = JSON.parse(localStorage.getItem('bookmarks')) || [];
+            bookmarks.push(title);
+            localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
+            alert('Page bookmarked!');
+
+            // Send a message to update bookmarks on the other page
+            if (window.opener) {
+                window.opener.postMessage('updateBookmarks', '*');
+            }
+        });
+
+
+    </script>
+
+
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Multiple Languages Example</title>
+  <style>
+    /* Add your CSS styles here */
+  </style>
+</head>
+<body>
+  <h1 data-i18n="welcome"></h1>
+  <button id="change-language" data-language="es">Change to Spanish</button>
+  <button id="change-language-fr" data-language="fr">Change to French</button>
+  <button id="change-language-de" data-language="de">Change to German</button>
+  <button id="load-about-page">Load About Page</button>
+
+  <script>
+    // Load the text
+    const text = {
+      en: {
+        welcome: "Welcome to the example page!",
+      },
+      es: {
+        welcome: "Bienvenido a la página de ejemplo!",
+      },
+      fr: {
+        welcome: "Bienvenue sur la page d'exemple!",
+      },
+      de: {
+        welcome: "Willkommen auf der Beispiel-Seite!",
+      },
+    };
+
+    // Replace the text content of the HTML elements
+    function updateContent(lang) {
+      document.querySelectorAll('[data-i18n]').forEach((element) => {
+        const key = element.getAttribute("data-i18n");
+        element.textContent = text[lang][key];
+      });
+    }
+
+    // Change the language
+    document.getElementById("change-language").addEventListener("click", () => {
+      const lang = "es";
+      localStorage.setItem("language", lang);
+      updateContent(lang);
+    });
+
+    document.getElementById("change-language-fr").addEventListener("click", () => {
+      const lang = "fr";
+      localStorage.setItem("language", lang);
+      updateContent(lang);
+    });
+
+    document.getElementById("change-language-de").addEventListener("click", () => {
+      const lang = "de";
+      localStorage.setItem("language", lang);
+      updateContent(lang);
+    });
+
+    // Load the about page
+    document.getElementById("load-about-page").addEventListener("click", () => {
+      window.location.href = "about.html";
+    });
+
+    // Set the language based on the user's preference
+    const userPreferredLanguage = localStorage.getItem("language") || "en";
+    updateContent(userPreferredLanguage);
+  </script>
+</body>
+</html>

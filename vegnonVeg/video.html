@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage Video</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css">
+    <link rel="stylesheet" href="icon-container.css">
+    <link rel="stylesheet" href="nav.css">
+    <link rel="stylesheet" href="sandtheme.css">
+    <link rel="stylesheet" href="customers.css">
+    <link rel="stylesheet" href="rg.css">
+    <link rel="stylesheet" href="stylr.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+            overflow-x: hidden;
+            background-color: #f7f7f7;
+        }
+
+        .video-container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            margin-top: 60px;
+        }
+
+        .homepage-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .content-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            text-align: center;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #333;
+            padding: 0px;
+            color: white;
+            z-index: 1000;
+        }
+
+        .navbar-left {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-brand img.logo {
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        .company-name {
+            font-size: 1.5em;
+        }
+
+        .navbar-center {
+            display: flex;
+            justify-content: center;
+            flex-grow: 1;
+        }
+
+        .nav {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+
+        .nav-item {
+            margin: 0 15px;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            font-size: 1.2em;
+        }
+
+        .navbar-right {
+            display: flex;
+            align-items: center;
+        }
+
+        .search-container {
+            margin-right: 10px;
+        }
+
+        .search-icon,
+        .theme-btn,
+        .logout-btn {
+            font-size: 1.5em;
+            color: white;
+            cursor: pointer;
+            width: 30px;
+            height: 30px;
+        }
+
+        .search-bar {
+            display: none;
+        }
+       
+    .footer {
+        background-color: #d2a65b;
+        padding: 20px;
+        text-align: center;
+        color: white;
+    }
+    .footer-section {
+        display: flex;
+        justify-content: space-around;
+        padding: 20px 0;
+    }
+    .footer-section div {
+        flex: 1;
+    }
+    .footer-section div h3 {
+        margin-bottom: 10px;
+    }
+    .footer-section div a {
+        color: black;
+        display: block;
+        margin: 5px 0;
+        text-decoration: none;
+    }
+    .footer-section div a:hover {
+        text-decoration: underline;
+    }
+    .footer-icons {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    }
+    .footer-icons img {
+        width: 32px;
+        height: 32px;
+        margin: 0 10px;
+    }
+    .footer-bottom {
+        margin-top: 20px;
+        font-size: 12px;
+    }
+.dialogue-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 50px;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+ .dialogue-box img {
+      width: 300px;
+      height: 200px;
+      margin-bottom: 20px;
+      border-radius: 10px;
+    }
+
+ .quote-box {
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+ .quote-box p {
+      font-size: 18px;
+      font-style: italic;
+      margin: 0;
+    }
+
+
+    </style>
+</head>
+<body>
+
+<nav class="navbar fixed-top">
+    <div class="navbar-left">
+        <div class="navbar-brand">
+            <img src="l.png" alt="Logo" class="logo">
+            <span class="company-name" style="font-family: 'Courier New', Courier, monospace;
+      font-size: 24px;color: #00698f ;">Recipe Radar</span>
+        </div>
+    </div>
+    <div class="navbar-center">
+        <ul class="nav justify-content-center">
+            <li class="nav-item">
+                <a class="nav-link" href="video.html">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="contact.html">Contact</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="dishes.html">Dishes</a>
+            </li>
+        </ul>
+    </div>
+    <div class="navbar-right">
+        <div class="search-container">
+            <i id="search-icon" class="fas fa-search search-icon"></i>
+            <div id="theme-btn" class="far fa-moon theme-btn"></div>
+            <a href="gs1.html"><img src="logout.png" class="logout-btn"></a>
+        </div>
+
+        <div class="search-bar" id="search-bar">
+            <input type="text" id="search-input" placeholder="Enter your search query">
+            <button id="search-btn">Search</button>
+        </div>
+    </div>
+</nav>
+
+   <div class="wrapper hide">
+        <div class="toast">
+            <div class="content">
+                <div class="icon"><i class="uil uil-wifi"></i></div>
+                <div class="details">
+                    <span>You're online now!</span>
+                    <p>Hurray!! Internet is connected.</p>
+                </div>
+            </div>
+            <div class="close-icon"><i class="uil uil-times"></i></div>
+        </div>
+    </div>
+
+<div class="video-container">
+    <video class="homepage-video" autoplay muted loop>
+        <source src="food.mp4" type="video/mp4">
+    </video>
+</div>
+
+<div class="content-container">
+    <!-- Content goes here -->
+</div>
+
+<div class="icon-container">
+    <a href="mealPlanner.html"><i><img src="mpp.png" class="image"></i></a>
+    <a href="rating1.html"><i><img src="rating.png" class="image"></i></a>
+    <a href="filters.html"><i><img src="bd.png" class="image"></i></a>
+   <a href="bookmarks_list.html"><i><img src="BM.png" class="image"></i></a>
+ <a href="shizuka.html"><i><img src="C:\Users\786sh\OneDrive\Desktop\HTML\Case_Study\recipefnder.jpg" class="image"></i></a>
+</div>
+
+  <div class="dialogue-box">
+    <img src="father_daughter.jpg" alt="Father and Daughter Cooking">
+    <div class="quote-box">
+      <p>“Cooking is at once child’s play and adult joy. And cooking done with care is an act of love.” - Craig Claiborne</p>
+    </div>
+  </div>
+
+
+
+  <header>
+    <h1>Recipe Generator</h1>
+  </header>
+  <main>
+     <section class="input-section">
+      <h2>Tell us what ingredients you need to use up</h2>
+      <p>Enter a minimum of 3 ingredients to find some recipes.</p>
+      <div class="search-bar">
+        <input type="text" id="ingredient-input" placeholder="Enter Ingredients...">
+      </div>
+      <div id="recommended-ingredients">
+        <button class="recommended-ingredient" data-ingredient="Garlic">Garlic&nbsp;&nbsp; <span class="plus-sign">+</span></button>
+        <button class="recommended-ingredient" data-ingredient="Onion">Onion&nbsp;&nbsp; <span class="plus-sign">+</span></button>
+        <button class="recommended-ingredient" data-ingredient="Potato">Potato&nbsp;&nbsp; <span class="plus-sign">+</span></button>
+      </div>
+      <div id="added-ingredients"></div>
+      <button id="generate-recipe" style="background-color:purple; color: grey;">Generate Recipe</button>
+    </section>
+    <section class="output-section">
+      <div id="recipe-output"></div>
+    </section>
+  </main>
+<section class="reviews"  style="background-color:transparent;">
+    <h2>What Our Customers Say</h2>
+    <div class="review-container">
+        <div class="review">
+            <img src="avvamma.jpg" alt="John Doe" class="reviewer-image">
+            <h3>Amma</h3>
+            <p>"Pronto habrá productos no vegetarianos en nuestro campus.<br>Recipes are lit."</p>
+            <span class="rating">4.5/5</span>
+        </div>
+        <div class="review">
+            <img src="xav.jpg" alt="Jane Smith" class="reviewer-image">
+            <h3>Robert Downey JR</h3>
+            <p>“This dish is absolutely exquisite! The flavors are dancing on my taste buds. You’ve truly outdone yourselves. And you know what? It’s like the Avengers assembling in my mouth – a culinary superhero team!” 🍽🚀</p>
+            <span class="rating">4.8/5</span>
+        </div>
+        <div class="review">
+            <img src="freak.jpg" alt="Bob Johnson" class="reviewer-image">
+            <h3>Bob Johnson</h3>
+            <p>"Wow! YumYumMe! generated a vegan gluten-free pasta dish that the whole family loved!"</p>
+            <span class="rating">4.2/5</span>
+        </div>
+    </div>
+</section>
+
+<div class="footer">
+    <div class="footer-section">
+        <div>
+            <h3>Explore</h3>
+            <a href="#">Popular Recipes</a>
+            <a href="#">Newest Recipes</a>
+            <a href="#">Quick & Easy</a>
+            <a href="#">Healthy Recipes</a>
+        </div>
+        <div>
+            <h3>Resources</h3>
+            <a href="#">Recipe Blog</a>
+            <a href="#">Cooking Tips</a>
+            <a href="#">Ingredient Guide</a>
+            <a href="#">Meal Planning</a>
+        </div>
+        <div>
+            <h3>Community</h3>
+            <a href="#">Forums</a>
+            <a href="#">Cooking Classes</a>
+            <a href="#">Events</a>
+        </div>
+    </div>
+
+    <div class="footer-icons">
+        <img src="apple.png" alt="App Store">
+        <img src="google.png" alt="Google Play">
+    </div>
+
+    <div class="footer-icons">
+        <img src="facebook.png" alt="Facebook">
+        <img src="instagram.png" alt="Instagram">
+        <img src="linkedin.png" alt="LinkedIn">
+        <img src="youtube.png" alt="YouTube">
+        <img src="pintrest.png" alt="Pinterest">
+    </div>
+
+    <div class="footer-bottom">
+        <p>©2001-2024 All Rights Reserved. Recipe Rador® is a registered trademark. Apple and the Apple logo are trademarks of Apple Inc. Mac App Store is a service mark of Apple Inc. Google Play and the Google Play logo are trademarks of Google Inc.</p>
+    </div>
+</div>
+
+    <script src="scrpi.js"></script>
+<script src="theme.js"></script>
+<script src="icon.js"></script>
+<script src="nav.js"></script>
+<script>
+    const video = document.querySelector('.homepage-video');
+
+   const generateRecipeButton = document.getElementById('generate-recipe');
+    const ingredientInput = document.getElementById('ingredient-input');
+    const recommendedIngredients = document.querySelectorAll('.recommended-ingredient');
+    const addedIngredients = document.getElementById('added-ingredients');
+    const recipeOutput = document.getElementById('recipe-output');
+
+    let ingredients = [];
+
+    ingredientInput.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') {
+        const ingredient = ingredientInput.value.trim();
+        if (ingredient!== '') {
+          ingredients.push(ingredient);
+          renderAddedIngredients();
+          ingredientInput.value = '';
+        }
+      }
+    });
+
+    recommendedIngredients.forEach((recommendedIngredient) => {
+      recommendedIngredient.addEventListener('click', () => {
+        const ingredient = recommendedIngredient.dataset.ingredient;
+        ingredients.push(ingredient);
+        renderAddedIngredients();
+        updateRecommendedIngredients(recommendedIngredient);
+      });
+    });
+
+    function renderAddedIngredients() {
+      addedIngredients.innerHTML = '';
+      ingredients.forEach((ingredient) => {
+        const ingredientElement = document.createElement('span');
+        ingredientElement.innerHTML = `
+          ${ingredient}
+          <button data-ingredient="${ingredient}">x</button>
+        `;
+        addedIngredients.appendChild(ingredientElement);
+
+        const removeButton = ingredientElement.querySelector('button');
+        removeButton.addEventListener('click', () => {
+          const indexToRemove = ingredients.indexOf(removeButton.dataset.ingredient);
+          ingredients.splice(indexToRemove, 1);
+          renderAddedIngredients();
+        });
+      });
+    }
+
+    function updateRecommendedIngredients(selectedIngredient) {
+      const recommendedIngredientsArray = Array.from(recommendedIngredients);
+      const selectedIndex = recommendedIngredientsArray.indexOf(selectedIngredient);
+      recommendedIngredientsArray.splice(selectedIndex, 1);
+      const newRecommendedIngredient = getNewRecommendedIngredient(selectedIngredient.dataset.ingredient);
+      recommendedIngredientsArray.push(newRecommendedIngredient);
+      recommendedIngredients.innerHTML = '';
+      recommendedIngredientsArray.forEach((recommendedIngredient) => {
+        recommendedIngredients.appendChild(recommendedIngredient);
+      });
+    }
+
+    function getNewRecommendedIngredient(selectedIngredient) {
+      let newIngredient;
+      switch (selectedIngredient) {
+        case 'Garlic':
+          newIngredient = 'Ginger';
+          break;
+        case 'Onion':
+          newIngredient = 'Shallot';
+          break;
+        case 'Potato':
+          newIngredient = 'Carrot';
+          break;
+        default:
+          newIngredient = 'New Ingredient';
+      }
+      const newRecommendedIngredient = document.createElement('button');
+      newRecommendedIngredient.className = 'ecommended-ingredient';
+      newRecommendedIngredient.dataset.ingredient = newIngredient;
+      newRecommendedIngredient.innerHTML = ${newIngredient} <span>+<span>;
+      return newRecommendedIngredient;
+    }
+
+    generateRecipeButton.addEventListener('click', () => {
+      if (ingredients.length < 3) {
+        alert('Please enter at least three ingredients!');
+        return;
+      }
+
+      const recipe = `
+        <h2>Recipe for ${ingredients.join(', ')}</h2>
+        <h3>Instructions:</h3>
+        <p>Start by gathering all of your ingredients. In a large bowl, combine ${ingredients[0]} and ${ingredients[1]}. Mix until well combined. Gradually add ${ingredients.slice(2).join(', ')}, mixing continuously. Add ${ingredients[ingredients.length - 1]} (if using) and mix until the batter is smooth. Pour the batter into a greased 9x13 inch baking dish. Bake at 350 degrees for 25-30 minutes, or until a toothpick inserted into the center comes out clean. Let cool before serving.</p>
+      `;
+
+      recipeOutput.innerHTML = recipe;
+
+      // Add a fade-in effect to the recipe output
+      recipeOutput.style.opacity = 0;
+      setTimeout(() => {
+        recipeOutput.style.transition = 'opacity 0.5s';
+        recipeOutput.style.opacity = 1;
+      }, 100);
+    });
+
+
+
+
+</script>
+</body>
+</html>

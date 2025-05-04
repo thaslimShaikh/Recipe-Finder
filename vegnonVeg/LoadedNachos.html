@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+<link rel="stylesheet" type="text/css" href="BM.css">
+<link rel="stylesheet" type="text/css" href="ratin.css">
+    <title>Loaded Nachos Recipe</title>
+</head>
+<body>
+    <main>
+        <h1 id="page-title">Loaded Nachos</h1>
+<img src="C:\Users\sushm\OneDrive\Desktop\New folder\index\vegnonVeg\loadednachos.jpg" alt="loaded nachos">
+        <section>
+            <h2>Ingredients</h2>
+            <ul>
+                <li>1 bag of tortilla chips (your favorite brand)</li>
+                <li>1 cup shredded cheddar cheese (divided)</li>
+                <li>1 can (16 oz) of refried beans</li>
+                <li>1 lb ground beef (or ground turkey, chicken, or beans for a vegetarian option)</li>
+                <li>1/2 cup diced onion</li>
+                <li>1/2 cup diced bell pepper</li>
+                <li>1 jalapeño pepper, diced</li>
+                <li>2 cloves of garlic, minced</li>
+                <li>1 tablespoon chili powder</li>
+                <li>1 teaspoon cumin</li>
+                <li>Salt and pepper, to taste</li>
+                <li>Optional toppings: diced tomatoes, sour cream, salsa, avocado, cilantro, etc.</li>
+            </ul>
+        </section>
+        <section>
+            <h2>Instructions</h2>
+            <ol>
+                <li>Preheat your oven to 350°F (180°C).</li>
+                <li>In a large skillet, cook the ground beef over medium-high heat until browned, breaking it up into small pieces as it cooks.</li>
+                <li>Add the diced onion, bell pepper, and jalapeño to the skillet and cook until the vegetables are soft.</li>
+                <li>Add the garlic, chili powder, and cumin to the skillet and cook for 1 minute.</li>
+                <li>Stir in the refried beans and cook until heated through.</li>
+                <li>Arrange the tortilla chips in a single layer on a large baking sheet.</li>
+                <li>Spoon the beef and bean mixture over the tortilla chips, leaving a small border around the edges.</li>
+                <li>Sprinkle 1/2 cup of the shredded cheese over the top of the nachos.</li>
+                <li>Bake in the preheated oven for 10-15 minutes, or until the cheese is melted and bubbly.</li>
+                <li>Remove from the oven and top with the remaining 1/2 cup of cheese, as well as any desired toppings (such as diced tomatoes, sour cream, etc.).</li>
+                <li>Serve immediately and enjoy!</li>
+            </ol>
+        </section>
+
+   <br><br>
+<h1 style="  font-family: 'Comic Sans MS', cursive;" >Ratings and Reviews</h1>
+  <div id="reviewSection">
+<form id="reviewForm">
+
+ <label for="name">Name:</label>
+  <input type="text" id="nameInput" name="name" required>
+<br><br>
+  <div class="rating">
+    <input type="radio" id="star5" name="rating" value="5">
+    <label for="star5" title="5 stars">★</label>
+    <input type="radio" id="star4" name="rating" value="4">
+    <label for="star4" title="4 stars">★</label>
+    <input type="radio" id="star3" name="rating" value="3">
+    <label for="star3" title="3 stars">★</label>
+    <input type="radio" id="star2" name="rating" value="2">
+    <label for="star2" title="2 stars">★</label>
+    <input type="radio" id="star1" name="rating" value="1">
+    <label for="star1" title="1 star">★</label>
+  </div>
+ 
+    <input type="hidden" name="rating" value="0" id="ratingInput">
+   
+    <label for="review">Review:</label>
+    <textarea id="reviewInput" name="review" required></textarea>
+    <button type="submit">Submit</button>
+  </form>
+  <div id="reviews">
+    <!-- Reviews will be displayed here -->
+  </div>
+  <div id="averageRating">Average rating: 0/5</div>
+</div>
+<button class="bookmark-btn" id="bookmark-btn"><img src="BM.png" alt="Bookmark"></button>
+
+<script src="ratin.js" ></script>
+    <script>
+        document.getElementById('bookmark-btn').addEventListener('click', function() {
+            const title = document.getElementById('page-title').innerText;
+            let bookmarks = JSON.parse(localStorage.getItem('bookmarks')) || [];
+            bookmarks.push(title);
+            localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
+            alert('Page bookmarked!');
+
+            // Send a message to update bookmarks on the other page
+            if (window.opener) {
+                window.opener.postMessage('updateBookmarks', '*');
+            }
+        });
+
+
+    </script>
+
+
+    </main>
+</body>
+</html>

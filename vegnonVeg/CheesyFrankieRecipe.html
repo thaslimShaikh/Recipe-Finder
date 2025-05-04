@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet"  href="style.css" >
+<link rel="stylesheet" type="text/css" href="BM.css">
+<link rel="stylesheet" type="text/css" href="ratin.css">
+    <title>Cheesy Frankie Recipe</title>
+
+
+</head>
+<body>
+<main>
+    <h1  id="page-title">Cheesy Frankie Recipe</h1>
+    <h2>Ingredients:</h2>
+    <ul>
+        <li>For the stuffing:</li>
+        <ul>
+            <li>2 tsp oil</li>
+            <li>½ onion, finely chopped</li>
+            <li>½ capsicum, finely chopped</li>
+            <li>2 medium potato, boiled & mashed</li>
+            <li>3 tbsp peri peri sauce / chilli sauce</li>
+            <li>salt to taste</li>
+        </ul>
+        <li>Other ingredients:</li>
+        <ul>
+            <li>2 tsp 
+butter</li>
+            <li>3 chapati / wrap, leftover</li>
+            <li>3 tsp mayonnaise, homemade / store-brought</li>
+            <li>1 cup cabbage, thinly shredded</li>
+            <li>6 tbsp cheddar / mozzarella cheese, grated</li>
+        </ul>
+    </ul>
+    <h2>Instructions:</h2>
+    <ol>
+        <li>Prepare the stuffing by heating oil in a pan and sautéing onion until translucent.</li>
+        <li>Add capsicum and sauté for a minute or two.</li>
+        <li>Add mashed potato and sauté for a minute.</li>
+        <li>Add peri peri sauce and salt to taste, and mix well.</li>
+        <li>Warm up leftover chapati or wrap with butter on a tawa.</li>
+        <li>Spread mayonnaise on the chapati or wrap.</li>
+        <li>Spread 2 tbsp of prepared stuffing on top of the mayonnaise.</li>
+        <li>Top with shredded cabbage and grated cheese.</li>
+        <li>Roll tight and wrap with aluminum foil for a street side feel.</li>
+        <li>Serve Cheesy Frankie or pack to your lunch box.</li>
+    </ol>
+
+<br><br>
+<h1 style="  font-family: 'Comic Sans MS', cursive;" >Ratings and Reviews</h1>
+  <div id="reviewSection">
+<form id="reviewForm">
+
+ <label for="name">Name:</label>
+  <input type="text" id="nameInput" name="name" required>
+<br><br>
+  <div class="rating">
+    <input type="radio" id="star5" name="rating" value="5">
+    <label for="star5" title="5 stars">★</label>
+    <input type="radio" id="star4" name="rating" value="4">
+    <label for="star4" title="4 stars">★</label>
+    <input type="radio" id="star3" name="rating" value="3">
+    <label for="star3" title="3 stars">★</label>
+    <input type="radio" id="star2" name="rating" value="2">
+    <label for="star2" title="2 stars">★</label>
+    <input type="radio" id="star1" name="rating" value="1">
+    <label for="star1" title="1 star">★</label>
+  </div>
+ 
+    <input type="hidden" name="rating" value="0" id="ratingInput">
+   
+    <label for="review">Review:</label>
+    <textarea id="reviewInput" name="review" required></textarea>
+    <button type="submit">Submit</button>
+  </form>
+  <div id="reviews">
+    <!-- Reviews will be displayed here -->
+  </div>
+  <div id="averageRating">Average rating: 0/5</div>
+</div>
+<button class="bookmark-btn" id="bookmark-btn"><img src="BM.png" alt="Bookmark"></button>
+
+<script src="ratin.js" ></script>
+</main>
+    <script>
+        document.getElementById('bookmark-btn').addEventListener('click', function() {
+            const title = document.getElementById('page-title').innerText;
+            let bookmarks = JSON.parse(localStorage.getItem('bookmarks')) || [];
+            bookmarks.push(title);
+            localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
+            alert('Page bookmarked!');
+
+            // Send a message to update bookmarks on the other page
+            if (window.opener) {
+                window.opener.postMessage('updateBookmarks', '*');
+            }
+        });
+
+
+    </script>
+</body>
+</html>

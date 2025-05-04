@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet"  href="style.css" >
+<link rel="stylesheet" type="text/css" href="BM.css">
+<link rel="stylesheet" type="text/css" href="ratin.css">
+    <title>Jalebi Recipe</title>
+</head>
+<body>
+<main>
+    <h1 id="page-title">Jalebi Recipe</h1>
+     <img src="jalebi.jpg" alt="Jalebi" width="400">
+    <h2>Ingredients:</h2>
+    <ul>
+        <li>1 cup all-purpose flour (maida)</li>
+        <li>1 tablespoon gram flour (besan)</li>
+        <li>1/2 cup yogurt</li>
+        <li>1/4 teaspoon baking soda</li>
+        <li>1/2 teaspoon turmeric powder (optional, for color)</li>
+        <li>1 cup sugar</li>
+        <li>1/2 cup water</li>
+        <li>1/4 teaspoon saffron strands (optional)</li>
+        <li>Oil or ghee for frying</li>
+    </ul>
+
+    <h2>Instructions:</h2>
+    <ol>
+        <li><strong>Prepare the Batter:</strong>
+            <ul>
+                <li>Mix all-purpose flour, gram flour, yogurt, baking soda, and turmeric powder in a bowl. Add water as needed to make a smooth batter.</li>
+                <li>Cover and let the batter ferment for 8-10 hours or overnight.</li>
+            </ul>
+        </li>
+        
+        <li><strong>Prepare the Syrup:</strong>
+            <ul>
+                <li>Heat water and sugar in a pan until the sugar dissolves completely.</li>
+                <li>Add saffron strands (if using) and simmer for 5 minutes to make a syrup of one-string consistency. Keep warm.</li>
+            </ul>
+        </li>
+        
+        <li><strong>Fry the Jalebis:</strong>
+            <ul>
+                <li>Heat oil or ghee in a wide, shallow pan.</li>
+                <li>Pour the batter into a squeeze bottle or piping bag with a small nozzle.</li>
+                <li>Squeeze the batter into hot oil in a circular motion to form spiral shapes.</li>
+                <li>Fry until the jalebis are crisp and golden brown.</li>
+                <li>Remove from oil and immediately dip them into warm sugar syrup.</li>
+                <li>Let them soak for a minute, then remove and serve hot.</li>
+            </ul>
+        </li>
+    </ol>
+
+    <br><br>
+<h1 style="  font-family: 'Comic Sans MS', cursive;" >Ratings and Reviews</h1>
+  <div id="reviewSection">
+<form id="reviewForm">
+
+ <label for="name">Name:</label>
+  <input type="text" id="nameInput" name="name" required>
+<br><br>
+  <div class="rating">
+    <input type="radio" id="star5" name="rating" value="5">
+    <label for="star5" title="5 stars">★</label>
+    <input type="radio" id="star4" name="rating" value="4">
+    <label for="star4" title="4 stars">★</label>
+    <input type="radio" id="star3" name="rating" value="3">
+    <label for="star3" title="3 stars">★</label>
+    <input type="radio" id="star2" name="rating" value="2">
+    <label for="star2" title="2 stars">★</label>
+    <input type="radio" id="star1" name="rating" value="1">
+    <label for="star1" title="1 star">★</label>
+  </div>
+ 
+    <input type="hidden" name="rating" value="0" id="ratingInput">
+   
+    <label for="review">Review:</label>
+    <textarea id="reviewInput" name="review" required></textarea>
+    <button type="submit">Submit</button>
+  </form>
+  <div id="reviews">
+    <!-- Reviews will be displayed here -->
+  </div>
+  <div id="averageRating">Average rating: 0/5</div>
+</div>
+<button class="bookmark-btn" id="bookmark-btn"><img src="BM.png" alt="Bookmark"></button>
+
+<script src="ratin.js" ></script>
+    <script>
+        document.getElementById('bookmark-btn').addEventListener('click', function() {
+            const title = document.getElementById('page-title').innerText;
+            let bookmarks = JSON.parse(localStorage.getItem('bookmarks')) || [];
+            bookmarks.push(title);
+            localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
+            alert('Page bookmarked!');
+
+            // Send a message to update bookmarks on the other page
+            if (window.opener) {
+                window.opener.postMessage('updateBookmarks', '*');
+            }
+        });
+
+
+    </script>
+
+   </main>
+
+</body>
+</html>

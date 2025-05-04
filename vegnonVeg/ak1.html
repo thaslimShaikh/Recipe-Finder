@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mouthwatering Food</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #f0f0f0;
+      font-family: Arial, sans-serif;
+      overflow-x: hidden;
+    }
+    .recipe-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      padding: 20px;
+    }
+    .btn {
+      width: 200px;
+      height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #fff;
+      border: none;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      overflow: hidden;
+      position: relative;
+    }
+    .btn h2 {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      margin: 0;
+      color: #fff;
+      font-size: 18px;
+      text-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
+    }
+    .btn div {
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      transition: transform 0.3s ease;
+    }
+    .btn:hover div {
+      transform: scale(1.1);
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgb(0,0,0);
+      background-color: rgba(0,0,0,0.4);
+      backdrop-filter: blur(5px);
+    }
+    .modal-content {
+      background-color: #fefefe;
+      margin: 15% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+      max-width: 600px;
+      border-radius: 10px;
+      animation: popUp 0.4s;
+    }
+    @keyframes popUp {
+      from {transform: scale(0.5); opacity: 0;}
+      to {transform: scale(1); opacity: 1;}
+    }
+    .close-btn {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
+    .close-btn:hover,
+    .close-btn:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    body.modal-open {
+      overflow: hidden;
+    }
+    .blurred-background {
+      filter: blur(5px);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Buttons for dishes -->
+  <div class="recipe-container">
+    <button class="btn" data-url="PalakPaneer.html">
+      <div style="background-image: url('palakPaneer.jpg'); background-size: cover;">
+        <h2>Palak Paneer</h2>
+      </div>
+    </button>
+    <button class="btn" data-url="cholebature.html">
+      <div style="background-image: url('cholebature.jpg'); background-size: cover;">
+        <h2>Chole Bature</h2>
+      </div>
+    </button>
+    <button class="btn" data-url="omelette.html">
+      <div style="background-image: url('omelette.jpg'); background-size: cover;">
+        <h2>Omelette</h2>
+      </div>
+    </button>
+    <button class="btn" data-url="dalmakhani.html">
+      <div style="background-image: url('dalmakhani.jpg'); background-size: cover;">
+        <h2>Dal Makhni</h2>
+      </div>
+    </button>
+    <button class="btn" data-url="Butterchicken.html">
+      <div style="background-image: url('butterchicken.jpg'); background-size: cover;">
+        <h2>Butter Chicken</h2>
+      </div>
+    </button>
+    <button class="btn" data-url="pavbhaji.html">
+      <div style="background-image: url('pavbhaji.jpg'); background-size: cover;">
+        <h2>Pav Bhaji</h2>
+      </div>
+    </button>
+    <button class="btn" data-url="CheesyFrankieRecipe.html">
+      <div style="background-image: url('cheesefrankie.jpg'); background-size: cover;">
+        <h2>Cheesy Frankie</h2>
+      </div>
+    </button>
+    <button class="btn" data-url="Chickenbiryani.html">
+      <div style="background-image: url('chicken-biryani.jpg'); background-size: cover;">
+        <h2>Chicken Biryani</h2>
+      </div>
+    </button>
+    <button class="btn" data-url="LoadedNachos.html">
+      <div style="background-image: url('loadednachos.jpg'); background-size: cover;">
+        <h2>Loaded Nachos</2>
+      </div>
+    </button>
+    <button class="btn" data-url="jalebi.html">
+      <div style="background-image: url('jalebi.jpg'); background-size: cover;">
+        <h2>Jalebi</h2>
+      </div>
+    </button>
+  </div>
+
+  <!-- Modal structure -->
+  <div id="dishModal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn">&times;</span>
+      <div id="modal-body-content"></div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const modal = document.getElementById('dishModal');
+      const modalContent = document.getElementById('modal-body-content');
+      const span = document.getElementsByClassName('close-btn')[0];
+
+      document.querySelectorAll('.btn').forEach(button => {
+        button.addEventListener('click', () => {
+          const contentUrl = button.getAttribute('data-url');
+          fetch(contentUrl)
+            .then(response => response.text())
+            .then(data => {
+              modalContent.innerHTML = data;
+              modal.style.display = 'block';
+              document.body.classList.add('modal-open');
+              document.querySelector('.recipe-container').classList.add('blurred-background');
+            })
+            .catch(error => console.error('Error fetching the recipe:', error));
+        });
+      });
+
+      span.onclick = () => {
+        modal.style.display = 'none';
+        document.body.classList.remove('modal-open');
+        document.querySelector('.recipe-container').classList.remove('blurred-background');
+      };
+
+      window.onclick = event => {
+        if (event.target == modal) {
+          modal.style.display = 'none';
+          document.body.classList.remove('modal-open');
+          document.querySelector('.recipe-container').classList.remove('blurred-background');
+        }
+      };
+    });
+  </script>
+</body>
+</html>

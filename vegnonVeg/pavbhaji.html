@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" type="text/css" href="BM.css">
+<link rel="stylesheet" type="text/css" href="ratin.css">
+    <title>Pav Bhaji Recipe</title>
+</head>
+<body>
+<main>
+    <h1  id="page-title">Pav Bhaji Recipe</h1>
+
+    <img src="Pavbhaji.jpg" alt="Pav Bhaji" width="400" height="400">
+    <h2>Ingredients:</h2>
+    <ul>
+        <li>4 medium potatoes, boiled and mashed</li>
+        <li>2 cups mixed vegetables (cauliflower, carrots, peas, capsicum), finely chopped</li>
+        <li>1 large onion, finely chopped</li>
+        <li>3 tomatoes, finely chopped</li>
+        <li>1 bell pepper (capsicum), finely chopped</li>
+        <li>4 cloves garlic, minced</li>
+        <li>1 inch ginger, grated</li>
+        <li>2 green chilies, finely chopped</li>
+        <li>2 tablespoons pav bhaji masala</li>
+        <li>1 teaspoon red chili powder</li>
+        <li>1/2 teaspoon turmeric powder</li>
+        <li>1/2 teaspoon cumin seeds</li>
+        <li>1 tablespoon butter</li>
+        <li>2 tablespoons oil</li>
+        <li>Salt to taste</li>
+        <li>8 pav (dinner rolls), lightly toasted with butter</li>
+        <li>Fresh coriander leaves for garnish</li>
+        <li>Lemon wedges</li>
+    </ul>
+
+    <h2>Instructions:</h2>
+    <ol>
+        <li><strong>Prepare the Bhaji:</strong>
+            <ul>
+                <li>Heat oil and butter in a pan.</li>
+                <li>Add cumin seeds and let them splutter.</li>
+                <li>Add chopped onions and sauté until translucent.</li>
+                <li>Add minced garlic, grated ginger, and chopped green chilies. Sauté for a minute.</li>
+                <li>Add chopped tomatoes and cook until soft.</li>
+                <li>Add pav bhaji masala, red chili powder, turmeric powder, and salt. Mix well.</li>
+                <li>Add mixed vegetables and mashed potatoes. Mix thoroughly.</li>
+                <li>Add a little water if the mixture is too dry. Mash the vegetables while cooking.</li>
+                <li>Cook for 10-15 minutes on medium heat until the vegetables are soft and well combined.</li>
+                <li>Garnish with fresh coriander leaves.</li>
+            </ul>
+        </li>
+        
+        <li><strong>Prepare the Pav:</strong>
+            <ul>
+                <li>Slit the pav horizontally without cutting through.</li>
+                <li>Spread some butter on a griddle or tawa.</li>
+                <li>Place the pav on the griddle and toast until golden brown and crispy.</li>
+            </ul>
+        </li>
+    </ol>
+
+    <h2>Serving Tips:</h2>
+    <p>Serve hot Pav Bhaji garnished with fresh coriander leaves, lemon wedges, and a dollop of butter. Enjoy with toasted pav!</p>
+
+   <br><br>
+<h1 style="  font-family: 'Comic Sans MS', cursive;" >Ratings and Reviews</h1>
+  <div id="reviewSection">
+<form id="reviewForm">
+
+ <label for="name">Name:</label>
+  <input type="text" id="nameInput" name="name" required>
+<br><br>
+  <div class="rating">
+    <input type="radio" id="star5" name="rating" value="5">
+    <label for="star5" title="5 stars">★</label>
+    <input type="radio" id="star4" name="rating" value="4">
+    <label for="star4" title="4 stars">★</label>
+    <input type="radio" id="star3" name="rating" value="3">
+    <label for="star3" title="3 stars">★</label>
+    <input type="radio" id="star2" name="rating" value="2">
+    <label for="star2" title="2 stars">★</label>
+    <input type="radio" id="star1" name="rating" value="1">
+    <label for="star1" title="1 star">★</label>
+  </div>
+ 
+    <input type="hidden" name="rating" value="0" id="ratingInput">
+   
+    <label for="review">Review:</label>
+    <textarea id="reviewInput" name="review" required></textarea>
+    <button type="submit">Submit</button>
+  </form>
+  <div id="reviews">
+    <!-- Reviews will be displayed here -->
+  </div>
+  <div id="averageRating">Average rating: 0/5</div>
+</div>
+<button class="bookmark-btn" id="bookmark-btn"><img src="BM.png" alt="Bookmark"></button>
+
+<script src="ratin.js" ></script>
+    <script>
+        document.getElementById('bookmark-btn').addEventListener('click', function() {
+            const title = document.getElementById('page-title').innerText;
+            let bookmarks = JSON.parse(localStorage.getItem('bookmarks')) || [];
+            bookmarks.push(title);
+            localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
+            alert('Page bookmarked!');
+
+            // Send a message to update bookmarks on the other page
+            if (window.opener) {
+                window.opener.postMessage('updateBookmarks', '*');
+            }
+        });
+
+
+    </script>
+
+
+</main>
+</body>
+</html>

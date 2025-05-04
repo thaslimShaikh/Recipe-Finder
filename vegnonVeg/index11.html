@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Recipe Generator</title>
+  <link rel="stylesheet" href="index1.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css">
+  <link rel="stylesheet" href="scroll.css">
+  <link rel="stylesheet" href="veg_nonveg.css">
+  <style>
+    /* Include your existing styles here */
+
+    body {
+      background-color: #ffffff;
+      color: #000000;
+      background-size: cover;
+      background-position: center center;
+      margin: 0;
+      padding: 0;
+    }
+
+    header{
+      margin: 0;
+      padding: 0;
+    }
+
+    .top-features,.bottom-features {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      margin: 50px 0;
+      background-color: inherit;
+      color: inherit;
+    }
+
+    .top-features a,.bottom-features a {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 200px;
+      height: 200px;
+      text-decoration: none;
+      color: #fff;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .top-features a:hover,.bottom-features a:hover {
+      transform: scale(1.1);
+    }
+
+    .top-features img,.bottom-features img {
+      width: 100px;
+      height: 100px;
+      margin-bottom: 10px;
+      transition: filter 0.3s ease-in-out;
+    }
+
+    .top-features img:hover,.bottom-features img:hover {
+      filter: brightness(50%);
+    }
+
+    .top-features h2,.bottom-features h2 {
+      font-size: 24px;
+      margin-top: 0;
+    }
+
+    @media (max-width: 600px) {
+      .top-features a,.bottom-features a {
+        width: 100%;
+      }
+    }
+
+    .search-icon {
+      font-size: 18px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 10px;
+      cursor: pointer;
+    }
+
+    .theme-btn {
+      font-size: 18px;
+      cursor: pointer;
+    }
+
+    .changeTheme {
+      background: #1D1E22;
+      color: white;
+    }
+
+    .search-container {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      padding: 10px;
+    }
+
+    .search-theme-container {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      margin-right: 20px;
+    }
+
+    .search-icon {
+      font-size: 18px;
+      margin-right: 10px;
+      cursor: pointer;
+    }
+
+    nav {
+      position: fixed;
+      background-color: black; /* Green background color */
+      color: white;
+      display: flex;
+      top: 0;
+      left: 0;
+      width: 2000px;
+      height: 70px;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-left: 20px;
+    }
+
+    .navbar a {
+      margin-right: 20px;
+    }
+
+    nav a {
+      font-size: 16px; /* Link text size */
+      text-decoration: none; /* Remove underline */
+      color: inherit; /* Inherit color from parent */
+    }
+
+    nav a:hover {
+      background-color: #3e8e41; /* Green hover color */
+      color: white; /* White hover text color */
+    }
+
+    .logo-container {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      display: flex;
+      align-items: center;
+      background-color: inherit;
+      color: inherit;
+    }
+
+    .logo-container img {
+      height: 50px;
+      margin-right: 10px;
+    }
+
+    .logo-container h1 {
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 24px;
+      color: #00698f;
+      margin: 0;
+    }
+
+    .dialogue-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 50px;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .dialogue-box img {
+      width: 300px;
+      height: 200px;
+      margin-bottom: 20px;
+      border-radius: 10px;
+    }
+
+    .quote-box {
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .quote-box p {
+      font-size: 18px;
+      font-style: italic;
+      margin: 0;
+    }
+
+    .dark-theme {
+      background-color: #333;
+      color: #fff;
+    }
+
+    .dark-theme * {
+      background-color: #333;
+      color: #fff;
+    }
+
+    .dark-theme a {
+      color: #fff;
+    }
+
+    .dark-theme.logo-container {
+      background-color: #333;
+      color: #fff;
+    }
+
+    .dark-theme.navbar {
+      background-color: #333;
+      color: #fff;
+    }
+
+    .dark-theme.dialogue-box {
+      background-color: #333;
+      color: #fff;
+    }
+
+    .dark-theme.input-section {
+      background-color: #333;
+      color: #fff;
+    }
+
+    .dark-theme.input-section h2 {
+      color: #fff;
+    }
+
+    .dark-theme.input-section input[type="text"] {
+      background-color: #444;
+      color: #fff;
+      border: none;
+    }
+
+    .dark-theme.input-section button {
+      background-color: #444;
+      color: #fff;
+      border: none;
+    }
+
+    .dark-theme.output-section {
+      background-color: #333;
+      color: #fff;
+    }
+
+    .dark-theme.output-section h2 {
+      color: #fff;
+    }
+
+    .dark-theme.output-section p {
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="icon-container"> 
+    <a href="mealPlanner.html"><i ><img src="mpp.png" class="image"></i></a>
+    <a href="rating1.html"><i><img src="rating.png" class="image"></i></a>
+    <a href=""><i><img src="bd.png" class="image"></i></a>
+    <a href="theme.html"><i><img src="Bookmark_Sticker_Icon_.png" class="image"></i></a>
+  </div>
+
+  <header>
+    <nav>
+      <div class="logo-container">
+        <img src="Logo.png" alt="Logo">
+        <h1>Recipe Radar</h1>
+      </div>
+      <div class="navbar">
+        <a href="homepage5.html">Home</a>
+        <a href="C:\Users\786sh\Downloads\vegnonVeg (1)\vegnonVeg\gs1.html">Login</a>
+        <a href="contactus.html">Contact Us</a>
+      </div>
+      <div class="search-theme-container">
+        <i id="search-icon" class="fas fa-search search-icon"></i>
+        <div id="theme-btn" class="far fa-moon theme-btn"></div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Dialogue Box -->
+  <div class="dialogue-box"  style=" margin-left:450px;margin-right:-90px">
+    <img src="C:\Users\786sh\OneDrive\Desktop\HTML\Case_Study\fatherDaughter.jpg" alt="Father and Daughter Cooking">
+    <div class="quote-box">
+      <p>“Cooking is at once child’s play and adult joy. And cooking done with care is an act of love.” - Craig Claiborne</p>
+    </div>
+  </div>
+
+  <a href="#" class="add-to-cart" data-title="Chicken Burger" onclick="addToCart(event)"></a>
+
+  <main>
+    <section class="input-section" style=" margin-left:450px;margin-right:-90px">
+      <h2>Tell us what ingredients you need to use up</h2>
+      <p>Enter a minimum of 3 ingredients to find some recipes.</p>
+      <div class="search-bar">
+        <input type="text" id="ingredient-input" placeholder="Enter Ingredients...">
+      </div>
+      <div id="recommended-ingredients">
+        <button class="recommended-ingredient" data-ingredient="Garlic">Garlic&nbsp;&nbsp; <span class="plus-sign">+</span></button>
+        <button class="recommended-ingredient" data-ingredient="Onion">Onion&nbsp;&nbsp; <span class="plus-sign">+</span></button>
+        <button class="recommended-ingredient" data-ingredient="Potato">Potato&nbsp;&nbsp; <span class="plus-sign">+</span></button>
+      </div>
+      <div id="added-ingredients"  style="margin-left:450px;margin-right:-250px"></div>
+      <button id="generate-recipe" style="background-color: purple; color: grey;">Generate Recipe</button>
+    </section>
+    <section class="output-section">
+      <div id="recipe-output"></div>
+    </section>
+  </main>
+
+  <div class="recipe-container"  style=" margin-left:300px; margin-right:-400px">
+    <!-- Recipe cards here -->
+  </div>
+
+  <script src="index2.js"></script>
+
+  <script>
+    const body = document.body;
+
+    const themeBtn = document.getElementById("theme-btn");
+    themeBtn.onclick = () => {
+      themeBtn.classList.toggle("fa-sun");
+      themeBtn.classList.toggle("fa-moon");
+      document.body.classList.toggle("changeTheme");
+    }
+
+    const searchIcon = document.getElementById("search-icon");
+    searchIcon.onclick = () => {
+      const searchQuery = prompt("Enter your search query:");
+      if (searchQuery) {
+        const encodedQuery = encodeURIComponent(searchQuery);
+        window.location.href = `https://www.allrecipes.com/search?q=${encodedQuery}`;
+      }
+    }
+  </script>
+</body>
+</html>

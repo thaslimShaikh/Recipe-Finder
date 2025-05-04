@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet"  href="style.css" >
+<link rel="stylesheet" type="text/css" href="BM.css">
+<link rel="stylesheet" type="text/css" href="ratin.css">
+    <title>Pani Puri Recipe</title>
+</head>
+<body>
+<main>
+    <h1 id="page-title">Pani Puri Recipe</h1>
+    <img src="panipuri.jpg" alt="Pani Puri" width="400">
+    <h2>Ingredients:</h2>
+    <ul>
+        <li>20 puris (puffed semolina or wheat balls)</li>
+        <li>1 cup tamarind chutney</li>
+        <li>1 cup green chutney</li>
+        <li>1 cup boiled and mashed potatoes</li>
+        <li>1 cup cooked chickpeas</li>
+        <li>1 cup finely chopped onions</li>
+        <li>1 cup chopped fresh coriander leaves</li>
+        <li>1 cup chopped mint leaves</li>
+        <li>1 tablespoon roasted cumin powder</li>
+        <li>1 teaspoon black salt</li>
+        <li>1 teaspoon chaat masala</li>
+        <li>1 teaspoon red chili powder</li>
+        <li>1 lemon, cut into wedges</li>
+        <li>Salt to taste</li>
+    </ul>
+
+    <h2>Instructions:</h2>
+    <ol>
+        <li><strong>Prepare the Pani:</strong>
+            <ul>
+                <li>Mix tamarind chutney and green chutney with 4 cups of water in a bowl to make the pani.</li>
+                <li>Add chopped coriander leaves, mint leaves, roasted cumin powder, black salt, chaat masala, red chili powder, and salt to taste. Mix well.</li>
+                <li>Chill the pani in the refrigerator for at least 1 hour before serving.</li>
+            </ul>
+        </li>
+        
+        <li><strong>Assemble the Pani Puri:</strong>
+            <ul>
+                <li>Make a small hole in the center of each puri using your thumb or a spoon.</li>
+                <li>Fill each puri with a spoonful of mashed potatoes and cooked chickpeas.</li>
+                <li>Top with chopped onions and a drizzle of tamarind chutney and green chutney.</li>
+                <li>Sprinkle some roasted cumin powder, black salt, and chaat masala on top.</li>
+                <li>Squeeze a few drops of lemon juice on each puri.</li>
+            </ul>
+        </li>
+    </ol>
+
+    <h2>Serving Tips:</h2>
+    <p>Arrange the assembled puris on a serving plate. Serve immediately with the chilled pani. Enjoy each crispy puri filled with tangy and spicy flavors!</p>
+ <br><br>
+<h1 style="  font-family: 'Comic Sans MS', cursive;" >Ratings and Reviews</h1>
+  <div id="reviewSection">
+<form id="reviewForm">
+
+ <label for="name">Name:</label>
+  <input type="text" id="nameInput" name="name" required>
+<br><br>
+  <div class="rating">
+    <input type="radio" id="star5" name="rating" value="5">
+    <label for="star5" title="5 stars">★</label>
+    <input type="radio" id="star4" name="rating" value="4">
+    <label for="star4" title="4 stars">★</label>
+    <input type="radio" id="star3" name="rating" value="3">
+    <label for="star3" title="3 stars">★</label>
+    <input type="radio" id="star2" name="rating" value="2">
+    <label for="star2" title="2 stars">★</label>
+    <input type="radio" id="star1" name="rating" value="1">
+    <label for="star1" title="1 star">★</label>
+  </div>
+ 
+    <input type="hidden" name="rating" value="0" id="ratingInput">
+   
+    <label for="review">Review:</label>
+    <textarea id="reviewInput" name="review" required></textarea>
+    <button type="submit">Submit</button>
+  </form>
+  <div id="reviews">
+    <!-- Reviews will be displayed here -->
+  </div>
+  <div id="averageRating">Average rating: 0/5</div>
+</div>
+<button class="bookmark-btn" id="bookmark-btn"><img src="BM.png" alt="Bookmark"></button>
+
+<script src="ratin.js" ></script>
+    <script>
+        document.getElementById('bookmark-btn').addEventListener('click', function() {
+            const title = document.getElementById('page-title').innerText;
+            let bookmarks = JSON.parse(localStorage.getItem('bookmarks')) || [];
+            bookmarks.push(title);
+            localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
+            alert('Page bookmarked!');
+
+            // Send a message to update bookmarks on the other page
+            if (window.opener) {
+                window.opener.postMessage('updateBookmarks', '*');
+            }
+        });
+
+
+    </script>
+
+</main>
+
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookmarked Recipes - Recipe Website</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 100%;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 50px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .bookmark-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .bookmark-item {
+            margin-bottom: 10px;
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .bookmark-item-title {
+            font-weight: bold;
+        }
+        .remove-bookmark {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        .remove-bookmark:hover {
+            background-color: #c82333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bookmarked Recipes</h1>
+        <ul class="bookmark-list">
+            <!-- JavaScript will populate this list -->
+        </ul>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const bookmarks = JSON.parse(localStorage.getItem('bookmarkedRecipes')) || [];
+            const listContainer = document.querySelector('.bookmark-list');
+            
+            if (bookmarks.length === 0) {
+                const message = document.createElement('p');
+                message.textContent = 'You have no bookmarked recipes.';
+                listContainer.appendChild(message);
+            } else {
+                bookmarks.forEach(title => {
+                    const listItem = document.createElement('li');
+                    listItem.classList.add('bookmark-item');
+                    listItem.innerHTML = `
+                        <span class="bookmark-item-title">${title}</span>
+                        <button class="remove-bookmark" onclick="removeBookmark('${title}')">Remove</button>
+                    `;
+                    listContainer.appendChild(listItem);
+                });
+            }
+        });
+
+        function removeBookmark(title) {
+            let bookmarks = JSON.parse(localStorage.getItem('bookmarkedRecipes')) || [];
+            bookmarks = bookmarks.filter(item => item !== title);
+            localStorage.setItem('bookmarkedRecipes', JSON.stringify(bookmarks));
+            // Reload the page to reflect changes (or update the list dynamically)
+            location.reload();
+        }
+    </script>
+</body>
+</html>

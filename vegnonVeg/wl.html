@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Flipkart Wishlist</title>
+  <style>
+body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+}
+
+#wishlist {
+  list-style-type: none;
+  padding: 0;
+}
+
+#wishlist li {
+  display: flex; /* Arrange items horizontally */
+  align-items: center; /* Align content vertically */
+  justify-content: space-between; /* Distribute space between items */
+  background-color: #f9f9f9;
+  margin: 5px 0;
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+#wishlist li img {
+  width: 100px; /* Adjust image size as needed */
+  height: auto;
+}
+
+#wishlist li .product-details {
+  flex: 1; /* Allow details to expand */
+}
+
+#wishlist li button {
+  padding: 5px 10px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+</style>
+</head>
+<body>
+  <header>
+    </header>
+
+  <main>
+    <h2>My Wishlist</h2>
+    <ul id="wishlist"></ul>
+  </main>
+
+  <script>
+const wishlist = document.getElementById('wishlist');
+
+// Simulate wishlist data (replace with actual data retrieval)
+const wishlistItems = [
+  {
+    image: 'path/to/product1.jpg',
+    name: 'Product 1',
+    price: '$19.99',
+    description: 'A detailed description of Product 1'
+  },
+  // ... add more items
+];
+
+function renderWishlist() {
+  wishlist.innerHTML = ''; // Clear existing items
+
+  wishlistItems.forEach(item => {
+    const listItem = document.createElement('li');
+
+    const image = document.createElement('img');
+    image.src = item.image;
+
+    const details = document.createElement('div');
+    details.classList.add('product-details');
+    details.innerHTML = `<h3>${item.name}</h3><p>${item.price}</p><p>${item.description}</p>`;
+
+    const removeBtn = document.createElement('button');
+    removeBtn.textContent = 'Remove';
+    removeBtn.onclick = function() {
+      // Implement actual removal logic (e.g., call server-side script)
+      wishlist.removeChild(listItem);
+    };
+
+    listItem.appendChild(image);
+    listItem.appendChild(details);
+    listItem.appendChild(removeBtn);
+
+    wishlist.appendChild(listItem);
+  });
+}
+
+renderWishlist(); // Render initial wishlist items
+
+// Add event listeners for adding new items to wishlist (not included here)
+
+</script>
+</body>
+</html>

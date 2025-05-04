@@ -1,0 +1,162 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #d3eefe;
+    font-family: 'Arial', sans-serif;
+    color: #43515c;
+    overflow-x: hidden;
+}
+
+h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+p {
+    font-size: 18px;
+    line-height: 1.6;
+    text-align: center;
+}
+
+/* Section Styling */
+section {
+    padding: 100px 0;
+    position: relative;
+    z-index: 1;
+}
+
+.images-wrapper {
+    position: relative;
+    width: 100%;
+    overflow: hidden; /* Hide overflowing elements */
+}
+
+.images-wrapper img {
+    width: 100%;
+    height: auto;
+    display: block;
+    position: relative;
+    z-index: 2; /* Ensure images are above the text */
+}
+
+.ingredient-images {
+    position: absolute;
+    width: 400px;
+    left: calc(50% - 400px);
+    height: 530px;
+    top: 150px;
+}
+
+.section_1_01 {
+    position: absolute;
+    top: 20px;
+    right: -150px;
+}
+
+.section_1_02 {
+    position: absolute;
+    top: 90px;
+    right: -20px;
+}
+
+.section_1_03 {
+    position: absolute;
+    top: 110px;
+    right: -150px;
+}
+
+.section_1_04 {
+    position: absolute;
+    top: 210px;
+    right: 30px;
+}
+
+.section_1_05 {
+    position: absolute;
+    top: 240px;
+    right: -200px;
+}
+
+.section_1_06 {
+    position: absolute;
+    top: 150px;
+    right: 60px;
+}
+
+.section_1_07 {
+    position: absolute;
+    top: 130px;
+    right: -100px;
+}
+
+.section_1_08 {
+    position: absolute;
+    top: 200px;
+    right: -150px;
+}
+
+.section_1_09 {
+    position: absolute;
+    top: 260px;
+    right: -50px;
+}
+
+.section_2_06 {
+    width: 100%;
+    height: auto;
+    display: block;
+    position: relative;
+}
+
+.section_3_01 {
+    position: absolute;
+    top: 250px;
+    left: calc(50% - 150px);
+}
+
+.section_3_02 {
+    position: absolute;
+    top: 200px;
+    left: calc(50% - 150px);
+}
+
+.section_3_03 {
+    position: absolute;
+    top: 150px;
+    left: calc(50% - 150px);
+}
+
+.section_3_04 {
+    position: absolute;
+    top: 100px;
+    left: calc(50% - 150px);
+}
+
+.section_3_05 {
+    position: absolute;
+    top: 50px;
+    left: calc(50% - 150px);
+}
+
+.section_3_06 {
+    position: absolute;
+    top: 0;
+    left: calc(50% - 150px);
+}
+
+.section_3_07 {
+    position: absolute;
+    top: -50px;
+    left: calc(50% - 150px);
+}
+
+.section_4_01 {
+    position: absolute;
+    top: 250px;
+    left: calc(50% - 150px);
+}

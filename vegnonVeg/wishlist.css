@@ -1,0 +1,129 @@
+.wishlist-container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.wishlist-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.wishlist-header h2 {
+  margin: 0;
+}
+
+.btn-add-product {
+  background-color: #337ab7;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.wishlist-items {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.wishlist-item {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.wishlist-item img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-right: 20px;
+}
+
+.wishlist-item-info {
+  flex: 1;
+}
+
+.wishlist-item-info h3 {
+  margin: 0;
+}
+
+.wishlist-item-info p {
+  margin-bottom: 10px;
+}
+
+.btn-remove {
+  background-color: #ff69b4;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.wishlist-footer {
+  padding: 10px;
+  border-top: 1px solid #ccc;
+  text-align: right;
+}
+
+.total-items, .total-price {
+  font-weight: bold;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  background-color: #fff;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  width: 400px;
+  margin: 40px auto;
+}
+
+.modal-content h2 {
+  margin: 0;
+}
+
+.modal-content form {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-content label {
+  margin-bottom: 10px;
+}
+
+.modal-content input,.modal-content textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  width: 100%;
+}
+
+.modal-content button[type="submit"] {
+  background-color: #337ab7;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}

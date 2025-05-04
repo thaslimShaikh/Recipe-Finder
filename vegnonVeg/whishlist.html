@@ -1,0 +1,61 @@
+<html>
+<head>
+</head>
+<body>
+
+<!-- Wishlist Container -->
+<div class="wishlist-container">
+  <!-- Wishlist Header -->
+  <div class="wishlist-header">
+    <h2>My Wishlist</h2>
+    <button class="btn-add-product">Add Product</button>
+  </div>
+  <!-- Wishlist Items -->
+  <ul class="wishlist-items">
+    <!-- Wishlist Item 1 -->
+    <li class="wishlist-item">
+      <img src="https://via.placeholder.com/100" alt="Product Image">
+      <div class="wishlist-item-info">
+        <h3>Product Name</h3>
+        <p>Product Description</p>
+        <p>Price: ₹1,999</p>
+        <button class="btn-remove">Remove</button>
+      </div>
+    </li>
+    <!-- Wishlist Item 2 -->
+    <li class="wishlist-item">
+      <img src="https://via.placeholder.com/100" alt="Product Image">
+      <div class="wishlist-item-info">
+        <h3>Product Name</h3>
+        <p>Product Description</p>
+        <p>Price: ₹2,499</p>
+        <button class="btn-remove">Remove</button>
+      </div>
+    </li>
+    <!-- Add more wishlist items here -->
+  </ul>
+  <!-- Wishlist Footer -->
+  <div class="wishlist-footer">
+    <p>Total Items: <span class="total-items">2</span></p>
+    <p>Total Price: <span class="total-price">₹4,498</span></p>
+  </div>
+</div>
+
+<!-- Add Product Modal -->
+<div class="modal" id="add-product-modal">
+  <div class="modal-content">
+    <h2>Add Product</h2>
+    <form>
+      <label for="product-name">Product Name:</label>
+      <input type="text" id="product-name" name="product-name">
+      <label for="product-description">Product Description:</label>
+      <textarea id="product-description" name="product-description"></textarea>
+      <label for="product-price">Product Price:</label>
+      <input type="number" id="product-price" name="product-price">
+      <button class="btn-add">Add Product</button>
+    </form>
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,102 @@
+
+#reviewSection {
+  width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#reviewForm {
+  margin-top: 20px;
+}
+
+#reviewForm label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+#reviewForm input[type="text"],
+#reviewForm textarea {
+  width: 100%;
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+#reviewForm textarea {
+  height: 100px;
+  resize: vertical;
+}
+
+  .rating {
+     
+      display: flex;
+      flex-direction: row-reverse; 
+      justify-content: left;
+    }
+
+    .rating input {
+      display: none;
+    }
+
+    .rating label {
+      cursor: pointer;
+      color: #ddd;
+      font-size: 30px;
+    }
+
+    .rating:not(:checked) > label {
+      transition: 0.3s ease all;
+    }
+
+    .rating > input:checked ~ label {
+      color: orange;
+    }
+      justify-content: left;
+    }
+
+    .rating input {
+      display: none;
+    }
+
+    .rating label {
+      cursor: pointer;
+      color: #ddd;
+      font-size: 30px;
+    }
+
+    .rating:not(:checked) > label {
+      transition: 0.3s ease all;
+    }
+
+    .rating > input:checked ~ label {
+      color: orange;
+    }
+
+
+
+.review {
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+.review h3 {
+  margin-top: 0;
+}
+
+.review p {
+  margin-bottom: 8px;
+}
+
+#averageRating {
+  margin-top: 20px;
+  font-size: 18px;
+}

@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Recipe Generator</title>
+  <link rel="stylesheet" href="index1.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css">
+  <link rel="stylesheet" href="scroll.css">
+  <link rel="stylesheet" href="veg_nonveg.css">
+  <style>
+    /* Include your existing styles here */
+
+    body {
+      background-color: #ffffff;
+      color: #000000;
+      background-size: cover;
+      background-position: center center;
+      margin: 0;
+      padding: 0;
+    }
+
+header{
+   margin: 0;
+      padding: 0;
+}
+
+
+   .top-features,.bottom-features {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      margin: 50px 0;
+      background-color: inherit;
+      color: inherit;
+    }
+
+   .top-features a,.bottom-features a {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 200px;
+      height: 200px;
+    
+      text-decoration: none;
+      color: #fff;
+      transition: transform 0.3s ease-in-out;
+    }
+
+   .top-features a:hover,.bottom-features a:hover {
+      transform: scale(1.1);
+    }
+
+   .top-features img,.bottom-features img {
+      width: 100px;
+      height: 100px;
+      margin-bottom: 10px;
+      transition: filter 0.3s ease-in-out;
+    }
+
+   .top-features img:hover,.bottom-features img:hover {
+      filter: brightness(50%);
+    }
+
+   .top-features h2,.bottom-features h2 {
+      font-size: 24px;
+      margin-top: 0;
+    }
+
+    @media (max-width: 600px) {
+     .top-features a,.bottom-features a {
+        width: 100%;
+      }
+    }
+
+   .search-icon {
+      font-size: 18px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 10px;
+      cursor: pointer;
+    }
+
+    .theme-btn {
+      font-size: 18px;
+      cursor: pointer;
+margin-top:8px;
+    }
+
+    .changeTheme {
+      background: #1D1E22;
+        color: white; 
+margin-top:9px;
+    }
+
+    .search-container {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+border:transparent;
+    
+    }
+
+   .changeTheme.quote-box {
+      background-color: #333;
+    }
+
+.search-theme-container {
+  display: flex;
+  justify-content: flex-end;
+margin-top:5px;
+  margin-left: 400px;
+}
+
+.search-icon {
+  font-size: 18px;
+  margin-right: 10px;
+  cursor: pointer;
+border:transparent;
+border-width:0;
+
+
+}
+nav {
+   background-color:black ; /* Geen background color */
+  color: white; 
+ display: flex;
+top:0;
+left:0;
+width:2000px;
+height:70px;
+}
+
+.navbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 600px;
+color:white;
+
+}
+
+.navbar a {
+  margin-right: 20px;
+
+
+}
+
+nav a {
+  font-size: 16px; /* Link text size */
+  text-decoration: none; /* Remove underline */
+  color: inherit; /* Inherit color from parent */
+}
+
+nav a:hover {
+  background-color: grey; /* Green hover color */
+  color: white; /* White hover text color */
+}
+
+   .logo-container {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      display: flex;
+      align-items: center;
+      background-color: inherit;
+      color: inherit;
+    }
+
+   .logo-container img {
+      height: 50px;
+      margin-right: 10px;
+    }
+
+   .logo-container h1 {
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 24px;
+      color: #00698f;
+      margin: 0;
+    }
+
+   .dialogue-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 50px;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+   .dialogue-box img {
+      width: 300px;
+      height: 200px;
+      margin-bottom: 20px;
+      border-radius: 10px;
+    }
+
+   .quote-box {
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+   .quote-box p {
+      font-size: 18px;
+      font-style: italic;
+      margin: 0;
+    }
+
+   .dark-theme {
+      background-color: #333;
+     color: #fff;
+    }
+
+    .dark-theme * {
+      background-color: #333;
+      color: #fff;
+    }
+
+    .dark-theme a {
+      color: #fff;
+    }
+
+    .dark-theme.logo-container {
+      background-color: #333;
+      color: #fff;
+    }
+
+    .dark-theme.navbar {
+      background-color: #333;
+      color: #fff;
+    }
+
+    .dark-theme.dialogue-box {
+      background-color: #333;
+      color: #fff;
+    }
+
+    .dark-theme.input-section {
+      background-color: #333;
+      color: #fff;
+    }
+
+    .dark-theme.input-section h2 {
+      color: #fff;
+    }
+
+    .dark-theme.input-section input[type="text"] {
+      background-color: #444;
+      color: #fff;
+      border: none;
+    }
+
+    .dark-theme.input-section button {
+      background-color: #444;
+      color: #fff;
+      border: none;
+    }
+
+    .dark-theme.output-section {
+      background-color: #333;
+      color: #fff;
+    }
+
+    .dark-theme.output-section h2 {
+      color: #fff;
+    }
+
+    .dark-theme.output-section p {
+      color: #fff;
+    }
+.icon-container {
+  float: left;
+  width: 50px; /* Adjust the width to fit your icons */
+  height: 100vh; /* Make the container full height */
+  background-color:black; /* Add a background color */
+  padding: 10px; /* some padding */
+  padding-top: 70px;
+  display: flex; /* Make the icons display horizontally */
+  flex-direction: column; /* Stack the icons vertically */
+  align-items: center; /* Center the icons horizontally */
+  gap: 20px; /* Add a gap between icons */
+position:fixed;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* make the image fit the container */
+  border-radius: 50%; /* add a rounded corner to the image */
+}
+
+.icon-bar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 50px;
+  height: 100vh;
+  background-color: #f1f1f1;
+}
+
+.icon {
+  font-size: 20px;
+  color: #000;
+  padding: 10px;
+  text-align: center;
+  display: block; /* Makes icons stack vertically */
+
+}
+
+
+
+.icon-container i {
+  font-size: 24px; /* adjust the icon size */
+  margin: 0; /* remove margin between icons */
+  color: #333; /* adjust the icon color */
+  cursor: pointer; /* add a pointer cursor on hover */
+  animation: initial-icon-appear 1s ease-in-out forwards; /* add initial animation */
+}
+
+
+.icon-container i:hover {
+  transform: scale(1.2); /* scale up the icon on hover */
+  color: #007bff; /* change the icon color on hover */
+  animation: icon-hover 0.5s ease-in-out forwards; /* add hover animation */
+}
+
+.icon-container i:active {
+  transform: scale(0.9); /* scale down the icon on active */
+  color: #333; /* reset the icon color on active */
+}
+
+/* Animations */
+@keyframes initial-icon-appear {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes icon-hover {
+  from { transform: scale(1); }
+  to { transform: scale(1.1); }
+}
+
+.header {
+        background-color: white;
+        padding: 20px;
+        text-align: right;
+        font-size: 24px;
+        font-weight: bold;
+    }
+    .footer {
+        background-color: #d2a65b;
+        padding: 20px;
+        text-align: center;
+        color: white;
+width:160%;
+    }
+
+    .footer-section {
+        display: flex;
+        justify-content: space-around;
+        padding: 20px 0;
+    }
+    .footer-section div {
+        flex: 1;
+    }
+    .footer-section div h3 {
+        margin-bottom: 10px;
+    }
+    .footer-section div a {
+        color: black;
+        display: block;
+        margin: 5px 0;
+        text-decoration: none;
+    }
+    .footer-section div a:hover {
+        text-decoration: underline;
+    }
+    .footer-icons {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    }
+    .footer-icons img {
+        width: 32px;
+        height: 32px;
+        margin: 0 10px;
+    }
+    .footer-bottom {
+        margin-top: 20px;
+        font-size: 12px;
+    }
+
+.reviews {
+  background-color: #f7f7f7;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+
+margin-left:100px;
+
+}
+
+.review-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.review {
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  flex: 1;
+  background-color: #fff;
+  transform: skew(-5deg);
+color:grey;
+}
+
+.review:hover {
+  transform: skew(0deg);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+.reviewer-image {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin: 10px;
+  border: 2px solid #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.rating {
+  font-size: 18px;
+  font-weight: bold;
+  color: #666;
+  margin-top: 10px;
+}
+
+.review::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  transform: skew(5deg);
+  z-index: -1;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+    .modal {
+      display: none; /* Hidden by default */
+      position: fixed; 
+      z-index: 1; 
+      left: 0;
+      top: 0;
+      width: 100%; 
+      height: 100%; 
+      overflow: auto; 
+      background-color: rgb(0,0,0); 
+      background-color: rgba(0,0,0,0.4); 
+      backdrop-filter: blur(5px); /* Blur the background */
+      border: 1px solid #888;
+      width: 80%; 
+      max-width: 600px;
+      border-radius: 10px;
+      animation: popUp 0.4s;
+    }
+
+    @keyframes popUp {
+      from {transform: scale(0.5); opacity: 0;}
+      to {transform: scale(1); opacity: 1;}
+    }
+
+    /* Close button */
+    .close-btn {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .close-btn:hover,
+    .close-btn:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    /* Blur effect on body when modal is open */
+    body.modal-open {
+      overflow: hidden; /* Prevent scrolling */
+    }
+
+    .blurred-background {
+      filter: blur(5px);
+    }    }
+
+    .modal-content {
+      background-color: #fefefe;
+      margin: 15% auto; 
+      padding: 20px;
+
+      display: flex;
+      align-items: center;
+      margin-left:auto;
+    }
+
+  </style>
+</head>
+<body>
+
+
+ <div class="icon-container"> 
+        <a href="mealPlanner.html"><i ><img src="mpp.png" class="image"></i></a>
+        <a href="rating1.html"><i><img src="rating.png" class="image"></i></a>
+        <a href="filters.html"><i><img src="bd.png" class="image"></i></a>
+  
+
+      
+    </div>
+<header>
+  <nav>
+    <div class="logo-container">
+      <img src="l.png" alt="Logo" height="50px" widhth="50px">
+      <h1>Recipe Radar</h1>
+    </div>
+<div class="navbar">
+<a href="cont.html">CONTACT</a>
+<a href="login5.html">LOGIN</a>
+</div>
+
+    <div class="search-theme-container">
+      <i id="search-icon" class="fas fa-search search-icon"></i>
+      <div id="theme-btn" class="far fa-moon theme-btn"></div>
+    </div>
+  </nav>
+</header>
+
+  <!-- Dialogue Box -->
+  <div class="dialogue-box"  style=" margin-left:450px;margin-right:-90px">
+    <img src="C:\Users\786sh\OneDrive\Desktop\HTML\Case_Study\fatherDaughter.jpg" alt="Father and Daughter Cooking">
+    <div class="quote-box">
+      <p>“Cooking is at once child’s play and adult joy. And cooking done with care is an act of love.” - Craig Claiborne</p>
+    </div>
+  </div>
+
+ 
+  <a href="#" class="add-to-cart" data-title="Chicken Burger" onclick="addToCart(event)"></a>
+   </header>
+  <main >
+    <section class="input-section" style=" margin-left:450px;margin-right:-90px">
+      <h2>Tell us what ingredients you need to use up</h2>
+      <p>Enter a minimum of 3 ingredients to find some recipes.</p>
+      <div class="search-bar">
+        <input type="text" id="ingredient-input" placeholder="Enter Ingredients...">
+      </div>
+      <div id="recommended-ingredients">
+<button class="recommended-ingredient" data-ingredient="Garlic">Garlic&nbsp;&nbsp; <span class="plus-sign">+</span></button>
+
+<button class="recommended-ingredient" data-ingredient="Onion">Onion&nbsp;&nbsp; <span class="plus-sign">+</span></button>
+
+<button class="recommended-ingredient" data-ingredient="Potato">Potato&nbsp;&nbsp; <span class="plus-sign">+</span></button>
+
+
+
+      </div>
+      <div id="added-ingredients"  style="margin-left:450px;margin-right:-250px"></div>
+      <button id="generate-recipe" style="background-color: purple; color: grey;">Generate Recipe</button>
+    </section>
+    <section class="output-section">
+      <div id="recipe-output"></div>
+    </section>
+  </main>
+
+<div class="recipe-container"  style=" margin-left:300px; margin-right:-400px">
+  <button class="btn" onclick="location.href='PalakPaneer.html'">
+    <div style="background-image: url('palakPaneer.jpg'); background-size: cover;">
+      <h2>Palak Paneer</h2>
+    </div>
+  </button>
+
+  <button class="btn" onclick="location.href='cholebature.html'">
+    <div style="background-image: url('cholebature.jpg'); background-size: cover;">
+
+      <h2>chole bature</h2>
+    </div>
+  </button>
+
+  <button class="btn" onclick="location.href='omelette.html'">
+    <div style="background-image: url('omelette.jpg'); background-size: cover;">
+      <h2>omelette</h2>
+    </div>
+  </button>
+
+  <button class="btn" onclick="location.href='dalmakhani.html'">
+    <div style="background-image: url('dalmakhani.jpg'); background-size: cover;">
+      <h2>Dal makhni</h2>
+    </div>
+  </button>
+
+  <button class="btn" onclick="location.href='Butterchicken.html'">
+    <div style="background-image: url('butterchicken.jpg'); background-size: cover;">
+      <h2>Butter Chicken</h2>
+    </div>
+  </button>
+
+  <button class="btn" onclick="location.href='pavbhaji.html'">
+    <div style="background-image: url('pavbhaji.jpg'); background-size: cover;">
+      <h2>Pav bhaji</h2>
+    </div>
+  </button>
+
+  <button class="btn" onclick="location.href='CheesyFrankieRecipe.html'">
+    <div style="background-image: url('cheesefrankie.jpg'); background-size: cover;">
+      <h2>Cheesy Frankie</h2>
+    </div>
+  </button>
+
+  <button class="btn" onclick="location.href='Chickenbiryani.html'">
+    <div style="background-image: url('chicken-biryani.jpg'); background-size: cover;">
+      <h2>Chicken Biryani</h2>
+    </div>
+  </button>
+
+  <button class="btn" onclick="location.href='LoadedNachos.html'">
+    <div style="background-image: url('loadednachos.jpg'); background-size: cover;">
+      <h2>Loaded nachos</h2>
+    </div>
+  </button>
+
+  <button class="btn" onclick="location.href='jalebi.html'">
+    <div style="background-image: url('jalebi.jpg'); background-size: cover;">
+      <h2>jalebi</h2>
+    </div>
+  </button>
+
+  <button class="btn" onclick="location.href='chickenroll.html'">
+    <div style="background-image: url('chickenroll.jpg'); background-size: cover;">
+      <h2>Chicken roll</h2>
+    </div>
+  </button>
+
+  <button class="btn" onclick="location.href='AlooTikkiChaat.html'">
+    <div style="background-image: url('alootikki.jpg'); background-size: cover;">
+      <h2>Aloo Tikki Chat</h2>
+    </div>
+  </button>
+
+  <button class="btn" onclick="location.href='panipuri.html'">
+    <div style="background-image: url('panipuri.jpg'); background-size: cover;">
+      <h2>pani puri</h2>
+    </div>
+  </button>
+
+  <button class="btn" onclick="location.href='chickenburger.html'">
+    <div style="background-image: url('chickenburger.jpg'); background-size: cover;">
+      <h2>Chicken burger</h2>
+    </div>
+  </button>
+
+  <button class="btn" onclick="location.href='InstantNoodleSoup.html'">
+    <div style="background-image: url('INS.jpg'); background-size: cover;">
+      <h2>Instant noodle soup</h2>
+    </div>
+  </button>
+
+  <button class="btn" onclick="location.href='SpicyRamenScramble.html'">
+    <div style="background-image: url('SRS.jpg'); background-size: cover;">
+      <h2>spicy ramen scramble</h2>
+    </div>
+  </button>
+
+  <button class="btn" onclick="location.href='pizza.html'">
+    <div style="background-image: url('pizza.jpg'); background-size: cover;">
+      <h2>pizza</h2>
+    </div>
+  </button>
+
+ <button class="btn" onclick="location.href='chickentikkamasala.html'">
+    <div style="background-image: url('chickentikka.jpg'); background-size: cover;">
+      <h2>Chicken Tikka Masala</h2>
+    </div>
+  </button>
+
+  <button class="btn" onclick="location.href='samosa.html'">
+    <div style="background-image: url('samosa.jpg'); background-size: cover;">
+      <h2>Samosa</h2>
+    </div>
+  </button>
+
+  <button class="btn" onclick="location.href='rasgulla.html'">
+    <div style="background-image: url('ras.jpg'); background-size: cover;">
+      <h2>Rasgulla</h2>
+    </div>
+  </button>
+</div>
+
+<section class="reviews">
+  <h2>What Our Customers Say</h2>
+  <div class="review-container">
+    <div class="review">
+      <img src="avvamma.jpg" alt="John Doe" class="reviewer-image">
+      <h3>AMMA</h3>
+      <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctor, vestibulum magna sed, convallis ex."</p>
+      <span class="rating">4.5/5</span>
+    </div>
+    <div class="review">
+      <img src="downey.jpg" alt="Jane Smith" class="reviewer-image">
+      <h3>Robert Downey Jr.</h3>
+      <p>Overall, this place was a blissfull experience! "</p>
+      <span class="rating">4.8/5</span>
+    </div>
+    <div class="review">
+      <img src="freak.jpg" alt="Bob Johnson" class="reviewer-image">
+      <h3>Bob Johnson</h3>
+      <p>"Wow! YumYumMe! generated a vegan gluten-free pasta dish that the whole family loved!"</p>
+      <span class="rating">4.2/5</span>
+    </div>
+  </div>
+</section>
+
+<div class="footer">
+    <div class="footer-section">
+        <div>
+            <h3>Explore</h3>
+            <a href="#">Popular Recipes</a>
+            <a href="#">Newest Recipes</a>
+            <a href="#">Quick & Easy</a>
+            <a href="#">Healthy Recipes</a>
+        </div>
+        <div>
+            <h3>Resources</h3>
+            <a href="#">Recipe Blog</a>
+            <a href="#">Cooking Tips</a>
+            <a href="#">Ingredient Guide</a>
+            <a href="#">Meal Planning</a>
+        </div>
+        <div>
+            <h3>Community</h3>
+            <a href="#">Forums</a>
+            <a href="#">Cooking Classes</a>
+            <a href="#">Events</a>
+        </div>
+    </div>
+
+    <div class="footer-icons">
+      
+        <img src="google.png" alt="Google Play">
+    </div>
+
+    <div class="footer-icons">
+        <img src="facebook.png" alt="Facebook">
+        <img src="instagram.png" alt="Instagram">
+        <img src="linkedin.png" alt="LinkedIn">
+        <img src="youtube.png" alt="YouTube">
+        <img src="pintrest.png" alt="Pinterest">
+    </div>
+
+    <div class="footer-bottom">
+        <p>©2001-2024 All Rights Reserved. Recipe Rador® is a registered trademark. Apple and the Apple logo are trademarks of Apple Inc. Mac App Store is a service mark of Apple Inc. Google Play and the Google Play logo are trademarks of Google Inc.</p>
+    </div>
+</div>
+
+
+<script src="index2.js"></script>
+
+<script>
+  
+  const body = document.body;
+
+
+        const icons = document.querySelectorAll('.icon-container i');
+
+        icons.forEach(icon => {
+            icon.addEventListener('mouseover', () => {
+                icon.style.color = '#007bff'; /* change the icon color on hover */
+            });
+
+            icon.addEventListener('mouseout', () => {
+                icon.style.color = '#333'; /* reset the icon color on mouseout */
+            });
+        });
+
+      const themeBtn = document.getElementById("theme-btn");
+    themeBtn.onclick = () => {
+      themeBtn.classList.toggle("fa-sun");
+      themeBtn.classList.toggle("fa-moon");
+      document.body.classList.toggle("changeTheme");
+    }
+
+    const searchIcon = document.getElementById("search-icon");
+    searchIcon.onclick = () => {
+      const searchQuery = prompt("Enter your search query:");
+      if (searchQuery) {
+        const encodedQuery = encodeURIComponent(searchQuery);
+        window.location.href = `https://www.allrecipes.com/search?q=${encodedQuery}`;
+      }
+    }
+
+</script>
+</body>
+</html>

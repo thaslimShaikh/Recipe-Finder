@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet"  href="style.css" >
+<link rel="stylesheet" type="text/css" href="BM.css">
+<link rel="stylesheet" type="text/css" href="ratin.css">
+
+    <title>Samosa Recipe</title>
+</head>
+<body>
+<main>
+    <h1 id="page-title">Samosa Recipe</h1>
+    <img src="samosa.jpg" alt="samosa" height="400">
+    <h2>Ingredients:</h2>
+    <ul>
+        <li>2 cups all-purpose flour</li>
+        <li>3-4 medium-sized potatoes, boiled and mashed</li>
+        <li>1 cup green peas, boiled</li>
+        <li>1 tablespoon oil</li>
+        <li>1 teaspoon cumin seeds</li>
+        <li>1 tablespoon ginger-garlic paste</li>
+        <li>2-3 green chilies, finely chopped</li>
+        <li>1 teaspoon coriander powder</li>
+        <li>1 teaspoon garam masala</li>
+        <li>1/2 teaspoon turmeric powder</li>
+        <li>1/2 teaspoon red chili powder</li>
+        <li>Salt to taste</li>
+        <li>Oil for deep frying</li>
+    </ul>
+
+    <h2>Instructions:</h2>
+    <ol>
+        <li><strong>Prepare the Dough:</strong>
+            <ul>
+                <li>In a mixing bowl, combine the all-purpose flour, 1 tablespoon of oil, and a pinch of salt.</li>
+                <li>Add water gradually and knead into a stiff yet pliable dough.</li>
+                <li>Cover the dough with a damp cloth and let it rest for 30 minutes.</li>
+            </ul>
+        </li>
+        
+        <li><strong>Make the Filling:</strong>
+            <ul>
+                <li>Heat 1 tablespoon of oil in a pan over medium heat.</li>
+                <li>Add the cumin seeds and let them splutter.</li>
+                <li>Next, add the ginger-garlic paste and sauté until aromatic.</li>
+                <li>Add the chopped green chilies and boiled peas, and cook for 2-3 minutes.</li>
+                <li>Now, add the mashed potatoes, coriander powder, garam masala, turmeric powder, red chili powder, and salt.</li>
+                <li>Mix well and cook for another 3-4 minutes until the filling is well combined and aromatic.</li>
+                <li>Remove from heat and let the filling cool completely.</li>
+            </ul>
+        </li>
+        
+        <li><strong>Shape and Fill the Samosas:</strong>
+            <ul>
+                <li>Divide the rested dough into small equal-sized balls.</li>
+                <li>Take a dough ball and roll it out into a small circle.</li>
+                <li>Cut the circle into two halves.</li>
+                <li>Take one half and fold it into a cone shape, sealing the edges with a little water.</li>
+                <li>Fill the cone with a spoonful of the prepared filling.</li>
+                <li>Seal the open edge of the cone using a little water, ensuring the samosa is tightly sealed.</li>
+                <li>Repeat the process with the remaining dough and filling.</li>
+            </ul>
+        </li>
+        
+        <li><strong>Fry the Samosas:</strong>
+            <ul>
+                <li>Heat oil for deep frying in a pan over medium heat.</li>
+                <li>Gently slide the prepared samosas into the hot oil and fry them in batches until golden brown and crisp.</li>
+                <li>Remove the fried samosas using a slotted spoon and drain excess oil on paper towels.</li>
+            </ul>
+        </li>
+    </ol>
+
+    <h2>Serving Tips:</h2>
+    <p>Serve hot with mint chutney, tamarind chutney, or ketchup.</p>
+   <br><br>
+<h1 style="  font-family: 'Comic Sans MS', cursive;" >Ratings and Reviews</h1>
+  <div id="reviewSection">
+<form id="reviewForm">
+
+ <label for="name">Name:</label>
+  <input type="text" id="nameInput" name="name" required>
+<br><br>
+  <div class="rating">
+    <input type="radio" id="star5" name="rating" value="5">
+    <label for="star5" title="5 stars">★</label>
+    <input type="radio" id="star4" name="rating" value="4">
+    <label for="star4" title="4 stars">★</label>
+    <input type="radio" id="star3" name="rating" value="3">
+    <label for="star3" title="3 stars">★</label>
+    <input type="radio" id="star2" name="rating" value="2">
+    <label for="star2" title="2 stars">★</label>
+    <input type="radio" id="star1" name="rating" value="1">
+    <label for="star1" title="1 star">★</label>
+  </div>
+ 
+    <input type="hidden" name="rating" value="0" id="ratingInput">
+   
+    <label for="review">Review:</label>
+    <textarea id="reviewInput" name="review" required></textarea>
+    <button type="submit">Submit</button>
+  </form>
+  <div id="reviews">
+    <!-- Reviews will be displayed here -->
+  </div>
+  <div id="averageRating">Average rating: 0/5</div>
+</div>
+<button class="bookmark-btn" id="bookmark-btn"><img src="BM.png" alt="Bookmark"></button>
+
+<script src="ratin.js" ></script>
+    <script>
+        document.getElementById('bookmark-btn').addEventListener('click', function() {
+            const title = document.getElementById('page-title').innerText;
+            let bookmarks = JSON.parse(localStorage.getItem('bookmarks')) || [];
+            bookmarks.push(title);
+            localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
+            alert('Page bookmarked!');
+
+            // Send a message to update bookmarks on the other page
+            if (window.opener) {
+                window.opener.postMessage('updateBookmarks', '*');
+            }
+        });
+
+
+    </script>
+
+</main>
+
+</body>
+</html>

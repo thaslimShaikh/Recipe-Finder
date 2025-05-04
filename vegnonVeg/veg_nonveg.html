@@ -1,0 +1,150 @@
+<html>
+<head>
+
+<link rel="stylesheet" href="veg_nonveg.css">
+
+</head>
+
+<body>
+<center><button class="veg-btn" id="vegButton" onclick="filterVeg()"> Go Green</button>
+<button class="nonveg-btn" id="nonvegButton" onclick="filterNonVeg()"> Gettin' Meaty</button></center>
+
+
+<button class="btn" onclick="location.href='PalakPaneer.html'"><div class="recipe veg" style="background-image: url('palakPaneer.jpg'); background-size: cover;">
+  <h2>Palak Paneer</h2>
+</div>
+</button>
+
+<button class="btn" onclick="location.href='cholebature.html'">
+<div class="recipe veg" style="background-image: url('cholebature.jpg'); background-size: cover;">
+  <h2>chole bature</h2>
+  </div></button>
+
+<button class="btn"  onclick="location.href='omelette.html'">
+<div class="recipe non-veg" style="background-image: url('omelette.jpg'); background-size: cover;">
+  <h2>omelette</h2>
+  </div>
+</button>
+
+<button class="btn"  onclick="location.href='dalmakhani.html'">
+<div class="recipe veg" style="background-image: url('dalmakhani.jpg'); background-size: cover;">
+  <h2>Dal makhni</h2>
+  </div>
+</button>
+
+<button class="btn"  onclick="location.href='Butterchicken.html'">
+<div class="recipe non-veg" style="background-image: url('butterchicken.jpg'); background-size: cover;">
+  <h2>Butter Chicken</h2>
+  </div>
+</button>
+
+<button class="btn"  onclick="location.href='pavbhaji.html'">
+<div class="recipe veg" style="background-image: url('pavbhaji.jpg'); background-size: cover;">
+  <h2>Pav bhaji</h2>
+  </div>
+</button>
+
+<button class="btn"  onclick="location.href='CheesyFrankieRecipe.html'">
+<div class="recipe veg" style="background-image: url('cheesefrankie.jpg'); background-size: cover;">
+  <h2>Cheesy Frankie</h2>
+  </div>
+</button>
+
+
+<button class="btn"  onclick="location.href='Chickenbiryani.html'">
+<div class="recipe non-veg" style="background-image: url('chicken-biryani.jpg'); background-size: cover;">
+  <h2>Chicken Biryani</h2>
+  </div>
+</button>
+
+<button class="btn"  onclick="location.href='LoadedNachos.html'">
+<div class="recipe veg" style="background-image: url('loadednachos.jpg'); background-size: cover;">
+  <h2>Loaded nachos</h2>
+  </div>
+</button>
+
+<button class="btn"  onclick="location.href='jalebi.html'">
+<div class="recipe veg" style="background-image: url('jalebi.jpg'); background-size: cover;">
+  <h2>jalebi</h2>
+  </div>
+</button>
+
+<button class="btn"  onclick="location.href='chickenroll.html'">
+<div class="recipe non-veg" style="background-image: url('chickenroll.jpg'); background-size: cover;">
+  <h2>Chicken roll</h2>
+  </div>
+</button>
+
+<button class="btn"  onclick="location.href='AlooTikkiChaat.html'">
+<div class="recipe veg" style="background-image: url('alootikki.jpg'); background-size: cover;">
+  <h2>Aloo Tikki Chat</h2>
+  </div>
+</button>
+
+<button class="btn"  onclick="location.href='panipuri.html'">
+<div class="recipe veg" style="background-image: url('panipuri.jpg'); background-size: cover;">
+  <h2>pani puri</h2>
+  </div>
+</button>
+
+<button class="btn"  onclick="location.href='chickenburger.html'">
+<div class="recipe non-veg" style="background-image: url('chickenburger.jpg'); background-size: cover;">
+  <h2>Chicken burger</h2>
+  </div>
+</button>
+
+<button class="btn"  onclick="location.href='InstantNoodleSoup.html'">
+<div class="recipe veg" style="background-image: url('INS.jpg'); background-size: cover;">
+  <h2>Instant noodle soup</h2>
+  </div>
+</button>
+
+<button class="btn"  onclick="location.href='SpicyRamenScramble.html'">
+<div class="recipe veg" style="background-image: url('SRS.jpg'); background-size: cover;">
+  <h2>spicy ramen scramble</h2>
+  </div>
+</button>
+
+<button class="btn"  onclick="location.href='pizza.html'">
+<div class="recipe veg" style="background-image: url('pizza.jpg'); background-size: cover;">
+  <h2>pizza</h2>
+  </div>
+</button>
+
+<button class="btn"  onclick="location.href='chickentikkamasala.html'">
+<div class="recipe non-veg" style="background-image: url('chickentikka.jpg'); background-size: cover;">
+  <h2>Chicken Tikka Masala</h2>
+
+  </div>
+</button>
+
+<button class="btn"  onclick="location.href='samosa.html'">
+<div class="recipe veg" style="background-image: url('samosa.jpg'); background-size: cover;">
+  <h2>Samosa</h2>
+  </div>
+</button>
+
+<button class="btn"  onclick="location.href='rasgulla.html'">
+<div class="recipe veg" style="background-image: url('ras.jpg'); background-size: cover;">
+  <h2>Rasgulla</h2>
+  </div>
+</button>
+
+
+<script>
+function filterVeg() {
+  const allRecipes = document.querySelectorAll(".recipe");
+  for (const recipe of allRecipes) {
+    recipe.style.display = recipe.classList.contains("veg") ? "block" : "none";
+  }
+}
+
+function filterNonVeg() {
+  const allRecipes = document.querySelectorAll(".recipe");
+  for (const recipe of allRecipes) {
+    recipe.style.display = recipe.classList.contains("non-veg") ? "block" : "none";
+  }
+}
+</script>
+</body>
+</html>

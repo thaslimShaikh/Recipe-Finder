@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Recipe Generator</title>
+  <style>
+    body {
+      font-family: 'Open Sans', sans-serif;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #f7f7f7;
+    }
+
+    header {
+      padding: 10px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 30px;
+      font-weight: bold;
+      font-family: 'Lucida Handwriting', cursive; /* Added Lucida Handwriting font */
+    }
+
+    main {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .input-section {
+      background-color: #fff;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+    }
+
+    .search-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      width: 100%;
+      margin-bottom: 10px;
+    }
+
+    .search-bar input {
+      padding: 10px;
+      font-size: 18px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      flex-grow: 1;
+      margin-right: 10px;
+      font-family: 'Garamond', serif;
+    }
+
+    .search-bar button {
+      background-color: #ff69b4;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .search-bar button:hover {
+      background-color: #ff99cc;
+    }
+
+    #recommended-ingredients {
+      display: flex;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+    }
+
+    .recommended-ingredient {
+      background-color: #fff;
+      padding: 5px 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      margin-right: 10px;
+      margin-bottom: 10px;
+      cursor: pointer;
+      font-size: 16px;
+      font-family: 'Georgia', serif;
+      position: relative;
+    }
+
+    .recommended-ingredient span {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 18px;
+      font-weight: bold;
+      color: #666;
+    }
+
+    .recommended-ingredient:hover {
+      background-color: #f0f0f0;
+    }
+
+    #added-ingredients {
+      display: flex;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+    }
+
+    #added-ingredients span {
+      background-color: #fff;
+      padding: 5px 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      margin-right: 10px;
+      margin-bottom: 10px;
+      font-size: 16px;
+      font-family: 'Georgia', serif;
+    }
+
+    #added-ingredients span button {
+      background-color: #ff69b4;
+      color: #fff;
+      padding: 5px 10px;
+      border: none;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Recipe Generator</h1>
+  </header>
+  <main>
+    <section class="input-section">
+      <h2>Tell us what ingredients you need to use up</h2>
+      <p>Enter a minimum of 3 ingredients to find some recipes.</p>
+      <div class="search-bar">
+        <input type="text" id="ingredient-input" placeholder="Enter Ingredients...">
+      </div>
+      <div id="recommended-ingredients">
+        <button class="recommended-ingredient" data-ingredient="Garlic">Garlic&nbsp;&nbsp; <span class="plus-sign">+</span></button>
+        <button class="recommended-ingredient" data-ingredient="Onion">Onion&nbsp;&nbsp; <span class="plus-sign">+</span></button>
+        <button class="recommended-ingredient" data-ingredient="Potato">Potato&nbsp;&nbsp; <span class="plus-sign">+</span></button>
+      </div>
+      <div id="added-ingredients"></div>
+      <button id="generate-recipe" style="background-color:purple; color: grey;">Generate Recipe</button>
+    </section>
+    <section class="output-section">
+      <div id="recipe-output"></div>
+    </section>
+  </main>
+  <script>
+    const generateRecipeButton = document.getElementById('generate-recipe');
+    const ingredientInput = document.getElementById('ingredient-input');
+    const recommendedIngredients = document.querySelectorAll('.recommended-ingredient');
+    const addedIngredients = document.getElementById('added-ingredients');
+    const recipeOutput = document.getElementById('recipe-output');
+
+    let ingredients = [];
+
+    ingredientInput.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') {
+        const ingredient = ingredientInput.value.trim();
+        if (ingredient!== '') {
+          ingredients.push(ingredient);
+          renderAddedIngredients();
+          ingredientInput.value = '';
+        }
+      }
+    });
+
+    recommendedIngredients.forEach((recommendedIngredient) => {
+      recommendedIngredient.addEventListener('click', () => {
+        const ingredient = recommendedIngredient.dataset.ingredient;
+        ingredients.push(ingredient);
+        renderAddedIngredients();
+        updateRecommendedIngredients(recommendedIngredient);
+      });
+    });
+
+    function renderAddedIngredients() {
+      addedIngredients.innerHTML = '';
+      ingredients.forEach((ingredient) => {
+        const ingredientElement = document.createElement('span');
+        ingredientElement.innerHTML = `
+          ${ingredient}
+          <button data-ingredient="${ingredient}">x</button>
+        `;
+        addedIngredients.appendChild(ingredientElement);
+
+        const removeButton = ingredientElement.querySelector('button');
+        removeButton.addEventListener('click', () => {
+          const indexToRemove = ingredients.indexOf(removeButton.dataset.ingredient);
+          ingredients.splice(indexToRemove, 1);
+          renderAddedIngredients();
+        });
+      });
+    }
+
+    function updateRecommendedIngredients(selectedIngredient) {
+      const recommendedIngredientsArray = Array.from(recommendedIngredients);
+      const selectedIndex = recommendedIngredientsArray.indexOf(selectedIngredient);
+      recommendedIngredientsArray.splice(selectedIndex, 1);
+      const newRecommendedIngredient = getNewRecommendedIngredient(selectedIngredient.dataset.ingredient);
+      recommendedIngredientsArray.push(newRecommendedIngredient);
+      recommendedIngredients.innerHTML = '';
+      recommendedIngredientsArray.forEach((recommendedIngredient) => {
+        recommendedIngredients.appendChild(recommendedIngredient);
+      });
+    }
+
+    function getNewRecommendedIngredient(selectedIngredient) {
+      let newIngredient;
+      switch (selectedIngredient) {
+        case 'Garlic':
+          newIngredient = 'Ginger';
+          break;
+        case 'Onion':
+          newIngredient = 'Shallot';
+          break;
+        case 'Potato':
+          newIngredient = 'Carrot';
+          break;
+        default:
+          newIngredient = 'New Ingredient';
+      }
+      const newRecommendedIngredient = document.createElement('button');
+      newRecommendedIngredient.className = 'ecommended-ingredient';
+      newRecommendedIngredient.dataset.ingredient = newIngredient;
+      newRecommendedIngredient.innerHTML = ${newIngredient} <span>+<span>;
+      return newRecommendedIngredient;
+    }
+
+    generateRecipeButton.addEventListener('click', () => {
+      if (ingredients.length < 3) {
+        alert('Please enter at least three ingredients!');
+        return;
+      }
+
+      const recipe = `
+        <h2>Recipe for ${ingredients.join(', ')}</h2>
+        <h3>Instructions:</h3>
+        <p>Start by gathering all of your ingredients. In a large bowl, combine ${ingredients[0]} and ${ingredients[1]}. Mix until well combined. Gradually add ${ingredients.slice(2).join(', ')}, mixing continuously. Add ${ingredients[ingredients.length - 1]} (if using) and mix until the batter is smooth. Pour the batter into a greased 9x13 inch baking dish. Bake at 350 degrees for 25-30 minutes, or until a toothpick inserted into the center comes out clean. Let cool before serving.</p>
+      `;
+
+      recipeOutput.innerHTML = recipe;
+
+      // Add a fade-in effect to the recipe output
+      recipeOutput.style.opacity = 0;
+      setTimeout(() => {
+        recipeOutput.style.transition = 'opacity 0.5s';
+        recipeOutput.style.opacity = 1;
+      }, 100);
+    });
+  </script>
+</body>
+</html>

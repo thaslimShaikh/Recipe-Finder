@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meal Planner</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 15px;
+            font-family: 'Brush Script MT', cursive;
+            font-size: 48px;
+        }
+
+        table {
+            width: 80%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f0f0f0;
+            font-weight: bold;
+            font-family: 'Georgia', serif;
+        }
+
+        th:first-child,
+        td:first-child {
+            font-family: 'Papyrus', cursive;
+            width: 20%;
+        }
+
+        th:nth-child(2),
+        td:nth-child(2) {
+            font-family: 'Times New Roman', serif;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .recipe-input {
+            width: 100%;
+            padding: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+            outline: none;
+        }
+
+        .recipe-input:focus {
+            border-color: #6495ED;
+        }
+
+        button {
+            background-color: #455A64;
+            color: #FFFFFF;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            font-weight: bold;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+
+        button:hover {
+            background-color: #333F4E;
+        }
+
+        /* Prompt Box Styles */
+        #prompt-box {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            border: 1px solid #ddd;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            border-radius: 5px;
+            z-index: 1000;
+            text-align: center;
+        }
+
+        #prompt-box.hidden {
+            display: none;
+        }
+
+        #prompt-box .prompt-content {
+            margin: 0;
+        }
+
+        #prompt-box button {
+            margin-top: 15px;
+            background-color: #455A64;
+            color: #FFFFFF;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            font-weight: bold;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #prompt-box button:hover {
+            background-color: #333F4E;
+        }
+    </style>
+</head>
+<body>
+
+
+    <h1>7 Day Meal Planner</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Day</th>
+                <th>Breakfast</th>
+                <th>Snack</th>
+                <th>Lunch</th>
+                <th>Snack</th>
+                <th>Dinner</th>
+            </tr>
+        </thead>
+        <tbody id="meal-planner">
+            <tr>
+                <td>Monday, 2024-06-17</td>
+                <td><input type="text" class="recipe-input" data-day="2024-06-17-breakfast"/></td>
+                <td><input type="text" class="recipe-input" data-day="2024-06-17-snack1"/></td>
+                <td><input type="text" class="recipe-input" data-day="2024-06-17-lunch"/></td>
+                <td><input type="text" class="recipe-input" data-day="2024-06-17-snack2"/></td>
+                <td><input type="text" class="recipe-input" data-day="2024-06-17-dinner"/></td>
+            </tr>
+            <tr>
+                <td>Tuesday, 2024-06-18</td>
+                <td><input type="text" class="recipe-input" data-day="2024-06-18-breakfast"/></td>
+                <td><input type="text" class="recipe-input" data-day="2024-06-18-snack1"/></td>
+                <td><input type="text" class="recipe-input" data-day="2024-06-18-lunch"/></td>
+                <td><input type="text" class="recipe-input" data-day="2024-06-18-snack2"/></td>
+                <td><input type="text" class="recipe-input" data-day="2024-06-18-dinner"/></td>
+            </tr>
+            <tr>
+                <td>Wednesday, 2024-06-19</td>
+                <td><input type="text" class="recipe-input" data-day="2024-06-19-breakfast"/></td>
+                <td><input type="text" class="recipe-input" data-day="2024-06-19-snack1"/></td>
+                <td><input type="text" class="recipe-input" data-day="2024-06-19-lunch"/></td>
+                <td><input type="text" class="recipe-input" data-day="2024-06-19-snack2"/></td>
+                <td><input type="text" class="recipe-input" data-day="2024-06-19-dinner"/></td>
+            </tr>
+            <tr>
+                <td>Thursday, 2024-06-20</td>
+                <td><input type="text" class="recipe-input" data-day="2024-06-20-breakfast"/></td>
+                <td><input type="text" class="recipe-input" data-day="2024-06-20-snack1"/></td>
+                <td><input type="text" class="recipe-input" data-day="2024-06-20-lunch"/></td>
+                <td><input type="text" class="recipe-input" data-day="2024-06-20-snack2"/></td>
+                <td><input type="text" class="recipe-input" data-day="2024-06-20-dinner"/></td>
+            </tr>
+            <tr>
+                <td>Friday, 2024-06-21</td>
+                <td><input type="text" class="recipe-input" data-day="2024-06-21-breakfast"/></td>
+                <td><input type="text" class="recipe-input" data-day="2024-06-21-snack1"/></td>
+                <td><input type="text" class="recipe-input" data-day="2024-06-21-lunch"/></td>
+                <td><input type="text" class="recipe-input" data-day="2024-06-21-snack2"/></td>
+                <td><input type="text" class="recipe-input" data-day="2024-06-21-dinner"/></td>
+            </tr>
+            <tr>
+                <td>Saturday, 2024-06-22</td>
+                <td><input type="text" class="recipe-input" data-day="2024-06-22-breakfast"/></td>
+                <td><input type="text" class="recipe-input" data-day="2024-06-22-snack1"/></td>
+                <td><input type="text" class="recipe-input" data-day="2024-06-22-lunch"/></td>
+                <td><input type="text" class="recipe-input" data-day="2024-06-22-snack2"/></td>
+                <td><input type="text" class="recipe-input" data-day="2024-06-22-dinner"/></td>
+            </tr>
+            <tr>
+                <td>Sunday, 2024-06-23</td>
+                <td><input type="text" class="recipe-input" data-day="2024-06-23-breakfast"/></td>
+                <td><input type="text" class="recipe-input" data-day="2024-06-23-snack1"/></td>
+                <td><input type="text" class="recipe-input" data-day="2024-06-23-lunch"/></td>
+                <td><input type="text" class="recipe-input" data-day="2024-06-23-snack2"/></td>
+                <td><input type="text" class="recipe-input" data-day="2024-06-23-dinner"/></td>
+            </tr>
+        </tbody>
+    </table>
+    <button id="save-button">Save</button>
+
+    <!-- Prompt Box -->
+    <div id="prompt-box" class="hidden">
+        <div class="prompt-content">
+            <p>Recipes saved successfully!</p>
+            <button id="close-prompt">OK</button>
+        </div>
+    </div>
+
+    <script>
+        const mealPlanner = document.getElementById('meal-planner');
+        const recipeInputs = mealPlanner.querySelectorAll('.recipe-input');
+        const saveButton = document.getElementById('save-button');
+        const promptBox = document.getElementById('prompt-box');
+        const closePromptButton = document.getElementById('close-prompt');
+        let recipes = {};
+
+        // Load recipes from local storage
+        const storedRecipes = localStorage.getItem('recipes');
+        if (storedRecipes) {
+            recipes = JSON.parse(storedRecipes);
+            recipeInputs.forEach(input => {
+                const key = input.dataset.day;
+                if (recipes[key]) {
+                    input.value = recipes[key];
+                }
+            });
+        }
+
+        // Add event listener to each recipe input
+        recipeInputs.forEach(input => {
+            input.addEventListener('input', () => {
+                const key = input.dataset.day;
+                recipes[key] = input.value;
+            });
+        });
+
+        // Add event listener to save button
+        saveButton.addEventListener('click', () => {
+            // Save recipes to local storage
+            localStorage.setItem('recipes', JSON.stringify(recipes));
+            // Show prompt box
+            promptBox.classList.remove('hidden');
+        });
+
+        // Add event listener to close prompt button
+        closePromptButton.addEventListener('click', () => {
+            // Hide prompt box
+            promptBox.classList.add('hidden');
+        });
+    </script>
+</body>
+</html>

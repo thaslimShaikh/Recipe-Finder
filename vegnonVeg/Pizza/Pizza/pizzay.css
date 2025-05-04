@@ -1,0 +1,132 @@
+body {
+    font-family: sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f0f0f0;
+}
+
+.container {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    position: relative;
+}
+
+.pizza-crust {
+    width: 100%;
+    height: 100%;
+    background-color: #ffe4c4;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.pizza-sauce {
+    width: 90%;
+    height: 90%;
+    background-color: #ff6633;
+    border-radius: 50%;
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    z-index: 2;
+    transform-origin: 50% 100%;
+    animation: sauce-animation 2s ease-in-out;
+}
+
+.pizza-cheese {
+    width: 80%;
+    height: 80%;
+    background-color: #fff;
+    border-radius: 50%;
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    z-index: 3;
+    transform-origin: 50% 100%;
+    animation: cheese-animation 2s ease-in-out;
+}
+
+.pizza-toppings {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 4;
+}
+
+.topping {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    position: absolute;
+    z-index: 5;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.onion {
+    background-color: #c8953f;
+    top: 40%;
+    left: 35%;
+}
+
+.tomato {
+    background-color: #ff3300;
+    top: 55%;
+    left: 50%;
+}
+
+.pepper {
+    background-color: #008000;
+    top: 65%;
+    left: 25%;
+}
+
+.pineapple {
+    background-color: #ffcc00;
+    top: 30%;
+    left: 65%;
+}
+
+.olive {
+    background-color: #000;
+    top: 60%;
+    left: 65%;
+}
+
+@keyframes sauce-animation {
+    0% {
+        transform: scale(0) translateY(100%);
+    }
+    100% {
+        transform: scale(1) translateY(0);
+    }
+}
+
+@keyframes cheese-animation {
+    0% {
+        transform: scale(0) translateY(100%);
+    }
+    100% {
+        transform: scale(1) translateY(0);
+    }
+}
+
+@keyframes topping-animation {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.container::-webkit-scrollbar {
+    display: none;
+}

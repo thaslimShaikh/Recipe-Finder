@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet"  href="style.css" >
+<link rel="stylesheet" type="text/css" href="BM.css">
+<link rel="stylesheet" type="text/css" href="ratin.css">
+    <title>Rasgulla Recipe</title>
+</head>
+<body>
+<main>
+    <h1 id="page-title">Rasgulla Recipe</h1>
+    <img src="rasgulla.webp" alt="rasgulla" width="400" height="400">
+    <h2>Ingredients:</h2>
+    <ul>
+        <li>1 liter whole milk</li>
+        <li>2 tablespoons lemon juice</li>
+        <li>1 1/2 cups sugar</li>
+        <li>4 cups water</li>
+        <li>1/2 teaspoon cardamom powder</li>
+        <li>A few saffron strands (optional)</li>
+    </ul>
+
+    <h2>Instructions:</h2>
+    <ol>
+        <li><strong>Prepare the Chenna:</strong>
+            <ul>
+                <li>In a large pot, bring the milk to a boil over medium heat.</li>
+                <li>Once the milk comes to a boil, reduce the heat to low and add the lemon juice gradually, stirring continuously.</li>
+                <li>Continue stirring until the milk curdles and the whey separates from the curds.</li>
+                <li>Turn off the heat and let it sit for a few minutes.</li>
+                <li>Strain the curds through a cheesecloth-lined strainer, reserving the whey for later use.</li>
+                <li>Rinse the curds under cold water to remove any lemony taste.</li>
+                <li>Gather the cheesecloth and squeeze out excess water from the curds.</li>
+            </ul>
+        </li>
+        
+        <li><strong>Knead the Chenna:</strong>
+            <ul>
+                <li>Transfer the chenna to a clean work surface and knead it with your hands for about 10-15 minutes until it becomes smooth and soft.</li>
+                <li>Divide the kneaded chenna into small equal-sized balls and roll them between your palms to make smooth balls.</li>
+            </ul>
+        </li>
+        
+        <li><strong>Make the Sugar Syrup:</strong>
+            <ul>
+                <li>In a large pot, combine the sugar and water.</li>
+                <li>Bring the mixture to a boil over medium-high heat, stirring occasionally until the sugar is completely dissolved.</li>
+                <li>Add the cardamom powder and saffron strands (if using) to the syrup.</li>
+            </ul>
+        </li>
+        
+        <li><strong>Cook the Rasgullas:</strong>
+            <ul>
+                <li>Gently add the prepared chenna balls to the boiling sugar syrup.</li>
+                <li>Cover the pot with a lid and let the rasgullas cook over medium heat for about 15-20 minutes.</li>
+                <li>Remove the lid and gently press down on the rasgullas to check if they are cooked through.</li>
+                <li>Once the rasgullas are cooked, they will double in size and become spongy.</li>
+            </ul>
+        </li>
+        
+        <li><strong>Chill and Serve:</strong>
+            <ul>
+                <li>Remove the pot from heat and let the rasgullas cool to room temperature.</li>
+                <li>Transfer the rasgullas along with the sugar syrup to a serving bowl.</li>
+                <li>Chill the rasgullas in the refrigerator for at least 2 hours before serving.</li>
+                <li>Serve the chilled rasgullas garnished with some saffron strands and enjoy!</li>
+            </ul>
+        </li>
+    </ol>
+
+    <h2>Serving Tips:</h2>
+    <p>Rasgullas taste best when served chilled. You can garnish them with some chopped nuts like pistachios or almonds before serving for added flavor and texture.</p>
+
+ <br><br>
+<h1 style="  font-family: 'Comic Sans MS', cursive;" >Ratings and Reviews</h1>
+  <div id="reviewSection">
+<form id="reviewForm">
+
+ <label for="name">Name:</label>
+  <input type="text" id="nameInput" name="name" required>
+<br><br>
+  <div class="rating">
+    <input type="radio" id="star5" name="rating" value="5">
+    <label for="star5" title="5 stars">★</label>
+    <input type="radio" id="star4" name="rating" value="4">
+    <label for="star4" title="4 stars">★</label>
+    <input type="radio" id="star3" name="rating" value="3">
+    <label for="star3" title="3 stars">★</label>
+    <input type="radio" id="star2" name="rating" value="2">
+    <label for="star2" title="2 stars">★</label>
+    <input type="radio" id="star1" name="rating" value="1">
+    <label for="star1" title="1 star">★</label>
+  </div>
+ 
+    <input type="hidden" name="rating" value="0" id="ratingInput">
+   
+    <label for="review">Review:</label>
+    <textarea id="reviewInput" name="review" required></textarea>
+    <button type="submit">Submit</button>
+  </form>
+  <div id="reviews">
+    <!-- Reviews will be displayed here -->
+  </div>
+  <div id="averageRating">Average rating: 0/5</div>
+</div>
+<button class="bookmark-btn" id="bookmark-btn"><img src="BM.png" alt="Bookmark"></button>
+
+<script src="ratin.js" ></script>
+    <script>
+        document.getElementById('bookmark-btn').addEventListener('click', function() {
+            const title = document.getElementById('page-title').innerText;
+            let bookmarks = JSON.parse(localStorage.getItem('bookmarks')) || [];
+            bookmarks.push(title);
+            localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
+            alert('Page bookmarked!');
+
+            // Send a message to update bookmarks on the other page
+            if (window.opener) {
+                window.opener.postMessage('updateBookmarks', '*');
+            }
+        });
+
+
+    </script>
+
+</main>
+</body>
+</html>

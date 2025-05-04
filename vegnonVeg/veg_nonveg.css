@@ -1,0 +1,84 @@
+
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #f2f2f2;
+
+  margin: 0;
+  padding: 20px;
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+ object-fit: cover; /* Centers buttons horizontally */
+}
+
+.button-container {
+  margin-bottom: 20px; /* Additional spacing between buttons and recipes */
+}
+
+/* GenZ Cool Color for Veg & Non-Veg Dishes */
+.veg,
+.non-veg {
+  background-color: lightpink; /* Light pink with a touch of purple */
+  width: 250px;
+  height:250px;
+  display: inline-block;
+  margin: 10px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  transition: transform 0.3s ease-in-out;
+border:no-border;
+
+}
+
+.recipe:hover {
+  transform: translateY(-5px);
+}
+
+/* Green Veg Button */
+.veg-btn {
+  background-color: #90EE90; /* Light green */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin: 10px;
+}
+
+/* Brown Non-Veg Button */
+.nonveg-btn {
+  background-color: #d2b48c; /* Light brown */
+  color: black;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin: 10px;
+}
+
+h2 {
+  
+  font-size: 25px;
+  font-weight:600;
+  margin-top: 0;
+color: darkslategrey;
+
+}
+
+
+.btn{
+
+border-radius: 5px;
+  cursor: pointer;
+ background-color: transparent;
+border:none;
+}
+
+

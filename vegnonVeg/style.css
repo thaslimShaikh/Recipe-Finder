@@ -1,0 +1,56 @@
+body {
+    font-family: sans-serif;
+}
+
+#user-info {
+    margin-bottom: 20px;
+}
+
+
+
+#review-list {
+    list-style: none;
+    padding: 0;
+}
+
+#review-list li {
+    margin-bottom: 15px;
+}
+
+#review-form {
+    margin-top: 20px;
+}
+
+#review-form textarea {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+.rating {
+    display: flex;
+    flex-direction: row-reverse; /* Reverse order for star display */
+    justify-content:left;
+
+    
+}   
+
+.rating input {
+    display: none;
+}
+
+.rating label {
+    cursor: pointer;
+    color: #ddd;
+    font-size: 30px;
+
+
+}
+
+
+.rating:not(:checked) > label {
+    transition: 0.3s ease all;
+}
+
+.rating > input:checked ~ label {
+    color: orange;
+}

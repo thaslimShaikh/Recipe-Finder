@@ -1,0 +1,365 @@
+<html>
+<head>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css">
+    
+    <link rel="stylesheet" href="nav.css">
+<link rel="stylesheet" href="sandtheme.css">
+
+<style>
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #f2f2f2;
+
+  margin: 0;
+  padding: 20px;
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+ object-fit: cover; /* Centers buttons horizontally */
+}
+
+
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            width:100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #333;
+            padding: 0px;
+            color: white;
+            z-index: 1000;
+        }
+
+        .navbar-left {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-brand img.logo {
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        .company-name {
+            font-size: 1.5em;
+        }
+
+        .navbar-center {
+            display: flex;
+            justify-content: center;
+            flex-grow: 1;
+        }
+
+        .nav {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+
+        .nav-item {
+            margin: 0 15px;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            font-size: 1.2em;
+        }
+
+        .navbar-right {
+            display: flex;
+            align-items: center;
+        }
+
+.search-input {
+    margin-right: 10px;
+    padding: 5px;
+}
+
+.theme-toggle-btn {
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.recipe-container {
+    width: auto; /* Allow buttons to expand horizontally */
+    
+    padding: 20px;
+    scrollbar-width: none; /* Firefox */
+   
+}
+
+.btn {
+    display: inline-block;
+    margin: 0 5px;
+    padding: 0;
+    border: none;
+    background: none;
+    cursor: pointer;
+    transition: filter 0.2s;
+}
+
+.btn div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 150px;
+    height: 150px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: 5px;
+    position: relative;
+    overflow: visible;
+    filter: brightness(1);
+    transition: filter 0.2s;
+    border-radius: 10px;
+}
+
+.btn div:hover {
+    filter: brightness(0.8);
+}
+
+.btn:hover, .btn:focus {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    animation: glow 0.5s infinite;
+}
+
+@keyframes glow {
+    0% {
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    }
+    50% {
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+    }
+    100% {
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    }
+}
+
+@keyframes wiggle {
+    0% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(5deg);
+    }
+    50% {
+        transform: rotate(0deg);
+    }
+    75% {
+        transform: rotate(-5deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+.btn h2 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    color: white;
+    padding: 5px;
+    margin: 0;
+    text-align: center;
+    border-radius: 10px 10px 0 0;
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: bold;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+h1{
+font-family: 'Lobster', cursive;"
+}
+
+
+    </style>
+</head>
+<body>
+
+<nav class="navbar fixed-top">
+    <div class="navbar-left">
+        <div class="navbar-brand">
+            <img src="l.png" alt="Logo" class="logo">
+            <span class="company-name" style="font-family: 'Courier New', Courier, monospace;
+      font-size: 24px;color: #00698f ;">Recipe Radar</span>
+        </div>
+    </div>
+    <div class="navbar-center" >
+        <ul class="nav justify-content-center" style="margin-left:10px;">
+            <li class="nav-item">
+                <a class="nav-link" href="video.html">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="contact.html">Contact</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Dishes</a>
+            </li>
+        </ul>
+    </div>
+    <div class="navbar-right">
+  <div class="search-container">
+    <i id="search-icon" class="fas fa-search search-icon"></i>
+    <div id="theme-btn" class="far fa-moon theme-btn"></div>
+  </div>
+
+  <div class="search-bar" id="search-bar">
+    <input type="text" id="search-input" placeholder="Enter your search query">
+    <button id="search-btn">Search</button>
+  </div>
+    </div>
+</nav>
+
+
+<div style="margin-top:50px;">
+<h1 style="  font-family: 'Lobster', cursive;"> Try Our Premium Recipes </h1>
+</div>
+
+
+
+<div  " >
+<button class="btn" onclick="location.href='PalakPaneer.html'"><div style="background-image: url('palakPaneer.jpg'); background-size: cover;">
+  <h2>Palak Paneer</h2>
+</div>
+</button>
+
+<button class="btn" onclick="location.href='cholebature.html'">
+<div  style="background-image: url('cholebature.jpg'); background-size: cover;">
+  <h2>chole bature</h2>
+  </div></button>
+
+<button class="btn"  onclick="location.href='omelette.html'">
+<div  style="background-image: url('omelette.jpg'); background-size: cover;">
+  <h2>omelette</h2>
+  </div>
+</button>
+
+<button class="btn"  onclick="location.href='dalmakhani.html'">
+<div  style="background-image: url('dalmakhani.jpg'); background-size: cover;">
+  <h2>Dal makhni</h2>
+  </div>
+</button>
+
+<button class="btn"  onclick="location.href='Butterchicken.html'">
+<div style="background-image: url('butterchicken.jpg'); background-size: cover;">
+  <h2>Butter Chicken</h2>
+  </div>
+</button>
+
+<button class="btn"  onclick="location.href='pavbhaji.html'">
+<div  style="background-image: url('pavbhaji.jpg'); background-size: cover;">
+  <h2>Pav bhaji</h2>
+  </div>
+</button>
+
+<button class="btn"  onclick="location.href='CheesyFrankieRecipe.html'">
+<div  style="background-image: url('cheesefrankie.jpg'); background-size: cover;">
+  <h2>Cheesy Frankie</h2>
+  </div>
+</button>
+
+
+<button class="btn"  onclick="location.href='Chickenbiryani.html'">
+<div  style="background-image: url('chicken-biryani.jpg'); background-size: cover;">
+  <h2>Chicken Biryani</h2>
+  </div>
+</button>
+
+<button class="btn"  onclick="location.href='LoadedNachos.html'">
+<div style="background-image: url('loadednachos.jpg'); background-size: cover;">
+  <h2>Loaded nachos</h2>
+  </div>
+</button>
+
+<button class="btn"  onclick="location.href='jalebi.html'">
+<div  style="background-image: url('jalebi.jpg'); background-size: cover;">
+  <h2>jalebi</h2>
+  </div>
+</button>
+
+<button class="btn"  onclick="location.href='chickenroll.html'">
+<div  style="background-image: url('chickenroll.jpg'); background-size: cover;">
+  <h2>Chicken roll</h2>
+  </div>
+</button>
+
+<button class="btn"  onclick="location.href='AlooTikkiChaat.html'">
+<div  style="background-image: url('alootikki.jpg'); background-size: cover;">
+  <h2>Aloo Tikki Chat</h2>
+  </div>
+</button>
+
+<button class="btn"  onclick="location.href='panipuri.html'">
+<div style="background-image: url('panipuri.jpg'); background-size: cover;">
+  <h2>pani puri</h2>
+  </div>
+</button>
+
+<button class="btn"  onclick="location.href='chickenburger.html'">
+<div style="background-image: url('chickenburger.jpg'); background-size: cover;">
+  <h2>Chicken burger</h2>
+  </div>
+</button>
+
+<button class="btn"  onclick="location.href='InstantNoodleSoup.html'">
+<div style="background-image: url('INS.jpg'); background-size: cover;">
+  <h2>Instant noodle soup</h2>
+  </div>
+</button>
+
+<button class="btn"  onclick="location.href='SpicyRamenScramble.html'">
+<div style="background-image: url('SRS.jpg'); background-size: cover;">
+  <h2>spicy ramen scramble</h2>
+  </div>
+</button>
+
+<button class="btn"  onclick="location.href='pizza.html'">
+<div style="background-image: url('pizza.jpg'); background-size: cover;">
+  <h2>pizza</h2>
+  </div>
+</button>
+
+<button class="btn"  onclick="location.href='chickentikkamasala.html'">
+<div style="background-image: url('chickentikka.jpg'); background-size: cover;">
+  <h2>Chicken Tikka Masala</h2>
+
+  </div>
+</button>
+
+<button class="btn"  onclick="location.href='samosa.html'">
+<div style="background-image: url('samosa.jpg'); background-size: cover;">
+  <h2>Samosa</h2>
+  </div>
+</button>
+
+<button class="btn"  onclick="location.href='rasgulla.html'">
+<div style="background-image: url('ras.jpg'); background-size: cover;">
+  <h2>Rasgulla</h2>
+  </div>
+</button>
+<div>
+
+<script src="theme.js"></script>
+
+<script src="nav.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet"  href="style.css" >
+<link rel="stylesheet" type="text/css" href="BM.css">
+<link rel="stylesheet" type="text/css" href="ratin.css">
+    <title>Pizza Recipe</title>
+</head>
+<body>
+<main>
+    <h1 id="page-title">Pizza Recipe</h1>
+    <img src="pizza.jpg" alt="pizza">
+    <h2 id="page-title">Ingredients:</h2>
+    <ul>
+        <li>1 pre-made pizza dough</li>
+        <li>1/2 cup pizza sauce</li>
+        <li>1 1/2 cups shredded mozzarella cheese</li>
+        <li>Assorted toppings of your choice (e.g., pepperoni, bell peppers, onions, mushrooms, olives)</li>
+        <li>1 tablespoon olive oil</li>
+        <li>1/4 cup grated Parmesan cheese</li>
+        <li>1/2 teaspoon dried oregano</li>
+        <li>1/2 teaspoon garlic powder</li>
+        <li>Salt and black pepper to taste</li>
+    </ul>
+
+    <h2>Instructions:</h2>
+    <ol>
+        <li><strong>Preheat the Oven:</strong>
+            <ul>
+                <li>Preheat your oven to 475°F (245°C).</li>
+            </ul>
+        </li>
+        
+        <li><strong>Roll Out the Dough:</strong>
+            <ul>
+                <li>Roll out the pizza dough on a lightly floured surface to your desired thickness.</li>
+                <li>Transfer the rolled-out dough to a pizza pan or baking sheet lined with parchment paper.</li>
+            </ul>
+        </li>
+        
+        <li><strong>Top the Pizza:</strong>
+            <ul>
+                <li>Spread the pizza sauce evenly over the dough, leaving a small border around the edges.</li>
+                <li>Sprinkle the shredded mozzarella cheese over the sauce.</li>
+                <li>Add your desired toppings on top of the cheese.</li>
+            </ul>
+        </li>
+        
+        <li><strong>Bake the Pizza:</strong>
+            <ul>
+                <li>Drizzle the olive oil over the assembled pizza.</li>
+                <li>Sprinkle the grated Parmesan cheese, dried oregano, garlic powder, salt, and black pepper over the top.</li>
+                <li>Bake the pizza in the preheated oven for 12-15 minutes, or until the crust is golden brown and the cheese is melted and bubbly.</li>
+            </ul>
+        </li>
+        
+        <li><strong>Slice and Serve:</strong>
+            <ul>
+                <li>Remove the pizza from the oven and let it cool for a few minutes.</li>
+                <li>Slice the pizza into wedges or squares and serve hot.</li>
+                <li>Enjoy your delicious homemade pizza!</li>
+            </ul>
+        </li>
+    </ol>
+
+    <h2>Serving Tips:</h2>
+    <p>For an extra burst of flavor, sprinkle some red pepper flakes or fresh basil leaves on top of the pizza before serving. Serve with a side of marinara sauce or ranch dressing for dipping.</p>
+   <br><br>
+<h1 style="  font-family: 'Comic Sans MS', cursive;" >Ratings and Reviews</h1>
+  <div id="reviewSection">
+<form id="reviewForm">
+
+ <label for="name">Name:</label>
+  <input type="text" id="nameInput" name="name" required>
+<br><br>
+  <div class="rating">
+    <input type="radio" id="star5" name="rating" value="5">
+    <label for="star5" title="5 stars">★</label>
+    <input type="radio" id="star4" name="rating" value="4">
+    <label for="star4" title="4 stars">★</label>
+    <input type="radio" id="star3" name="rating" value="3">
+    <label for="star3" title="3 stars">★</label>
+    <input type="radio" id="star2" name="rating" value="2">
+    <label for="star2" title="2 stars">★</label>
+    <input type="radio" id="star1" name="rating" value="1">
+    <label for="star1" title="1 star">★</label>
+  </div>
+ 
+    <input type="hidden" name="rating" value="0" id="ratingInput">
+   
+    <label for="review">Review:</label>
+    <textarea id="reviewInput" name="review" required></textarea>
+    <button type="submit">Submit</button>
+  </form>
+  <div id="reviews">
+    <!-- Reviews will be displayed here -->
+  </div>
+  <div id="averageRating">Average rating: 0/5</div>
+</div>
+<button class="bookmark-btn" id="bookmark-btn"><img src="BM.png" alt="Bookmark"></button>
+
+<script src="ratin.js" ></script>
+    <script>
+        document.getElementById('bookmark-btn').addEventListener('click', function() {
+            const title = document.getElementById('page-title').innerText;
+            let bookmarks = JSON.parse(localStorage.getItem('bookmarks')) || [];
+            bookmarks.push(title);
+            localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
+            alert('Page bookmarked!');
+
+            // Send a message to update bookmarks on the other page
+            if (window.opener) {
+                window.opener.postMessage('updateBookmarks', '*');
+            }
+        });
+
+
+    </script>
+
+</main>
+
+</body>
+</html>

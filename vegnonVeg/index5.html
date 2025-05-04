@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Recipe Generator</title>
+  <link rel="stylesheet" href="index1.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css">
+  <link rel="stylesheet" href="scroll.css">
+  <link rel="stylesheet" href="veg_nonveg.css">
+  <style>
+    /* Include your existing styles here */
+
+    html{
+      padding:0px 10px 5px 250px;
+    }
+    body {
+      background-color: #ffffff;
+      color: #000000;
+      background-size: cover;
+      background-position: center center;
+      margin: 0;
+      padding: 0;
+    }
+
+   .top-features,.bottom-features {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      margin: 50px 0;
+      background-color: inherit;
+      color: inherit;
+    }
+
+   .top-features a,.bottom-features a {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 200px;
+      height: 200px;
+      margin: 20px;
+      text-decoration: none;
+      color: #fff;
+      transition: transform 0.3s ease-in-out;
+    }
+
+   .top-features a:hover,.bottom-features a:hover {
+      transform: scale(1.1);
+    }
+
+   .top-features img,.bottom-features img {
+      width: 100px;
+      height: 100px;
+      margin-bottom: 10px;
+      transition: filter 0.3s ease-in-out;
+    }
+
+   .top-features img:hover,.bottom-features img:hover {
+      filter: brightness(50%);
+    }
+
+   .top-features h2,.bottom-features h2 {
+      font-size: 24px;
+      margin-top: 0;
+    }
+
+    @media (max-width: 600px) {
+     .top-features a,.bottom-features a {
+        width: 100%;
+      }
+    }
+
+   .search-container {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background-color: inherit;
+      color: inherit;
+    }
+
+   .search-icon {
+      font-size: 18px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 10px;
+      cursor: pointer;
+    }
+
+   .theme-btn {
+      font-size: 18px;
+      margin-left: 10px;
+      cursor: pointer;
+    }
+
+   .changeTheme {
+      background-color: #1D1E22;
+      color: #eee;
+    }
+   .changeTheme.dialogue-box {
+      background-color: #333;
+    }
+
+   .changeTheme.quote-box {
+      background-color: #333;
+    }
+
+   .navbar {
+      display: flex;
+      justify-content: center;
+      background-color: #ffffff;
+      padding: 10px 0;
+      background-color: inherit;
+      color: inherit;
+    }
+
+   .navbar a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: black;
+    }
+
+   .logo-container {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      display: flex;
+      align-items: center;
+      background-color: inherit;
+      color: inherit;
+    }
+
+   .logo-container img {
+      height: 50px;
+      margin-right: 10px;
+    }
+
+   .logo-container h1 {
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 24px;
+      color: #00698f;
+      margin: 0;
+    }
+
+   .dialogue-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 50px;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+   .dialogue-box img {
+      width: 300px;
+      height: 200px;
+      margin-bottom: 20px;
+      border-radius: 10px;
+    }
+
+   .quote-box {
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+   .quote-box p {
+      font-size: 18px;
+      font-style: italic;
+      margin: 0;
+    }
+
+   .dark-theme {
+      background-color: #333;
+     color: #fff;
+    }
+
+    .dark-theme * {
+      background-color: #333;
+      color: #fff;
+    }
+
+    .dark-theme a {
+      color: #fff;
+    }
+
+    .dark-theme.logo-container {
+      background-color: #333;
+      color: #fff;
+    }
+
+    .dark-theme.navbar {
+      background-color: #333;
+      color: #fff;
+    }
+
+    .dark-theme.dialogue-box {
+      background-color: #333;
+      color: #fff;
+    }
+
+    .dark-theme.input-section {
+      background-color: #333;
+      color: #fff;
+    }
+
+    .dark-theme.input-section h2 {
+      color: #fff;
+    }
+
+    .dark-theme.input-section input[type="text"] {
+      background-color: #444;
+      color: #fff;
+      border: none;
+    }
+
+    .dark-theme.input-section button {
+      background-color: #444;
+      color: #fff;
+      border: none;
+    }
+
+    .dark-theme.output-section {
+      background-color: #333;
+      color: #fff;
+    }
+
+    .dark-theme.output-section h2 {
+      color: #fff;
+    }
+
+    .dark-theme.output-section p {
+      color: #fff;
+    }
+
+<style>
+.icon-container {
+  position: fixed; /* fix the icon container to the left side */
+  top: 0;
+  left: 0;
+  width: 50px; /* adjust the width to fit your icons */
+  height: 100vh; /* make the container full height */
+  background-color: #65737e; /* add a background color */
+  padding: 10px; /* some padding */
+  display: flex; /* make the icons display horizontally */
+  flex-direction: column; /* stack the icons vertically */
+  align-items: center; /* center the icons horizontally */
+  gap: 20px; /* add a gap between icons */
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* make the image fit the container */
+  border-radius: 50%; /* add a rounded corner to the image */
+}
+
+.icon-bar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 50px;
+  height: 100vh;
+  background-color: #f1f1f1;
+}
+
+
+
+  </style>
+</head>
+<body>
+
+
+
+  <!-- Logo and Title -->
+  <div class="logo-container">
+    <img src="C:\Users\786sh\OneDrive\Desktop\HTML\Case_Study\Logo.png" alt="Logo">
+    <h1>Recipe Radar</h1>
+  </div>
+
+  <!-- Navbar -->
+  <div class="navbar">
+    <a href="homepage5.html">Home</a>
+    <a href="C:\Users\786sh\OneDrive\Desktop\HTML\Case_Study\akshaya\login.html">Login</a>
+    <a href="C:\Users\786sh\OneDrive\Desktop\HTML\Case_Study\trip\contactus.html">Contact Us</a>
+  </div> 
+
+  <!-- Search and Theme Toggle -->
+  <div class="search-container">
+    <div id="theme-btn" class="far fa-moon theme-btn"></div>
+    <i id="search-icon" class="fas fa-search search-icon"></i>
+  </div>
+
+
+  <!-- Dialogue Box -->
+  <div class="dialogue-box">
+    <img src="C:\Users\786sh\OneDrive\Desktop\HTML\Case_Study\fatherDaughter.jpg" alt="Father and Daughter Cooking">
+    <div class="quote-box">
+      <p>“Cooking is at once child’s play and adult joy. And cooking done with care is an act of love.” - Craig Claiborne</p>
+    </div>
+  </div>
+
+  <!-- Recipe Generator Section -->
+  <header>
+    <h1>Recipe Generator</h1>
+  </header>
+
+  <main>
+    <section class="input-section">
+      <h2>Tell us what ingredients you need to use up</h2>
+      <p>Enter a minimum of 3 ingredients to find some recipes.</p>
+      <div class="search-bar">
+        <input type="text" id="ingredient-input" placeholder="Enter Ingredients...">
+      </div>
+      <div id="recommended-ingredients">
+<button class="recommended-ingredient" data-ingredient="Garlic">Garlic&nbsp;&nbsp; <span class="plus-sign">+</span></button>
+
+<button class="recommended-ingredient" data-ingredient="Onion">Onion&nbsp;&nbsp; <span class="plus-sign">+</span></button>
+
+<button class="recommended-ingredient" data-ingredient="Potato">Potato&nbsp;&nbsp; <span class="plus-sign">+</span></button>
+
+      </div>
+      <div id="added-ingredients"></div>
+      <button id="generate-recipe" style="background-color: purple; color: grey;">Generate Recipe</button>
+    </section>
+    <section class="output-section">
+      <div id="recipe-output"></div>
+    </section>
+  </main>
+
+<div class="recipe-container">
+  <button class="btn" onclick="location.href='PalakPaneer.html'">
+    <div style="background-image: url('palakPaneer.jpg'); background-size: cover;">
+      <h2>Palak Paneer</h2>
+    </div>
+  </button>
+
+  <button class="btn" onclick="location.href='cholebature.html'">
+    <div style="background-image: url('cholebature.jpg'); background-size: cover;">
+      <h2>chole bature</h2>
+    </div>
+  </button>
+
+  <button class="btn" onclick="location.href='omelette.html'">
+    <div style="background-image: url('omelette.jpg'); background-size: cover;">
+      <h2>omelette</h2>
+    </div>
+  </button>
+
+  <button class="btn" onclick="location.href='dalmakhani.html'">
+    <div style="background-image: url('dalmakhani.jpg'); background-size: cover;">
+      <h2>Dal makhni</h2>
+    </div>
+  </button>
+
+  <button class="btn" onclick="location.href='Butterchicken.html'">
+    <div style="background-image: url('butterchicken.jpg'); background-size: cover;">
+      <h2>Butter Chicken</h2>
+    </div>
+  </button>
+
+  <button class="btn" onclick="location.href='pavbhaji.html'">
+    <div style="background-image: url('pavbhaji.jpg'); background-size: cover;">
+      <h2>Pav bhaji</h2>
+    </div>
+  </button>
+
+  <button class="btn" onclick="location.href='CheesyFrankieRecipe.html'">
+    <div style="background-image: url('cheesefrankie.jpg'); background-size: cover;">
+      <h2>Cheesy Frankie</h2>
+    </div>
+  </button>
+
+  <button class="btn" onclick="location.href='Chickenbiryani.html'">
+    <div style="background-image: url('chicken-biryani.jpg'); background-size: cover;">
+      <h2>Chicken Biryani</h2>
+    </div>
+  </button>
+
+  <button class="btn" onclick="location.href='LoadedNachos.html'">
+    <div style="background-image: url('loadednachos.jpg'); background-size: cover;">
+      <h2>Loaded nachos</h2>
+    </div>
+  </button>
+
+  <button class="btn" onclick="location.href='jalebi.html'">
+    <div style="background-image: url('jalebi.jpg'); background-size: cover;">
+      <h2>jalebi</h2>
+    </div>
+  </button>
+
+  <button class="btn" onclick="location.href='chickenroll.html'">
+    <div style="background-image: url('chickenroll.jpg'); background-size: cover;">
+      <h2>Chicken roll</h2>
+    </div>
+  </button>
+
+  <button class="btn" onclick="location.href='AlooTikkiChaat.html'">
+    <div style="background-image: url('alootikki.jpg'); background-size: cover;">
+      <h2>Aloo Tikki Chat</h2>
+    </div>
+  </button>
+
+  <button class="btn" onclick="location.href='panipuri.html'">
+    <div style="background-image: url('panipuri.jpg'); background-size: cover;">
+      <h2>pani puri</h2>
+    </div>
+  </button>
+
+  <button class="btn" onclick="location.href='chickenburger.html'">
+    <div style="background-image: url('chickenburger.jpg'); background-size: cover;">
+      <h2>Chicken burger</h2>
+    </div>
+  </button>
+
+  <button class="btn" onclick="location.href='InstantNoodleSoup.html'">
+    <div style="background-image: url('INS.jpg'); background-size: cover;">
+      <h2>Instant noodle soup</h2>
+    </div>
+  </button>
+
+  <button class="btn" onclick="location.href='SpicyRamenScramble.html'">
+    <div style="background-image: url('SRS.jpg'); background-size: cover;">
+      <h2>spicy ramen scramble</h2>
+    </div>
+  </button>
+
+  <button class="btn" onclick="location.href='pizza.html'">
+    <div style="background-image: url('pizza.jpg'); background-size: cover;">
+      <h2>pizza</h2>
+    </div>
+  </button>
+
+ <button class="btn" onclick="location.href='chickentikkamasala.html'">
+    <div style="background-image: url('chickentikka.jpg'); background-size: cover;">
+      <h2>Chicken Tikka Masala</h2>
+    </div>
+  </button>
+
+  <button class="btn" onclick="location.href='samosa.html'">
+    <div style="background-image: url('samosa.jpg'); background-size: cover;">
+      <h2>Samosa</h2>
+    </div>
+  </button>
+
+  <button class="btn" onclick="location.href='rasgulla.html'">
+    <div style="background-image: url('ras.jpg'); background-size: cover;">
+      <h2>Rasgulla</h2>
+    </div>
+  </button>
+</div>
+
+
+
+<script src="index2.js"></script>
+
+<script>
+  const themeBtn = document.getElementById("theme-btn");
+  const body = document.body;
+
+  themeBtn.onclick = () => {
+    body.classList.toggle("dark-theme");
+  }
+
+        const icons = document.querySelectorAll('.icon-container i');
+
+        icons.forEach(icon => {
+            icon.addEventListener('mouseover', () => {
+                icon.style.color = '#007bff'; /* change the icon color on hover */
+            });
+
+            icon.addEventListener('mouseout', () => {
+                icon.style.color = '#333'; /* reset the icon color on mouseout */
+            });
+        });
+
+
+const searchIcon = document.getElementById("search-icon");
+const searchInput = document.getElementById("ingredient-input");
+const searchResults = document.getElementById("recommended-ingredients");
+
+searchIcon.onclick = () => {
+  const searchTerm = searchInput.value.trim();
+  if (searchTerm) {
+    // Perform the search action here
+    // For example, you can make an API call to retrieve search results
+    // or filter the existing list of ingredients based on the search term
+    const filteredIngredients = ingredients.filter((ingredient) => {
+      return ingredient.name.toLowerCase().includes(searchTerm.toLowerCase());
+    });
+    searchResults.innerHTML = "";
+    filteredIngredients.forEach((ingredient) => {
+      const button = document.createElement("button");
+      button.textContent = ingredient.name;
+      button.dataset.ingredient = ingredient.name;
+      searchResults.appendChild(button);
+    });
+  }
+};
+
+searchInput.addEventListener("keypress", (event) => {
+  if (event.key === "Enter") {
+    searchIcon.click();
+  }
+});
+
+
+
+
+
+</script>
+</body>
+</html>
